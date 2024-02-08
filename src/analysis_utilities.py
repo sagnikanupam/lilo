@@ -117,6 +117,7 @@ class IterativeExperimentAnalyzer:
         experiment_types = []
         for path in experiment_type_paths:
             e_type = os.path.split(path)[-1]
+            # SAGNIK COMMENT 
             if self.experiment_types is None or e_type in self.experiment_types:
                 experiment_types.append(e_type)
         return experiment_types
@@ -130,11 +131,10 @@ class IterativeExperimentAnalyzer:
             with open(os.path.join(path, "config_base.json"), "r") as f:
                 config_base = json.load(f)
             seeds.append(config_base["metadata"]["random_seed"])
-
+        print(seeds)
         # Filter seeds
         if self.seeds is not None:
             seeds = [s for s in seeds if s in self.seeds]
-
         return seeds
 
     def get_available_iterations(self, domain, experiment_type, seed):
@@ -764,10 +764,16 @@ class SynthesisExperimentAnalyzer(IterativeExperimentAnalyzer):
 
     def get_synthesis_results_for_domain(self, domain):
         experiment_types = self.get_available_experiment_types(domain)
+        print("Experiment Types: ")
+        print(experiment_types)
         df_list = []
         for experiment_type in experiment_types:
             df = self.get_synthesis_results_for_experiment_type(domain, experiment_type)
             df["experiment_type"] = experiment_type
+            print("df result of get_synthesis_res_for_exp_type")
+            print(df) 
+            print("experiment type")
+            print(experiment_type)
             df_list.append(df)
         return pd.concat(df_list).reset_index(drop=True)
 

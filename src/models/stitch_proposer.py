@@ -214,13 +214,49 @@ class StitchProposerLibraryLearner(StitchBase, model_loaders.ModelLoader):
             stitch_kwargs = stitch.from_dreamcoder(frontiers_dict)
 
         stitch_kwargs.update(dict(eta_long=True, utility_by_rewrite=True))
+        
+        # SAGNIK'S CODE FOR WEIGHTED LILO
+        compression_result = None
 
-        compression_result = stitch.compress(
+        if experiment_state.weights == None:
+            compression_result = stitch.compress(
             **stitch_kwargs,
             iterations=iterations,
             max_arity=max_arity,
             no_other_util=True,
-        )
+            )
+        else:
+            weights_list = []
+            for program_index in range(len(stitch_kwargs['programs'])):
+                weights_list.append(experiment_state.weights[stitch_kwargs['tasks'][program_index]])
+            #print("\nThis is what weights_list looks like: " + str(weights_list))
+            compression_result = stitch.compress(
+            **stitch_kwargs,
+            iterations=iterations,
+            max_arity=max_arity,
+            no_other_util=True,
+            weights=weights_list,
+            )
+        
+        #####UPDATE WEIGHTS - SAGNIK#####
+        rewritten_progs = stitch.rewrite(abstractions=compression_result.abstractions, **stitch_kwargs)
+        name_mapping = stitch.name_mapping_dreamcoder(frontiers_dict) + stitch.name_mapping_stitch(compression_result.json)
+        rewritten_dc = stitch.stitch_to_dreamcoder(rewritten_progs.rewritten, name_mapping)
+        originals_dc = stitch.stitch_to_dreamcoder(stitch_kwargs['programs'], name_mapping)
+        if len(rewritten_dc) == len(originals_dc):
+            #print("\n The total number of rewritten and original programs match.")
+            total_programs_for_tasks = {taskname: value for (taskname, value) in zip(stitch_kwargs["tasks"], [0]*len(stitch_kwargs["tasks"]))}
+            modified_programs_for_tasks = {taskname: value for (taskname, value) in zip(stitch_kwargs["tasks"], [0]*len(stitch_kwargs["tasks"]))}
+            for program_index in range(len(originals_dc)):
+                task_name = stitch_kwargs["tasks"][program_index]
+                total_programs_for_tasks[task_name]+=1
+                if originals_dc[program_index] != rewritten_dc[program_index]:
+                    modified_programs_for_tasks[task_name]+=1
+            for task in total_programs_for_tasks.keys():
+                experiment_state.weights[task] -= (modified_programs_for_tasks[task]/total_programs_for_tasks[task])/experiment_state.config["experiment_iterator"]["max_iterations"]
+        print(f"\n This is what updated weights look like: {experiment_state.weights}")
+        ##########
+
         abstractions = [
             Invented.parse(abs["dreamcoder"])
             for abs in compression_result.json["abstractions"]
