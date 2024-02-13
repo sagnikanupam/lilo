@@ -108,7 +108,7 @@ python run_iterative_experiment.py \
   --encoder re2 \
   --iterations 1 \
   --global_batch_sizes 32 \
-  --enumeration_timeout 5 \
+  --enumeration_timeout 100 \
   --recognition_train_steps 100 \
   --verbose \
 ```
@@ -173,33 +173,54 @@ By default, resuming from checkpoint will only occur at the first iteration. Thi
 
 ## Domains
 
-The `run_iterative_experiment.py` script takes a `--domain` argument that specifies which domain to use. The following domains are supported:
+The `run_iterative_experiment.py` script takes a `--domain` argument that specifies which domain to use. The following domains are supported, with the corresponding commands used to replicate the experiments from the paper:
 
 ### REGEX
 
 ```
---domain re2 \
---encoder re2 \
---enumeration_timeout 1000 \
---iterations 16 \
+python run_iterative_experiment.py \
+  --experiment_name test_runs \
+  --experiment_type dreamcoder \
+  --domain re2 \
+  --encoder re2 \
+  --iterations 16 \
+  --global_batch_sizes 96 \
+  --enumeration_timeout 1000 \
+  --recognition_train_steps 10000 \
+  --random_seeds 111 222 333 \
+  --verbose \
 ```
 
 ### CLEVR
 
 ```
---domain clevr \
---encoder clevr \
---enumeration_timeout 600 \
---iterations 10 \
+python run_iterative_experiment.py \
+  --experiment_name test_runs \
+  --experiment_type dreamcoder \
+  --domain clevr \
+  --encoder clevr \
+  --iterations 10 \
+  --global_batch_sizes 96 \
+  --enumeration_timeout 600 \
+  --recognition_train_steps 10000 \
+  --random_seeds 111 222 333 \
+  --verbose \
 ```
 
 ### LOGO
 
 ```
---domain logo \
---encoder LOGO \
---enumeration_timeout 1800 \
---iterations 10 \
+python run_iterative_experiment.py \
+  --experiment_name test_runs \
+  --experiment_type dreamcoder \
+  --domain logo \
+  --encoder LOGO \
+  --iterations 10 \
+  --global_batch_sizes 96 \
+  --enumeration_timeout 1800 \
+  --recognition_train_steps 10000 \
+  --random_seeds 111 222 333 \
+  --verbose \
 ```
 
 ## Full-scale experiments
