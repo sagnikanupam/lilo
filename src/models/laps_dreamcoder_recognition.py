@@ -29,7 +29,7 @@ class LAPSDreamCoderRecognition:
     """LAPSDreamCoderRecognition: containiner wrapper for a DreamCoder recognition model. The neural weights are fully reset and retrained when optimize_model_for_frontiers is called."""
 
     DEFAULT_MAXIMUM_FRONTIER = 5  # Maximum top-programs to keep in frontier
-    DEFAULT_CPUS = os.cpu_count()  # Parallel CPUs
+    DEFAULT_CPUS = 96 #SAGNIK-HARDCODED-FOR-LILO PAPER EXPS else use os.cpu_count()  # Parallel CPUs
     DEFAULT_ENUMERATION_SOLVER = "ocaml"  # OCaml, PyPy, or Python enumeration
     DEFAULT_SAMPLER = "helmholtz"
     DEFAULT_BINARY_DIRECTORY = "dreamcoder"
