@@ -119,7 +119,7 @@ class LAPSDreamCoderRecognition:
         bias_optimal=True,
         auxiliary_loss=True,
         cuda=False,
-        cpus=os.cpu_count(),
+        cpus= 96, #SAGNIK-HARDCODED-FOR-LILO-EXPERIMENTS os.cpu_count(),
         max_mem_per_enumeration_thread=1000000,
         require_ground_truth_frontiers=False,
     ):
