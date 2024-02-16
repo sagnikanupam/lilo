@@ -91,7 +91,24 @@ class ExperimentType(str, Enum):
     COS_SIMILAR = "cos_similar"
 
 
-def get_domain_metadata(domain: str):
+def get_domain_metadata(domain: str) -> dict:
+    
+    '''
+    Returns domain metadata as a dictionary.
+
+    @param domain string containing domain_name
+
+    @returns dictionary containing the following keys{
+    "tasks_loader": SAGNIK_TBD
+    "task_language_loader": SAGNIK_TBD
+    "ocaml_special_handler": SAGNIK_TBD
+    "dsl_description_prefix": string containing domain-specific language description
+    "global_batch_sizes": SAGNIK_TBD
+    "n_tasks_train": int containing number of training tasks in the domain
+    "n_tasks_test": int containing number of testing tasks in the domain
+    }
+    '''
+    
     METADATA = {
         "logo": {
             "tasks_loader": "compositional_graphics_200",
@@ -208,7 +225,39 @@ def build_config(
     init_grammar_from_checkpoint: bool = False,
     resume_checkpoint_directory: bool = False,
     s3_sync: bool = True,
-):
+) -> dict:
+    
+    '''
+    Returns a config dictionary for configuring an experiment.
+
+    @param  experiment_name string containing experiment name,
+    @param  experiment_type SAGNIK_TBD
+    @param  domain SAGNIK_TBD
+    @param  custom_experiment_type SAGNIK_TBD
+    @param  output_directory SAGNIK_TBD (all params from here on out)
+    @param  random_seed: int = 0,
+    @param  iterations: int = 1,
+    @param  init_iteration: int = 0,
+    @param  task_batcher: str = RandomShuffleOrderedTaskBatcher.name,
+    @param  global_batch_size: int = ALL,
+    @param  enumeration_timeout: int = None,
+    @param  recognition_train_steps: int = None,
+    @param  encoder: str = None,
+    @param  stitch_params: dict = DEFAULT_STITCH_PARAMS,
+    @param  gpt_params: dict = DEFAULT_GPT_PARAMS,
+    @param  compute_likelihoods: bool = True,
+    @param  compute_description_lengths: bool = True,
+    @param  increment_task_batcher: bool = True,
+    @param  init_frontiers_from_checkpoint: bool = False,
+    @param  init_frontiers_every_iteration: bool = False,
+    @param  init_grammar_from_checkpoint: bool = False,
+    @param  resume_checkpoint_directory: bool = False,
+    @param  s3_sync: bool = True,
+    
+    @returns a dictionary with updated config body and config metadata
+
+    '''
+
     config = {}
     config.update(
         build_config_body(
