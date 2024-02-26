@@ -61,10 +61,10 @@ class CompositionalGraphics200Loader(TaskDataLoader):
             
             # ROBUSTNESS TEST (SAGNIK)
             
-            # duplicates = random.sample(task_files, int(len(task_files)*0.1))
-            # for item in duplicates:
-            #     for _ in range(10):
-            #         task_files.append(duplicates)
+            duplicates = random.sample(task_files, int(len(task_files)*0.1))
+            for item in duplicates:
+                for _ in range(10):
+                    task_files.extend(duplicates)
 
             # END ROBUSTNESS TEST
 
