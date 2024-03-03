@@ -61,7 +61,9 @@ for f in glob.glob(base_dir + '/vendor/regel/exp/so/benchmark/*'):
             jobs.append(build_llm_command(f, sketch=sketch, sketch_num=sketch_num))
         if run_abs:
             job_name = f"abs-regex-{len(jobs)}"
-            cmd = ' '.join([
+            print(job_name)
+	    print(sketch)
+	    cmd = ' '.join([
                 f"ulimit -v {mlimit} -c 0; timeout {tlimit}s",
                 f"symetric abs-regex -sketch '{sketch}' -out {job_name}.json",
                 f"< {f} 2> {job_name}.log\n",
@@ -70,6 +72,8 @@ for f in glob.glob(base_dir + '/vendor/regel/exp/so/benchmark/*'):
 
         if run_enum:
             job_name = f"enum-regex-{len(jobs)}"
+            print(job_name)
+	    print(sketch)	
             cmd = ' '.join([
                 f"ulimit -v {mlimit}; ulimit -c 0; timeout {tlimit}s",
                 f"symetric enumerate-regex -sketch '{sketch}' -out {job_name}.json",
