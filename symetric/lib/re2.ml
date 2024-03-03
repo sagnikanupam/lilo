@@ -1,7 +1,6 @@
 (* Libraries Needed *)
 open Core
-open Poly
-open Pars
+open Re2
 open Str
 
 (* Custom .ml files needed *)
