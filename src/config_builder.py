@@ -96,13 +96,13 @@ def get_domain_metadata(domain: str) -> dict:
     '''
     Returns domain metadata as a dictionary.
 
-    @param domain string containing domain_name
+    @param domain str containing domain_name
 
     @returns dictionary containing the following keys{
     "tasks_loader": SAGNIK_TBD
     "task_language_loader": SAGNIK_TBD
     "ocaml_special_handler": SAGNIK_TBD
-    "dsl_description_prefix": string containing domain-specific language description
+    "dsl_description_prefix": str containing domain-specific language description
     "global_batch_sizes": SAGNIK_TBD
     "n_tasks_train": int containing number of training tasks in the domain
     "n_tasks_test": int containing number of testing tasks in the domain
@@ -227,36 +227,79 @@ def build_config(
     s3_sync: bool = True,
 ) -> dict:
     
-    '''
+    """
     Returns a config dictionary for configuring an experiment.
-
-    @param  experiment_name string containing experiment name,
-    @param  experiment_type SAGNIK_TBD
-    @param  domain SAGNIK_TBD
-    @param  custom_experiment_type SAGNIK_TBD
-    @param  output_directory SAGNIK_TBD (all params from here on out)
-    @param  random_seed: int = 0,
-    @param  iterations: int = 1,
-    @param  init_iteration: int = 0,
-    @param  task_batcher: str = RandomShuffleOrderedTaskBatcher.name,
-    @param  global_batch_size: int = ALL,
-    @param  enumeration_timeout: int = None,
-    @param  recognition_train_steps: int = None,
-    @param  encoder: str = None,
-    @param  stitch_params: dict = DEFAULT_STITCH_PARAMS,
-    @param  gpt_params: dict = DEFAULT_GPT_PARAMS,
-    @param  compute_likelihoods: bool = True,
-    @param  compute_description_lengths: bool = True,
-    @param  increment_task_batcher: bool = True,
-    @param  init_frontiers_from_checkpoint: bool = False,
-    @param  init_frontiers_every_iteration: bool = False,
-    @param  init_grammar_from_checkpoint: bool = False,
-    @param  resume_checkpoint_directory: bool = False,
-    @param  s3_sync: bool = True,
     
-    @returns a dictionary with updated config body and config metadata
+    Arguments:
+        experiment_name: 
+            str containing experiment name (this is used in naming folders in which logs and experiment results are saved in output folder)
+        experiment_type: 
+            str containing type of model used for  experiment (one of ["dreamcoder", "llm_solver", "lilo"])
+        domain: 
+            str containing domain name ("re2", "logo", etc.)
+        custom_experiment_type
+            str containing SAGNIK_TBD
+        output_directory 
+            str containing the parent output_directory to save logs and results in (the specific directory in which an experiment's outputs are saved depends on domain, experiment_name, and experiment_type - see build_config_body())
+        random_seed:
+            int containing the random seed that is eventually used for random task batching in src/task_loaders.py    
+        iterations:
+            int containing the number of wake-sleep iterations the model
+        init_iteration: 
+            int containing iteration to start the experiment from
+        task_batcher:
+            str containing the name of the task loader used to load tasks in src/experiment_iterator.py in init_tasks_from_config
+        global_batch_size:
+            int containing the batch_size which determines the number of tasks for which each iteration searches solutions for
+        enumeration_timeout: 
+            int containing the per-task time enumeration time budget
+        recognition_train_steps: 
+            int containing the number of steps for which the neural recognition model is trained
+        encoder: 
+            str containing the name of the encoder used for encoding the domain's tasks for the recognition model
+        stitch_params:
+            dictionary containing parameters for calling Stitch for building abstractions. Keys in this dictionary are 
+            { #SAGNIK_TBD
+                "max_arity": int 
+                "iterations": int 
+                "candidates_per_iteration": int 
+            }
+        gpt_params:
+            dictionary containing parameters for calling GPT for generating programs. Keys in this dictionary are 
+            { #SAGNIK_TBD
+                "debug": bool 
+                "use_cached": bool 
+                "n_samples": int 
+                "n_samples_per_query": int 
+                "temperature": float 
+                "max_tokens_completion_beta": float 
+                "function_name_classes": list 
+                "final_task_origin": str 
+                "body_task_types": list[str] 
+                "final_task_types": list[str] 
+                "prepend_dsl_description": bool
+            }
+        compute_likelihoods: 
+            bool containing whether to compute likelihoods for programs under grammar using grammar.rescoreFrontier. This is error-prone as programs need to be converted to eta-long form, so not done by 
+            default.
+        compute_description_lengths:
+            bool determining whether to compute description lengths for programs with respect to current grammar, src/models/laps_grammar.py's evaluateFrontiers requires (compute_likelihoods or compute_description_lengths) to be True for rescoring frontiers.
+        increment_task_batcher: 
+            bool containing whether to increment the task batcher's global_batch_start pointer at each iteration in src/task_loaders.py OrderedTaskBatcher.get_task_batch_ids function i.e. increment the global pointer with respect to which the batches are calculated.
+        init_frontiers_from_checkpoint:
+            SAGNIK_TBD
+        init_frontiers_every_iteration:
 
-    '''
+        init_grammar_from_checkpoint:
+
+        resume_checkpoint_directory:
+
+        s3_sync:
+
+
+    Returns:
+        dict: updated config body and config metadata
+    """
 
     config = {}
     config.update(
