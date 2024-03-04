@@ -1,0 +1,15 @@
+(library
+ (name symetric)
+ (package symetric-lib)
+ (libraries core core_kernel.pairing_heap combinat fmt vpt logs yojson
+   bitarray bheap re2 ocaml-protoc zmq str)
+ (preprocess
+  (pps ppx_jane ppx_yojson_conv))
+ (inline_tests)
+ (flags :standard -g -open Core -w -9-32)
+ (instrumentation (backend landmarks)))
+
+(menhir
+ (modules regex_parser))
+
+(ocamllex regex_lexer)
