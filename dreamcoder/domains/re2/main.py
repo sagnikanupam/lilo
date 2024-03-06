@@ -24,9 +24,8 @@ class StringFeatureExtractor(RecurrentFeatureExtractor):
 
         return [tokenize_example(*e) for e in examples]
 
-    def __init__(self, tasks, testingTasks=[], cuda=False):
+    def __init__(self, tasks, testingTasks=[], cuda=False, punctuation : list = [".", "(", ")", "|", "^", "[", "]"]):
         self.recomputeTasks = True
-        punctuation = [".", "(", ")", "|", "^", "[", "]"]
         lexicon = [str(chr(ord("a") + j)) for j in range(26)] + punctuation
         super(StringFeatureExtractor, self).__init__(
             lexicon=lexicon,
