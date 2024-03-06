@@ -1,0 +1,865 @@
+{
+    "DSL": {
+        "logVariable": -0.794243297431314,
+        "productions": [
+            {
+                "expression": "logo_UA",
+                "logProbability": -0.7146533857809088
+            },
+            {
+                "expression": "logo_UL",
+                "logProbability": -0.485507815781701
+            },
+            {
+                "expression": "logo_ZA",
+                "logProbability": -1.337841977733944
+            },
+            {
+                "expression": "logo_ZL",
+                "logProbability": -1.178654996341646
+            },
+            {
+                "expression": "logo_DIVA",
+                "logProbability": -0.7898768070184969
+            },
+            {
+                "expression": "logo_MULA",
+                "logProbability": -1.2351878236738605
+            },
+            {
+                "expression": "logo_DIVL",
+                "logProbability": -1.433547245970436
+            },
+            {
+                "expression": "logo_MULL",
+                "logProbability": -0.7404000654104905
+            },
+            {
+                "expression": "logo_ADDA",
+                "logProbability": -1.547562508716013
+            },
+            {
+                "expression": "logo_SUBA",
+                "logProbability": -1.547562508716013
+            },
+            {
+                "expression": "logo_PT",
+                "logProbability": -2.1697503217839706
+            },
+            {
+                "expression": "logo_FWRT",
+                "logProbability": -1.4644817806916803
+            },
+            {
+                "expression": "logo_GETSET",
+                "logProbability": -2.14565277020491
+            },
+            {
+                "expression": "logo_IFTY",
+                "logProbability": -1.6635051337043762
+            },
+            {
+                "expression": "logo_epsA",
+                "logProbability": -1.0367368849500225
+            },
+            {
+                "expression": "logo_epsL",
+                "logProbability": -1.2566165378113578
+            },
+            {
+                "expression": "logo_forLoop",
+                "logProbability": -1.6206425114469631
+            },
+            {
+                "expression": "0",
+                "logProbability": -1.8458266904983307
+            },
+            {
+                "expression": "1",
+                "logProbability": -1.8458266904983307
+            },
+            {
+                "expression": "2",
+                "logProbability": -1.2767321586083642
+            },
+            {
+                "expression": "3",
+                "logProbability": -1.55814461804655
+            },
+            {
+                "expression": "4",
+                "logProbability": -1.186581061614067
+            },
+            {
+                "expression": "5",
+                "logProbability": -1.375823061252595
+            },
+            {
+                "expression": "6",
+                "logProbability": -1.2216723814253365
+            },
+            {
+                "expression": "7",
+                "logProbability": -1.418382675671391
+            },
+            {
+                "expression": "8",
+                "logProbability": -1.55814461804655
+            },
+            {
+                "expression": "9",
+                "logProbability": -1.2767321586083642
+            }
+        ],
+        "continuationType": {
+            "constructor": "turtle",
+            "arguments": []
+        }
+    },
+    "frontiers": [
+        {
+            "task": "a small triangle",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop 3 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 3) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 3 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 3) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 6 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 3) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 9 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 3) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 7 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 3) $0))) $0))"
+                }
+            ]
+        },
+        {
+            "task": "a medium triangle",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop 3 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 3) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 4 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 3) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 6 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 3) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 5 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 3) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 7 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 3) $0))) $0))"
+                }
+            ]
+        },
+        {
+            "task": "a small 8 gon",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop 9 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 8) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 8) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT logo_UL (logo_MULA logo_epsA 5) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 9 (lambda (lambda (logo_FWRT logo_UL (logo_MULA logo_epsA 5) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 8 (lambda (lambda (logo_FWRT logo_UL (logo_MULA logo_epsA 5) $0))) $0))"
+                }
+            ]
+        },
+        {
+            "task": "6 small 5 gon s in a row_copy_0",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop 6 (lambda (lambda (logo_forLoop 5 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 5) $0))) (logo_FWRT logo_UL logo_UA $0)))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 6 (lambda (lambda (logo_forLoop 5 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 5) $0))) (logo_FWRT logo_UL logo_UA $0)))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 6 (lambda (lambda (logo_forLoop 5 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 5) $0))) (logo_FWRT logo_UL logo_UA $0)))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 6 (lambda (lambda (logo_forLoop 5 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 5) $0))) (logo_FWRT logo_UL logo_UA $0)))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 6 (lambda (lambda (logo_forLoop 5 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 5) $0))) (logo_FWRT logo_UL logo_ZA $0)))) $0))"
+                }
+            ]
+        },
+        {
+            "task": "a medium 8 gon",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop 8 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 8) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 8 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 8) $0))) (logo_FWRT logo_UL logo_UA $0)))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 8 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 8) $0))) (logo_GETSET (lambda $0) $0)))"
+                },
+                {
+                    "program": "(lambda (logo_GETSET (lambda $0) (logo_forLoop 8 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 8) $0))) $0)))"
+                },
+                {
+                    "program": "(lambda (logo_PT (lambda $0) (logo_forLoop 8 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 8) $0))) $0)))"
+                }
+            ]
+        },
+        {
+            "task": "a medium 5 gon next to a small 5 gon",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop 5 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 5) $0))) (logo_forLoop 2 (lambda (lambda (logo_FWRT logo_UL logo_ZA $0))) (logo_forLoop 5 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 5) $0))) $0))))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 5 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 5) $0))) (logo_forLoop 2 (lambda (lambda (logo_FWRT logo_UL logo_ZA $0))) (logo_forLoop 5 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 5) $0))) $0))))"
+                }
+            ]
+        },
+        {
+            "task": "6 sided snowflake with a small triangle as arms",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop 6 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 6) (logo_forLoop 6 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 3) $0))) $0)))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 6) (logo_forLoop 6 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 3) $0))) $0)))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 6 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 6) (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 3) $0))) $0)))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 6) (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 3) $0))) $0)))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 6) (logo_GETSET (lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 3) $0))) $0)) $0)))) $0))"
+                }
+            ]
+        },
+        {
+            "task": "6 sided snowflake with a short line as arms",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop 6 (lambda (lambda (logo_FWRT logo_ZL (logo_DIVA logo_UA 6) (logo_GETSET (lambda (logo_FWRT logo_UL logo_epsA $0)) $0)))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 6 (lambda (lambda (logo_FWRT logo_ZL (logo_DIVA logo_UA 6) (logo_GETSET (lambda (logo_FWRT logo_UL logo_ZA $0)) $0)))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 7 (lambda (lambda (logo_FWRT logo_ZL (logo_DIVA logo_UA 6) (logo_GETSET (lambda (logo_FWRT logo_UL logo_UA $0)) $0)))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 7 (lambda (lambda (logo_FWRT logo_ZL (logo_DIVA logo_UA 6) (logo_GETSET (lambda (logo_FWRT logo_UL logo_epsA $0)) $0)))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 7 (lambda (lambda (logo_FWRT logo_ZL (logo_DIVA logo_UA 6) (logo_GETSET (lambda (logo_FWRT logo_UL logo_ZA $0)) $0)))) $0))"
+                }
+            ]
+        },
+        {
+            "task": "a small 9 gon",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop 9 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 9) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 9) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 9 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 9) $0))) (logo_GETSET (lambda $0) $0)))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 9 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 9) $0))) (logo_PT (lambda $0) $0)))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 9 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 9) (logo_PT (lambda $0) $0)))) $0))"
+                }
+            ]
+        },
+        {
+            "task": "6 small square s in a row",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop 6 (lambda (lambda (logo_forLoop 4 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 4) $0))) (logo_FWRT logo_UL logo_UA $0)))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 5 (lambda (lambda (logo_forLoop 4 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 4) $0))) (logo_FWRT logo_UL logo_UA $0)))) (logo_forLoop 4 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 4) $0))) $0)))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 5 (lambda (lambda (logo_forLoop 4 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 4) $0))) (logo_FWRT logo_UL logo_UA (logo_forLoop 4 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 4) $0))) $0))))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 5 (lambda (lambda (logo_forLoop 4 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 4) $0))) (logo_FWRT logo_UL logo_UA $0)))) (logo_forLoop 4 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 4) $0))) (logo_FWRT logo_UL logo_UA $0))))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 5 (lambda (lambda (logo_forLoop 4 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 4) $0))) (logo_FWRT logo_UL logo_UA $0)))) (logo_forLoop 5 (lambda (lambda (logo_forLoop 4 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 4) $0))) $0))) $0)))"
+                }
+            ]
+        },
+        {
+            "task": "a medium 9 gon",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop 9 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 9) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 9) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 9 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 9) $0))) (logo_GETSET (lambda $0) $0)))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 9 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 9) $0))) (logo_PT (lambda $0) $0)))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 9 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 9) (logo_PT (lambda $0) $0)))) $0))"
+                }
+            ]
+        },
+        {
+            "task": "6 short line s in a row",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop 6 (lambda (lambda (logo_FWRT logo_UL logo_ZA $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_FWRT (logo_MULL logo_UL 6) logo_UA $0))"
+                },
+                {
+                    "program": "(lambda (logo_FWRT (logo_MULL logo_UL 6) logo_epsA $0))"
+                },
+                {
+                    "program": "(lambda (logo_FWRT (logo_MULL logo_UL 6) logo_ZA $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 6 (lambda (lambda (logo_FWRT logo_UL logo_UA $0))) $0))"
+                }
+            ]
+        },
+        {
+            "task": "a small semicircle",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT (logo_MULL logo_epsL 1) logo_epsA $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT logo_epsL logo_epsA $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT logo_epsL logo_epsA $0))) (logo_GETSET (lambda $0) $0)))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT logo_epsL logo_epsA $0))) (logo_forLoop 6 (lambda (lambda $0)) $0)))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 6 (lambda (lambda $0)) (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT logo_epsL logo_epsA $0))) $0)))"
+                }
+            ]
+        },
+        {
+            "task": "a small circle",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT (logo_MULL logo_epsL 1) logo_epsA $0))) (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT (logo_MULL logo_epsL 1) logo_epsA $0))) $0)))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 4 (lambda (lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT (logo_MULL logo_epsL 1) logo_epsA $0))) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 6 (lambda (lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT (logo_MULL logo_epsL 1) logo_epsA $0))) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 3 (lambda (lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT (logo_MULL logo_epsL 1) logo_epsA $0))) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT logo_epsL logo_epsA $0))) (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT (logo_MULL logo_epsL 1) logo_epsA $0))) $0)))"
+                }
+            ]
+        },
+        {
+            "task": "a small 7 gon connected by a medium line to a small triangle",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop 7 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 7) $0))) (logo_forLoop 2 (lambda (lambda (logo_FWRT logo_UL logo_ZA $0))) (logo_forLoop 3 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 3) $0))) $0))))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 7 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 7) $0))) (logo_forLoop 1 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 1) $0))) (logo_forLoop 3 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 3) $0))) $0))))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 7 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 7) $0))) (logo_FWRT logo_UL logo_UA (logo_FWRT logo_UL logo_UA (logo_forLoop 3 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 3) $0))) $0)))))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 7 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 7) $0))) (logo_forLoop 2 (lambda (lambda (logo_FWRT logo_UL logo_ZA $0))) (logo_forLoop 3 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 3) $0))) $0))))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 7 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 7) $0))) (logo_forLoop 2 (lambda (lambda (logo_FWRT logo_UL logo_ZA $0))) (logo_forLoop 6 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 3) $0))) $0))))"
+                }
+            ]
+        },
+        {
+            "task": "a medium semicircle",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT (logo_MULL logo_epsL 2) logo_epsA $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT (logo_MULL logo_epsL 2) logo_epsA $0))) (logo_GETSET (lambda $0) $0)))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT (logo_MULL logo_epsL 2) logo_epsA $0))) (logo_PT (lambda $0) $0)))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT (logo_MULL logo_epsL 2) logo_epsA (logo_GETSET (lambda $0) $0)))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT (logo_MULL logo_epsL 2) logo_epsA (logo_PT (lambda $0) $0)))) $0))"
+                }
+            ]
+        },
+        {
+            "task": "4 short line s in a row",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop 4 (lambda (lambda (logo_FWRT logo_UL logo_ZA $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_FWRT (logo_MULL logo_UL 4) logo_UA $0))"
+                },
+                {
+                    "program": "(lambda (logo_FWRT (logo_MULL logo_UL 4) logo_epsA $0))"
+                },
+                {
+                    "program": "(lambda (logo_FWRT (logo_MULL logo_UL 4) logo_ZA $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 4 (lambda (lambda (logo_FWRT logo_UL logo_UA $0))) $0))"
+                }
+            ]
+        },
+        {
+            "task": "a medium triangle connected by a big line to a small square",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop 3 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 3) $0))) (logo_forLoop 5 (lambda (lambda (logo_FWRT logo_UL logo_ZA $0))) (logo_forLoop 4 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 4) $0))) $0))))"
+                }
+            ]
+        },
+        {
+            "task": "a medium square connected by a big line to a small square",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop 4 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 4) $0))) (logo_forLoop 5 (lambda (lambda (logo_FWRT logo_UL logo_ZA $0))) (logo_forLoop 4 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 4) $0))) $0))))"
+                }
+            ]
+        },
+        {
+            "task": "a medium circle",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop 6 (lambda (lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT (logo_MULL logo_epsL 2) logo_epsA $0))) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 6 (lambda (lambda (logo_forLoop 9 (lambda (lambda (logo_FWRT (logo_MULL logo_epsL 2) logo_epsA $0))) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 6 (lambda (lambda (logo_forLoop 8 (lambda (lambda (logo_FWRT (logo_MULL logo_epsL 2) logo_epsA $0))) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 7 (lambda (lambda (logo_forLoop 7 (lambda (lambda (logo_FWRT (logo_MULL logo_epsL 2) logo_epsA $0))) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 7 (lambda (lambda (logo_forLoop 8 (lambda (lambda (logo_FWRT (logo_MULL logo_epsL 2) logo_epsA $0))) $0))) $0))"
+                }
+            ]
+        },
+        {
+            "task": "4 concentric square s_copy_4",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop 5 (lambda (lambda (logo_forLoop 4 (lambda (lambda (logo_FWRT (logo_MULL logo_UL $3) (logo_DIVA logo_UA 4) $0))) $0))) $0))"
+                }
+            ]
+        },
+        {
+            "task": "5 small square s in a row",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop 5 (lambda (lambda (logo_forLoop 4 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 4) $0))) (logo_FWRT logo_UL logo_UA $0)))) $0))"
+                }
+            ]
+        },
+        {
+            "task": "a big semicircle",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT (logo_MULL logo_epsL 5) logo_epsA $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT (logo_MULL logo_epsL 5) logo_epsA $0))) (logo_GETSET (lambda $0) $0)))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT (logo_MULL logo_epsL 5) logo_epsA $0))) (logo_PT (lambda $0) $0)))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT (logo_DIVL logo_UL 4) logo_epsA $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT (logo_MULL logo_epsL 5) logo_epsA (logo_GETSET (lambda $0) $0)))) $0))"
+                }
+            ]
+        },
+        {
+            "task": "a small triangle connected by a big line to a medium triangle",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop 3 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 3) $0))) (logo_forLoop 5 (lambda (lambda (logo_FWRT logo_UL logo_ZA $0))) (logo_forLoop 3 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 3) $0))) $0))))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 6 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 3) $0))) (logo_forLoop 5 (lambda (lambda (logo_FWRT logo_UL logo_ZA $0))) (logo_forLoop 3 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 3) $0))) $0))))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 3 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 3) $0))) (logo_forLoop 4 (lambda (lambda (logo_FWRT logo_UL logo_ZA $0))) (logo_FWRT logo_UL logo_UA (logo_forLoop 3 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 3) $0))) $0)))))"
+                }
+            ]
+        },
+        {
+            "task": "a small square",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop 4 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 4) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 6 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 4) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 9 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 4) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 5 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 4) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 7 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 4) $0))) $0))"
+                }
+            ]
+        },
+        {
+            "task": "a short line",
+            "programs": [
+                {
+                    "program": "(lambda (logo_FWRT logo_UL logo_UA $0))"
+                },
+                {
+                    "program": "(lambda (logo_FWRT logo_UL logo_UA $0))"
+                },
+                {
+                    "program": "(lambda (logo_FWRT logo_UL logo_epsA $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 2 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 2) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_FWRT logo_UL logo_ZA $0))"
+                }
+            ]
+        },
+        {
+            "task": "a vertical short line",
+            "programs": [
+                {
+                    "program": "(lambda (logo_FWRT logo_ZL (logo_DIVA logo_UA 4) (logo_FWRT logo_UL logo_UA $0)))"
+                },
+                {
+                    "program": "(lambda (logo_FWRT logo_ZL (logo_DIVA logo_UA 4) (logo_FWRT logo_UL logo_epsA $0)))"
+                },
+                {
+                    "program": "(lambda (logo_FWRT logo_ZL (logo_DIVA logo_UA 4) (logo_FWRT logo_UL logo_ZA $0)))"
+                },
+                {
+                    "program": "(lambda (logo_FWRT logo_ZL (logo_DIVA logo_UA 4) (logo_PT (lambda $0) (logo_FWRT logo_UL logo_UA $0))))"
+                },
+                {
+                    "program": "(lambda (logo_FWRT logo_ZL (logo_DIVA logo_UA 4) (logo_PT (lambda $0) (logo_FWRT logo_UL logo_ZA $0))))"
+                }
+            ]
+        },
+        {
+            "task": "a medium semicircle connected by a medium line to a medium circle",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT (logo_MULL logo_epsL 2) logo_epsA $0))) (logo_forLoop 2 (lambda (lambda (logo_FWRT logo_UL logo_ZA $0))) (logo_forLoop 6 (lambda (lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT (logo_MULL logo_epsL 2) logo_epsA $0))) $0))) $0))))"
+                }
+            ]
+        },
+        {
+            "task": "a medium square",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop 4 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 4) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 4 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 4) $0))) (logo_FWRT logo_UL logo_UA $0)))"
+                },
+                {
+                    "program": "(lambda (logo_GETSET (lambda $0) (logo_forLoop 4 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 4) $0))) $0)))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 4 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 4) $0))) (logo_PT (lambda $0) $0)))"
+                },
+                {
+                    "program": "(lambda (logo_PT (lambda $0) (logo_forLoop 4 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 4) $0))) $0)))"
+                }
+            ]
+        },
+        {
+            "task": "a small 5 gon",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop 5 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 5) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 7 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 5) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 6 (lambda (lambda (logo_FWRT logo_UL (logo_MULA logo_epsA 8) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 5 (lambda (lambda (logo_FWRT logo_UL (logo_MULA logo_epsA 8) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 7 (lambda (lambda (logo_FWRT logo_UL (logo_MULA logo_epsA 8) $0))) $0))"
+                }
+            ]
+        },
+        {
+            "task": "4 small square s in a row",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop 4 (lambda (lambda (logo_forLoop 4 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 4) $0))) (logo_FWRT logo_UL logo_UA $0)))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 4 (lambda (lambda (logo_forLoop 4 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 4) $0))) (logo_FWRT logo_UL logo_UA $0)))) (logo_GETSET (lambda $0) $0)))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 4 (lambda (lambda (logo_forLoop 4 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 4) $0))) (logo_GETSET (lambda $0) (logo_FWRT logo_UL logo_UA $0))))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 4 (lambda (lambda (logo_forLoop 4 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 4) $0))) (logo_forLoop 4 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 4) $0))) (logo_FWRT logo_UL logo_UA $0))))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 4 (lambda (lambda (logo_forLoop 4 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 4) $0))) (logo_FWRT logo_ZL logo_UA (logo_FWRT logo_UL logo_UA $0))))) $0))"
+                }
+            ]
+        },
+        {
+            "task": "a medium 5 gon",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop 5 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 5) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 5 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 5) $0))) (logo_FWRT logo_UL logo_UA $0)))"
+                },
+                {
+                    "program": "(lambda (logo_GETSET (lambda $0) (logo_forLoop 5 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 5) $0))) $0)))"
+                },
+                {
+                    "program": "(lambda (logo_GETSET (lambda (logo_forLoop 5 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 5) $0))) $0)) $0))"
+                },
+                {
+                    "program": "(lambda (logo_PT (lambda $0) (logo_forLoop 5 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 5) $0))) $0)))"
+                }
+            ]
+        },
+        {
+            "task": "a small 6 gon",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop 6 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 6) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 6 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 6) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 6 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 6) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 6 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 6) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 7 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 6) $0))) $0))"
+                }
+            ]
+        },
+        {
+            "task": "a 9 pointed star",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT (logo_MULL logo_UL 4) (logo_DIVA (logo_MULA logo_UA 4) 9) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT (logo_MULL logo_UL 4) (logo_MULA (logo_DIVA logo_UA 9) 4) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT (logo_MULL logo_UL 4) (logo_MULA (logo_DIVA logo_UA 9) 4) $0))) (logo_PT (lambda $0) $0)))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 9 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 4) (logo_DIVA (logo_MULA logo_UA 4) 9) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 9 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 4) (logo_MULA (logo_DIVA logo_UA 9) 4) $0))) $0))"
+                }
+            ]
+        },
+        {
+            "task": "a medium 6 gon",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop 6 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 6) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 6) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 9 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 6) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 7 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 6) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 8 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 6) $0))) $0))"
+                }
+            ]
+        },
+        {
+            "task": "a small square connected by a big line to a small 9 gon",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop 4 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 4) $0))) (logo_forLoop 5 (lambda (lambda (logo_FWRT logo_UL logo_ZA $0))) (logo_forLoop 9 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 9) $0))) $0))))"
+                }
+            ]
+        },
+        {
+            "task": "3 small 5 gon s in a row",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop 3 (lambda (lambda (logo_forLoop 5 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 5) $0))) (logo_FWRT logo_UL logo_UA $0)))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 3 (lambda (lambda (logo_forLoop 5 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 5) $0))) (logo_FWRT logo_UL logo_UA $0)))) $0))"
+                }
+            ]
+        },
+        {
+            "task": "a small 7 gon",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop 7 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 7) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 7 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 7) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 9 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 7) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 7 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 7) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 8 (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 7) $0))) $0))"
+                }
+            ]
+        },
+        {
+            "task": "3 short line s in a row",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop 3 (lambda (lambda (logo_FWRT logo_UL logo_ZA $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_FWRT logo_UL logo_UA (logo_forLoop 2 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 2) $0))) $0)))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 2 (lambda (lambda (logo_FWRT logo_UL logo_ZA $0))) (logo_FWRT logo_UL logo_UA $0)))"
+                },
+                {
+                    "program": "(lambda (logo_FWRT logo_UL logo_UA (logo_forLoop 1 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 1) $0))) $0)))"
+                },
+                {
+                    "program": "(lambda (logo_FWRT logo_UL logo_UA (logo_FWRT logo_UL logo_UA (logo_FWRT logo_UL logo_UA $0))))"
+                }
+            ]
+        },
+        {
+            "task": "5 short line s in a row",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop 5 (lambda (lambda (logo_FWRT logo_UL logo_ZA $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_FWRT (logo_MULL logo_UL 5) logo_UA $0))"
+                },
+                {
+                    "program": "(lambda (logo_FWRT (logo_MULL logo_UL 5) logo_epsA $0))"
+                },
+                {
+                    "program": "(lambda (logo_FWRT (logo_MULL logo_UL 5) logo_ZA $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 5 (lambda (lambda (logo_FWRT logo_UL logo_UA $0))) $0))"
+                }
+            ]
+        },
+        {
+            "task": "a medium 7 gon",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop 7 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 7) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 7 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 7) $0))) (logo_PT (lambda $0) $0)))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 7) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 9 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 7) $0))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 8 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 7) $0))) $0))"
+                }
+            ]
+        },
+        {
+            "task": "6 sided snowflake with a medium triangle as arms",
+            "programs": [
+                {
+                    "program": "(lambda (logo_forLoop 6 (lambda (lambda (logo_FWRT logo_ZL (logo_DIVA logo_UA 6) (logo_forLoop 3 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 3) $0))) $0)))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 6 (lambda (lambda (logo_FWRT (logo_MULL logo_ZL 6) (logo_DIVA logo_UA 6) (logo_forLoop 3 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 3) $0))) $0)))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 6 (lambda (lambda (logo_FWRT (logo_MULL logo_ZL 2) (logo_DIVA logo_UA 6) (logo_forLoop 3 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 3) $0))) $0)))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 6 (lambda (lambda (logo_FWRT (logo_MULL logo_ZL 9) (logo_DIVA logo_UA 6) (logo_forLoop 3 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 3) $0))) $0)))) $0))"
+                },
+                {
+                    "program": "(lambda (logo_forLoop 6 (lambda (lambda (logo_FWRT (logo_MULL logo_ZL 7) (logo_DIVA logo_UA 6) (logo_forLoop 3 (lambda (lambda (logo_FWRT (logo_MULL logo_UL 2) (logo_DIVA logo_UA 3) $0))) $0)))) $0))"
+                }
+            ]
+        }
+    ]
+}

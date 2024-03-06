@@ -1,0 +1,213 @@
+{
+    "logVariable": -0.8978688976548943,
+    "productions": [
+        {
+            "expression": "_rdot",
+            "logProbability": -3.5877451722169926
+        },
+        {
+            "expression": "_rempty",
+            "logProbability": -2.2555803163199375
+        },
+        {
+            "expression": "_a",
+            "logProbability": -3.067990917706701
+        },
+        {
+            "expression": "_b",
+            "logProbability": -3.3045574893530514
+        },
+        {
+            "expression": "_c",
+            "logProbability": -3.901166742870349
+        },
+        {
+            "expression": "_d",
+            "logProbability": -3.753169928617469
+        },
+        {
+            "expression": "_e",
+            "logProbability": -3.057380738594685
+        },
+        {
+            "expression": "_f",
+            "logProbability": -3.7478928715166253
+        },
+        {
+            "expression": "_g",
+            "logProbability": -3.6150195901366518
+        },
+        {
+            "expression": "_h",
+            "logProbability": -4.207425200895066
+        },
+        {
+            "expression": "_i",
+            "logProbability": -2.9666384234464136
+        },
+        {
+            "expression": "_j",
+            "logProbability": -3.381788837289041
+        },
+        {
+            "expression": "_k",
+            "logProbability": -3.701612118952619
+        },
+        {
+            "expression": "_l",
+            "logProbability": -3.977637106862187
+        },
+        {
+            "expression": "_m",
+            "logProbability": -3.732226754772226
+        },
+        {
+            "expression": "_n",
+            "logProbability": -3.6767969498328954
+        },
+        {
+            "expression": "_o",
+            "logProbability": -3.2583446461979193
+        },
+        {
+            "expression": "_p",
+            "logProbability": -3.801960092786901
+        },
+        {
+            "expression": "_q",
+            "logProbability": -3.4303965363544178
+        },
+        {
+            "expression": "_r",
+            "logProbability": -3.033911604053838
+        },
+        {
+            "expression": "_s",
+            "logProbability": -3.5877451722169926
+        },
+        {
+            "expression": "_t",
+            "logProbability": -3.1897819747606233
+        },
+        {
+            "expression": "_u",
+            "logProbability": -3.7478928715166253
+        },
+        {
+            "expression": "_v",
+            "logProbability": -3.592239561804832
+        },
+        {
+            "expression": "_w",
+            "logProbability": -3.33543472791749
+        },
+        {
+            "expression": "_x",
+            "logProbability": -3.701612118952619
+        },
+        {
+            "expression": "_y",
+            "logProbability": -4.127382493221529
+        },
+        {
+            "expression": "_z",
+            "logProbability": -5.188254453906792
+        },
+        {
+            "expression": "_rnot",
+            "logProbability": -4.61289030900323
+        },
+        {
+            "expression": "_ror",
+            "logProbability": -5.593719562014956
+        },
+        {
+            "expression": "_rconcat",
+            "logProbability": -2.0383715005255425
+        },
+        {
+            "expression": "_rmatch",
+            "logProbability": -0.3063742054639338
+        },
+        {
+            "expression": "_rsplit",
+            "logProbability": -0.9249959011014859
+        },
+        {
+            "expression": "_rflatten",
+            "logProbability": -2.3306228407586547
+        },
+        {
+            "expression": "_rtail",
+            "logProbability": -4.552265687186795
+        },
+        {
+            "expression": "_rappend",
+            "logProbability": -1.7582902097886528
+        },
+        {
+            "expression": "_rrevcdr",
+            "logProbability": -2.2817342975138546
+        },
+        {
+            "expression": "if",
+            "logProbability": -5.034928992954103
+        },
+        {
+            "expression": "cons",
+            "logProbability": -1.6712788327990227
+        },
+        {
+            "expression": "car",
+            "logProbability": -5.38087997352986
+        },
+        {
+            "expression": "cdr",
+            "logProbability": -2.1811470606086862
+        },
+        {
+            "expression": "map",
+            "logProbability": -2.546747570152923
+        },
+        {
+            "expression": "#(lambda (lambda (lambda (_rflatten (map (lambda (if (_rmatch $0 $1) $2 $0)) (_rsplit _rempty $2))))))",
+            "logProbability": -2.3484196293378448
+        },
+        {
+            "expression": "#(lambda (lambda (lambda (_rflatten (cons $0 (cons $1 (cdr (_rsplit _rempty $2))))))))",
+            "logProbability": -2.7202397566267953
+        },
+        {
+            "expression": "#(lambda (lambda (_rflatten (_rappend $0 (_rrevcdr (_rsplit _rempty $1))))))",
+            "logProbability": -3.1351836086895037
+        },
+        {
+            "expression": "#(lambda (lambda (_rflatten (map $0 (_rsplit _rempty $1)))))",
+            "logProbability": -2.213194855700711
+        },
+        {
+            "expression": "#(lambda (lambda (if (_rmatch (_rtail (_rsplit _rempty $0)) _e) $0 $1)))",
+            "logProbability": -3.8506861046848373
+        },
+        {
+            "expression": "#(lambda (lambda (_rflatten (_rappend $0 (_rsplit _a $1)))))",
+            "logProbability": -3.2350052067980846
+        },
+        {
+            "expression": "#(lambda (lambda (_rflatten (cons $0 (cdr (_rsplit _rempty $1))))))",
+            "logProbability": -2.6696542598386888
+        },
+        {
+            "expression": "#(lambda (lambda (lambda (_rflatten (_rappend $0 (_rappend $1 (_rrevcdr (_rrevcdr (_rsplit _rempty $2)))))))))",
+            "logProbability": -3.374360727708596
+        },
+        {
+            "expression": "#(lambda (lambda (lambda (#(lambda (lambda (_rflatten (map $0 (_rsplit _rempty $1))))) $0 (lambda (if (_rmatch $0 $2) (_rconcat $3 $0) $0))))))",
+            "logProbability": -3.6465865419236847
+        },
+        {
+            "expression": "#(lambda (lambda (_rflatten (cons $0 (_rsplit _a $1)))))",
+            "logProbability": -4.44782814466985
+        }
+    ]
+}

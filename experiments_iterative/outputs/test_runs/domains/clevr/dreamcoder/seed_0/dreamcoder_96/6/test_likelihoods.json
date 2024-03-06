@@ -1,0 +1,1370 @@
+{
+    "mean_log_likelihood": -14.669409315279154,
+    "log_likelihoods_by_task": {
+        "test": {
+            "0-1_compare_integer-Are there fewer small spheres than cyan cubes?": [
+                -5.5757807419235785,
+                -10.107928710358296,
+                -10.431380666805625,
+                -10.72696791876452,
+                -16.455151090913215
+            ],
+            "1-1_compare_integer-Is the number of small rubber cubes less than the number of small blue rubber things?": [
+                -7.228876903956053,
+                -16.280594891020257,
+                -16.284846057726273,
+                -16.45527282686808,
+                -18.808613767259793
+            ],
+            "2-1_compare_integer-Is the number of large metal spheres greater than the number of small rubber things?": [
+                -6.222153850593598,
+                -6.65300059514885,
+                -7.10251257324169,
+                -7.117327659026831,
+                -9.905888170322593
+            ],
+            "3-1_compare_integer-Are there more metal cylinders than blue metal things?": [
+                -8.099548451457098,
+                -9.502722441887538,
+                -10.546008462541051,
+                -16.34637980922124,
+                -16.55863811985578
+            ],
+            "0-1_one_hop-What number of metal cubes are behind the rubber cylinder?": [
+                -10.390767507773493,
+                -10.677362068100658,
+                -22.619222085590998,
+                -26.96872660866564,
+                -38.910586626155975
+            ],
+            "1-1_one_hop-How many metal things are behind the rubber cylinder?": [
+                -13.735774338716407,
+                -15.265187337911565,
+                -19.14422891487002,
+                -19.350150874318174,
+                -19.52496024768101
+            ],
+            "2-1_one_hop-There is a cylinder front the small blue rubber cylinder; what is its size?": [
+                -5.536841109737334,
+                -9.389321055691202,
+                -10.09434923758981,
+                -11.151217645339106,
+                -11.151217645339106
+            ],
+            "3-1_one_hop-What size is the rubber thing that is right the purple thing?": [
+                -5.420986714987356,
+                -9.273466660941223,
+                -9.656030004762702,
+                -13.514881401189047,
+                -14.169232627548606
+            ],
+            "4-1_one_hop-The metal cylinder behind the small yellow metal cylinder is what color?": [
+                -10.380863191884702,
+                -14.042192873964053,
+                -14.143532267367249,
+                -14.23334313783857,
+                -14.93837131973718
+            ],
+            "5-1_one_hop-The small metal thing that is right the small metal sphere is what color?": [
+                -18.07753466694033,
+                -18.35268507010344,
+                -23.248451036710826,
+                -26.498367340385926,
+                -26.67675961903999
+            ],
+            "6-1_one_hop-What is the small cylinder front the small brown cylinder made of?": [
+                -5.06599787779614,
+                -9.54437959791673,
+                -9.70974907427482,
+                -9.897200972539473,
+                -12.435960782413558
+            ],
+            "7-1_one_hop-What is the material of the large thing right the large purple metal thing?": [
+                -10.803766833295088,
+                -11.3098622351025,
+                -12.089246438411331,
+                -12.42306738942583,
+                -18.14721565697011
+            ],
+            "8-1_one_hop-The small metal thing right the small metal sphere has what shape?": [
+                -9.706305889573244,
+                -13.467404981562817,
+                -14.833896539737939,
+                -19.366044508172656,
+                -23.694713375005065
+            ],
+            "9-1_one_hop-What is the shape of the small rubber thing that is front the purple rubber thing?": [
+                -8.782771818940356,
+                -9.317371095279285,
+                -9.973014838644747,
+                -9.973014838644747,
+                -13.726427814357884
+            ],
+            "0-1_single_or-How many objects are either large metal spheres or large rubber things?": [
+                -10.253105595090423,
+                -12.237461574876232,
+                -17.610740555393836,
+                -18.369173000098453,
+                -19.595096535179643
+            ],
+            "1-1_single_or-How many things are either small metal things or large purple things?": [
+                -20.198289049130956,
+                -20.198289049130956,
+                -24.72111543959076,
+                -24.730437017565677,
+                -24.75579717698343
+            ],
+            "2-1_single_or-How many small things are rubber cylinders or yellow metal things?": [
+                -16.790040634623693,
+                -16.790040634623693,
+                -20.28447206387788,
+                -22.94464623378955,
+                -31.50345490633586
+            ],
+            "3-1_single_or-What number of small things are spheres or yellow metal things?": [
+                -24.788806921167186,
+                -29.029303757936745,
+                -29.563700409706847,
+                -30.278108867644562,
+                -31.624788912958934
+            ],
+            "4-1_single_or-How many green things are either small metal things or large rubber things?": [
+                -10.855754346754722,
+                -10.931548186124257,
+                -13.065428940395577,
+                -14.389877557519394,
+                -22.976006642899126
+            ],
+            "5-1_single_or-How many purple things are small things or large rubber things?": [
+                -17.032295676388948,
+                -19.292516578562243,
+                -23.760292049370587,
+                -23.760292049370587,
+                -24.068395954953676
+            ],
+            "6-1_single_or-How many metal objects are large spheres or large red things?": [
+                -14.27286231900182,
+                -15.841063646718768,
+                -24.74199075004349,
+                -32.01182400267977,
+                -32.01182400267977
+            ],
+            "7-1_single_or-What number of metal objects are small spheres or purple things?": [
+                -26.702181118189795,
+                -27.941107275673037,
+                -31.180562838310387,
+                -31.610318376599725,
+                -36.088700096720316
+            ],
+            "8-1_single_or-How many spheres are large metal things or small green rubber things?": [
+                -23.55472952853718,
+                -23.55472952853718,
+                -30.923960847262137,
+                -31.22611679854652,
+                -31.22611679854652
+            ],
+            "9-1_single_or-How many cylinders are either small purple things or small rubber things?": [
+                -10.537397611565526,
+                -13.127966824299664,
+                -13.480788198922406,
+                -14.451254597655883,
+                -15.884839397560674
+            ],
+            "0-1_zero_hop-How many large things are there?": [
+                -6.070877849973313,
+                -9.80567855704468,
+                -10.08082896020779,
+                -10.62838597782579,
+                -14.638337088060267
+            ],
+            "1-1_zero_hop-What number of rubber things are there?": [
+                -4.474509677073116,
+                -7.400967894632725,
+                -9.032017804925594,
+                -10.088886212674888,
+                -10.088886212674888
+            ],
+            "2-1_zero_hop-How many small cylinders are there?": [
+                -10.537397611565526,
+                -10.81254801472864,
+                -18.958230285011126,
+                -19.423520629804763,
+                -23.141503262630774
+            ],
+            "3-1_zero_hop-What number of small rubber things are there?": [
+                -8.935959027396436,
+                -9.211109430559546,
+                -13.933308906161656,
+                -17.787093263279914,
+                -19.56829303435254
+            ],
+            "4-1_zero_hop-How many small metal spheres are there?": [
+                -9.75003592854201,
+                -12.620191947355604,
+                -18.32601976126238,
+                -18.454350934159795,
+                -18.697400852590807
+            ],
+            "5-1_zero_hop-What number of small rubber cylinders are there?": [
+                -6.403651384395555,
+                -9.330109601955163,
+                -12.018027919997326,
+                -12.018027919997326,
+                -13.463855829125135
+            ],
+            "6-1_zero_hop-What shape is the gray thing?": [
+                -5.817712523948159,
+                -7.376867492342055,
+                -9.943272869446009,
+                -10.32583621326749,
+                -12.805112084744097
+            ],
+            "7-1_zero_hop-What is the shape of the red thing?": [
+                -7.9125777594239235,
+                -11.675246834906469,
+                -16.857166133365542,
+                -18.95203136884131,
+                -19.06788576359129
+            ],
+            "8-1_zero_hop-What is the shape of the gray thing?": [
+                -7.376867492342055,
+                -11.1395365678246,
+                -11.25197053744803,
+                -28.021683424567293,
+                -28.25865040444006
+            ],
+            "9-1_zero_hop-What is the shape of the large rubber thing?": [
+                -8.773912710706504,
+                -11.700370928266112,
+                -14.175780208789467,
+                -18.024008988037316,
+                -18.70367701051817
+            ],
+            "10-1_zero_hop-What is the shape of the cyan rubber thing?": [
+                -10.627260578659412,
+                -10.763242137613998,
+                -11.314604932073046,
+                -15.575798727100686,
+                -15.788057037735227
+            ],
+            "11-1_zero_hop-What is the shape of the purple metal thing?": [
+                -7.589125802976595,
+                -11.250455485055944,
+                -11.35179487845914,
+                -11.464228848082568,
+                -14.503019066896131
+            ],
+            "12-1_zero_hop-What material is the blue thing?": [
+                -7.553850529619981,
+                -10.077618239153502,
+                -10.314585219026265,
+                -11.428953574725956,
+                -12.962305105773593
+            ],
+            "13-1_zero_hop-What material is the purple thing?": [
+                -7.190232531447318,
+                -9.714000240980837,
+                -10.851562213526668,
+                -11.065335576553291,
+                -12.598687107600929
+            ],
+            "14-1_zero_hop-What is the material of the large purple thing?": [
+                -7.190232531447318,
+                -9.950967220853602,
+                -12.086098751702341,
+                -13.450924407793906,
+                -16.327513491950167
+            ],
+            "15-1_zero_hop-What is the small cube made of?": [
+                -10.263356089485894,
+                -12.704190574920064,
+                -17.26169870277254,
+                -18.318567110521833,
+                -18.318567110521833
+            ],
+            "16-1_zero_hop-What is the large brown thing made of?": [
+                -7.007589086087235,
+                -7.190232531447318,
+                -7.566221821422529,
+                -9.325364062296057,
+                -13.566778802543883
+            ],
+            "17-1_zero_hop-What is the material of the gray sphere?": [
+                -9.501741930346299,
+                -11.327478743887413,
+                -12.428200147905907,
+                -15.61090502427802,
+                -16.74460801953953
+            ],
+            "18-1_zero_hop-What color is the small cube?": [
+                -12.338733949742574,
+                -14.746647264526114,
+                -15.129210608347595,
+                -17.67310548208572,
+                -23.167479937971716
+            ],
+            "19-1_zero_hop-What color is the metal cylinder?": [
+                -9.998299848063223,
+                -11.44286647923355,
+                -16.663103927707066,
+                -18.326625563705793,
+                -18.702614853681006
+            ],
+            "20-1_zero_hop-What is the color of the small cylinder?": [
+                -12.051835883603,
+                -12.051835883603001,
+                -12.326986286766111,
+                -15.087720976172395,
+                -15.988315968845463
+            ],
+            "21-1_zero_hop-The large cylinder is what color?": [
+                -10.380863191884702,
+                -15.995239727486473,
+                -15.995239727486473,
+                -17.973218686300406,
+                -18.521475050898296
+            ],
+            "22-1_zero_hop-The small metal sphere is what color?": [
+                -18.91364069257898,
+                -20.12505123969034,
+                -20.12505123969034,
+                -24.59808782075091,
+                -24.59808782075091
+            ],
+            "23-1_zero_hop-The large sphere has what color?": [
+                -7.411994254625617,
+                -11.073323936704968,
+                -11.174663330108164,
+                -11.28709729973159,
+                -11.481889998632912
+            ],
+            "24-1_zero_hop-What size is the metal cylinder?": [
+                -7.540970201932516,
+                -9.948883516716057,
+                -11.860859859732694,
+                -15.230426767278255,
+                -21.630914047462973
+            ],
+            "25-1_zero_hop-How big is the purple thing?": [
+                -5.536841109737334,
+                -7.545221368638534,
+                -11.379697053998697,
+                -13.722539936048308,
+                -15.304888521288342
+            ],
+            "26-1_zero_hop-How big is the gray thing?": [
+                -3.0130734002038144,
+                -5.939531617763423,
+                -7.332963058003994,
+                -9.856730767537515,
+                -10.259421275563602
+            ],
+            "27-1_zero_hop-The metal sphere is what size?": [
+                -9.273466660941223,
+                -9.389321055691202,
+                -9.770491238061993,
+                -14.112930428802589,
+                -16.398141476689407
+            ],
+            "28-1_zero_hop-How big is the gray rubber thing?": [
+                -7.332963058003994,
+                -9.856730767537513,
+                -9.856730767537515,
+                -10.093697747410276,
+                -14.593330521023942
+            ],
+            "29-1_zero_hop-The metal cylinder is what size?": [
+                -3.0130734002038144,
+                -7.921210658613743,
+                -9.740876372787534,
+                -10.23578158285563,
+                -10.572173891828298
+            ],
+            "0-2_localization-Find the green rubber thing.": [
+                -8.40597075133341,
+                -8.40597075133341,
+                -11.332428968893018,
+                -12.725860409133587,
+                -14.02034728693518
+            ],
+            "1-2_localization-Find the small rubber cube.": [
+                -12.979640231948476,
+                -12.979640231948478,
+                -13.254790635111588,
+                -13.254790635111588,
+                -17.71623998543491
+            ],
+            "2-2_localization-Find the red metal thing.": [
+                -5.632537721079324,
+                -9.485017667033192,
+                -11.328607536932498,
+                -12.355173685846784,
+                -15.181087482886367
+            ],
+            "3-2_localization-Find the small gray thing.": [
+                -9.558276804320775,
+                -9.833427207483885,
+                -9.833427207483885,
+                -12.759885425043496,
+                -16.623650904290503
+            ],
+            "4-2_localization-Find the small rubber sphere.": [
+                -12.51434988715484,
+                -12.51434988715484,
+                -12.789500290317951,
+                -12.789500290317951,
+                -12.789500290317951
+            ],
+            "5-2_localization-Find the brown thing.": [
+                -5.685075054607206,
+                -8.611533272166815,
+                -10.540674979489253,
+                -11.299451590208978,
+                -11.38114487046038
+            ],
+            "6-2_localization-Find the cyan cube.": [
+                -10.371538749578065,
+                -10.371538749578065,
+                -13.29799696713767,
+                -17.750722358291238,
+                -19.547372498275394
+            ],
+            "7-2_localization-Find the large cube.": [
+                -10.114559054525357,
+                -10.114559054525357,
+                -17.47219401482877,
+                -18.260241324807847,
+                -18.438633603461913
+            ],
+            "8-2_localization-Find the metal cube.": [
+                -9.444212610019418,
+                -12.314368628833012,
+                -12.314368628833012,
+                -12.370670827579026,
+                -16.166848574786876
+            ],
+            "9-2_localization-Find the yellow cylinder.": [
+                -10.45602177476692,
+                -13.382479992326529,
+                -17.51362175935263,
+                -17.91037679405523,
+                -18.048377269182623
+            ],
+            "10-2_localization-Find the large rubber thing.": [
+                -8.226222404216692,
+                -8.226222404216692,
+                -12.54611206201687,
+                -13.121988370824074,
+                -13.37740958105763
+            ],
+            "11-2_localization-Find the purple cylinder.": [
+                -9.836982566360698,
+                -9.836982566360698,
+                -12.763440783920306,
+                -12.763440783920306,
+                -13.143681240601532
+            ],
+            "12-2_localization-Find the large cyan thing.": [
+                -10.079570272169596,
+                -10.079570272169596,
+                -14.399459929969774,
+                -15.488024848323207,
+                -16.621335047961693
+            ],
+            "13-2_localization-Find the large red thing.": [
+                -10.15536411153913,
+                -10.15536411153913,
+                -13.081822329098738,
+                -15.051130078146512,
+                -15.06350136994906
+            ],
+            "14-2_localization-Find the large cylinder.": [
+                -9.827660988385786,
+                -9.827660988385786,
+                -13.562461695457149,
+                -13.562461695457149,
+                -26.28727255494546
+            ],
+            "15-2_localization-Find the large rubber cube.": [
+                -13.006028489729204,
+                -13.006028489729204,
+                -13.041017272084963,
+                -13.041017272084966,
+                -17.52885488018901
+            ],
+            "16-2_localization-Find the brown thing.": [
+                -5.685075054607206,
+                -8.611533272166815,
+                -10.540674979489253,
+                -11.299451590208978,
+                -11.38114487046038
+            ],
+            "17-2_localization-Find the small yellow thing.": [
+                -10.664724726524648,
+                -10.664724726524648,
+                -13.591182944084258,
+                -15.196872694959369,
+                -15.815911903365592
+            ],
+            "18-2_localization-Find the small green thing.": [
+                -9.94096188409712,
+                -10.21611228726023,
+                -10.21611228726023,
+                -15.111878253867614,
+                -19.848478007354046
+            ],
+            "19-2_localization-Find the yellow thing.": [
+                -5.928124973038218,
+                -10.248014630838398,
+                -11.33657954919183,
+                -11.624194788891392,
+                -15.10395872173555
+            ],
+            "20-2_localization-Find the large red thing.": [
+                -10.15536411153913,
+                -10.15536411153913,
+                -13.081822329098738,
+                -15.051130078146512,
+                -15.06350136994906
+            ],
+            "21-2_localization-Find the large metal cylinder.": [
+                -13.680140934339653,
+                -13.680140934339653,
+                -16.550296953153243,
+                -16.550296953153243,
+                -20.40277689910711
+            ],
+            "22-2_localization-Find the green rubber thing.": [
+                -8.40597075133341,
+                -8.40597075133341,
+                -14.02034728693518,
+                -14.02034728693518,
+                -17.581804500030742
+            ],
+            "23-2_localization-Find the large rubber thing.": [
+                -8.226222404216692,
+                -8.226222404216692,
+                -12.948421879818802,
+                -13.081822329098738,
+                -23.759812242382107
+            ],
+            "24-2_localization-Find the cyan cube.": [
+                -10.371538749578065,
+                -10.371538749578065,
+                -13.29799696713767,
+                -17.750722358291238,
+                -19.547372498275394
+            ],
+            "25-2_localization-Find the cyan rubber thing.": [
+                -8.4832020992694,
+                -8.4832020992694,
+                -14.09757863487117,
+                -14.09757863487117,
+                -17.65903584796673
+            ],
+            "26-2_localization-Find the yellow thing.": [
+                -5.928124973038218,
+                -8.854583190597827,
+                -10.783724897920266,
+                -11.54250150863999,
+                -11.624194788891392
+            ],
+            "27-2_localization-Find the small metal cube.": [
+                -13.905661960342737,
+                -14.180812363505849,
+                -18.64226171382917,
+                -20.628297925110196,
+                -25.524063891717578
+            ],
+            "28-2_localization-Find the small blue thing.": [
+                -10.409303516291088,
+                -10.40930351629109,
+                -14.72919317409127,
+                -15.14590326977752,
+                -15.56049069313203
+            ],
+            "29-2_localization-Find the rubber cylinder.": [
+                -8.231292815485586,
+                -8.231292815485586,
+                -11.157751033045194,
+                -12.75918961721429,
+                -17.4813890928164
+            ],
+            "0-2_remove-What if you removed all of the small gray things?": [
+                -13.354454551528628,
+                -13.354454551528628,
+                -13.629604954691738,
+                -13.62960495469174,
+                -17.949494612491918
+            ],
+            "1-2_remove-What if you removed all of the small rubber things?": [
+                -11.961023111288053,
+                -11.961023111288055,
+                -12.236173514451167,
+                -12.236173514451169,
+                -15.162631732010775
+            ],
+            "2-2_remove-If you removed the red metal things, how many things would be left?": [
+                -14.052309077557274,
+                -18.930447674068557,
+                -19.460763653710885,
+                -19.619627006790445,
+                -24.68257308089425
+            ],
+            "3-2_remove-If you removed the small brown things, how many things would be left?": [
+                -14.713815815454607,
+                -14.713815815454609,
+                -14.988966218617717,
+                -19.271323943307085,
+                -20.579353180496636
+            ],
+            "4-2_remove-If you removed the gray things, how many cylinders would be left?": [
+                -14.19201566625024,
+                -18.749523794102718,
+                -18.74952379410272,
+                -19.60047024240385,
+                -25.711065001159273
+            ],
+            "5-2_remove-If you removed the yellow things, how many spheres would be left?": [
+                -14.84492090663694,
+                -19.19442542971158,
+                -19.19442542971158,
+                -19.402429034489415,
+                -31.136285447201914
+            ],
+            "6-2_remove-If you removed the spheres, how many large things would be left?": [
+                -14.216560120255803,
+                -22.540634669192354,
+                -22.82753273533193,
+                -31.11661850191272,
+                -31.40351656805229
+            ],
+            "7-2_remove-If you removed the green spheres, how many spheres would be left?": [
+                -14.396308467372522,
+                -14.396308467372522,
+                -20.70383218353424,
+                -20.70383218353424,
+                -22.895060952156896
+            ],
+            "8-2_remove-If you removed the cyan cubes, how many cubes would be left?": [
+                -14.938830160102148,
+                -19.496338287954625,
+                -19.496338287954625,
+                -19.753625027970422,
+                -20.347284736255755
+            ],
+            "0-2_transform-What if the small sphere became a small metal thing?": [],
+            "1-2_transform-What if the brown thing became a small gray rubber cube?": [],
+            "2-2_transform-What if all the small yellow rubber things became purple cubes?": [],
+            "3-2_transform-What if all the green things became small things?": [
+                -20.565947964352098,
+                -20.565947964352098,
+                -24.73083171590272,
+                -25.123456092204574,
+                -25.123456092204574
+            ],
+            "4-2_transform-If all of the large green metal things became purple, how many purple things would there be?": [],
+            "5-2_transform-If all of the cyan cylinders became brown, how many brown things would there be?": [],
+            "6-2_transform-If all of the gray cubes became purple spheres, how many purple spheres would there be?": [],
+            "7-2_transform-If all of the large purple things became red cubes, how many red cubes would there be?": [],
+            "8-2_transform-If all of the small rubber spheres became large, how many small things would there be?": [
+                -17.356791700842034,
+                -22.07899117644415,
+                -26.42849569951878,
+                -26.540440526767465,
+                -30.8899450498421
+            ],
+            "9-2_transform-If all of the large yellow cubes became small, how many large things would there be?": [
+                -19.245481912523015,
+                -19.24548191252302,
+                -19.298019246050895,
+                -19.298019246050902,
+                -19.83303764189038
+            ]
+        }
+    },
+    "mean_description_length": 7.877083333333334,
+    "description_lengths_by_task": {
+        "test": {
+            "0-1_compare_integer-Are there fewer small spheres than cyan cubes?": [
+                5,
+                7,
+                7,
+                7,
+                10
+            ],
+            "1-1_compare_integer-Is the number of small rubber cubes less than the number of small blue rubber things?": [
+                5,
+                10,
+                10,
+                10,
+                12
+            ],
+            "2-1_compare_integer-Is the number of large metal spheres greater than the number of small rubber things?": [
+                4,
+                5,
+                4,
+                4,
+                6
+            ],
+            "3-1_compare_integer-Are there more metal cylinders than blue metal things?": [
+                7,
+                6,
+                7,
+                10,
+                10
+            ],
+            "0-1_one_hop-What number of metal cubes are behind the rubber cylinder?": [
+                6,
+                6,
+                12,
+                14,
+                20
+            ],
+            "1-1_one_hop-How many metal things are behind the rubber cylinder?": [
+                9,
+                9,
+                13,
+                12,
+                12
+            ],
+            "2-1_one_hop-There is a cylinder front the small blue rubber cylinder; what is its size?": [
+                5,
+                6,
+                7,
+                8,
+                8
+            ],
+            "3-1_one_hop-What size is the rubber thing that is right the purple thing?": [
+                5,
+                6,
+                6,
+                8,
+                8
+            ],
+            "4-1_one_hop-The metal cylinder behind the small yellow metal cylinder is what color?": [
+                7,
+                9,
+                9,
+                8,
+                9
+            ],
+            "5-1_one_hop-The small metal thing that is right the small metal sphere is what color?": [
+                10,
+                11,
+                13,
+                15,
+                15
+            ],
+            "6-1_one_hop-What is the small cylinder front the small brown cylinder made of?": [
+                5,
+                7,
+                7,
+                7,
+                8
+            ],
+            "7-1_one_hop-What is the material of the large thing right the large purple metal thing?": [
+                7,
+                7,
+                7,
+                8,
+                11
+            ],
+            "8-1_one_hop-The small metal thing right the small metal sphere has what shape?": [
+                7,
+                7,
+                9,
+                11,
+                12
+            ],
+            "9-1_one_hop-What is the shape of the small rubber thing that is front the purple rubber thing?": [
+                4,
+                6,
+                7,
+                7,
+                9
+            ],
+            "0-1_single_or-How many objects are either large metal spheres or large rubber things?": [
+                8,
+                8,
+                10,
+                12,
+                10
+            ],
+            "1-1_single_or-How many things are either small metal things or large purple things?": [
+                8,
+                8,
+                10,
+                10,
+                10
+            ],
+            "2-1_single_or-How many small things are rubber cylinders or yellow metal things?": [
+                10,
+                10,
+                11,
+                13,
+                15
+            ],
+            "3-1_single_or-What number of small things are spheres or yellow metal things?": [
+                14,
+                14,
+                15,
+                12,
+                14
+            ],
+            "4-1_single_or-How many green things are either small metal things or large rubber things?": [
+                6,
+                6,
+                7,
+                6,
+                12
+            ],
+            "5-1_single_or-How many purple things are small things or large rubber things?": [
+                10,
+                10,
+                14,
+                14,
+                14
+            ],
+            "6-1_single_or-How many metal objects are large spheres or large red things?": [
+                7,
+                9,
+                10,
+                16,
+                16
+            ],
+            "7-1_single_or-What number of metal objects are small spheres or purple things?": [
+                15,
+                12,
+                17,
+                17,
+                19
+            ],
+            "8-1_single_or-How many spheres are large metal things or small green rubber things?": [
+                14,
+                14,
+                18,
+                17,
+                17
+            ],
+            "9-1_single_or-How many cylinders are either small purple things or small rubber things?": [
+                5,
+                7,
+                7,
+                7,
+                9
+            ],
+            "0-1_zero_hop-How many large things are there?": [
+                4,
+                5,
+                6,
+                6,
+                8
+            ],
+            "1-1_zero_hop-What number of rubber things are there?": [
+                3,
+                4,
+                5,
+                6,
+                6
+            ],
+            "2-1_zero_hop-How many small cylinders are there?": [
+                5,
+                6,
+                10,
+                10,
+                12
+            ],
+            "3-1_zero_hop-What number of small rubber things are there?": [
+                4,
+                5,
+                7,
+                9,
+                9
+            ],
+            "4-1_zero_hop-How many small metal spheres are there?": [
+                5,
+                7,
+                9,
+                9,
+                9
+            ],
+            "5-1_zero_hop-What number of small rubber cylinders are there?": [
+                4,
+                5,
+                7,
+                7,
+                6
+            ],
+            "6-1_zero_hop-What shape is the gray thing?": [
+                5,
+                5,
+                7,
+                7,
+                8
+            ],
+            "7-1_zero_hop-What is the shape of the red thing?": [
+                5,
+                7,
+                10,
+                10,
+                10
+            ],
+            "8-1_zero_hop-What is the shape of the gray thing?": [
+                5,
+                7,
+                7,
+                15,
+                15
+            ],
+            "9-1_zero_hop-What is the shape of the large rubber thing?": [
+                6,
+                7,
+                9,
+                10,
+                11
+            ],
+            "10-1_zero_hop-What is the shape of the cyan rubber thing?": [
+                7,
+                6,
+                6,
+                11,
+                11
+            ],
+            "11-1_zero_hop-What is the shape of the purple metal thing?": [
+                5,
+                7,
+                7,
+                7,
+                8
+            ],
+            "12-1_zero_hop-What material is the blue thing?": [
+                5,
+                7,
+                7,
+                7,
+                9
+            ],
+            "13-1_zero_hop-What material is the purple thing?": [
+                5,
+                7,
+                7,
+                7,
+                9
+            ],
+            "14-1_zero_hop-What is the material of the large purple thing?": [
+                5,
+                7,
+                8,
+                8,
+                10
+            ],
+            "15-1_zero_hop-What is the small cube made of?": [
+                7,
+                7,
+                9,
+                10,
+                10
+            ],
+            "16-1_zero_hop-What is the large brown thing made of?": [
+                5,
+                5,
+                5,
+                6,
+                8
+            ],
+            "17-1_zero_hop-What is the material of the gray sphere?": [
+                7,
+                7,
+                8,
+                12,
+                9
+            ],
+            "18-1_zero_hop-What color is the small cube?": [
+                6,
+                8,
+                8,
+                9,
+                13
+            ],
+            "19-1_zero_hop-What color is the metal cylinder?": [
+                7,
+                6,
+                9,
+                11,
+                11
+            ],
+            "20-1_zero_hop-What is the color of the small cylinder?": [
+                6,
+                6,
+                7,
+                9,
+                9
+            ],
+            "21-1_zero_hop-The large cylinder is what color?": [
+                7,
+                10,
+                10,
+                11,
+                11
+            ],
+            "22-1_zero_hop-The small metal sphere is what color?": [
+                11,
+                12,
+                12,
+                14,
+                14
+            ],
+            "23-1_zero_hop-The large sphere has what color?": [
+                5,
+                7,
+                7,
+                7,
+                7
+            ],
+            "24-1_zero_hop-What size is the metal cylinder?": [
+                5,
+                7,
+                7,
+                10,
+                14
+            ],
+            "25-1_zero_hop-How big is the purple thing?": [
+                5,
+                5,
+                7,
+                10,
+                10
+            ],
+            "26-1_zero_hop-How big is the gray thing?": [
+                3,
+                4,
+                5,
+                7,
+                6
+            ],
+            "27-1_zero_hop-The metal sphere is what size?": [
+                6,
+                6,
+                7,
+                9,
+                9
+            ],
+            "28-1_zero_hop-How big is the gray rubber thing?": [
+                5,
+                7,
+                7,
+                7,
+                9
+            ],
+            "29-1_zero_hop-The metal cylinder is what size?": [
+                3,
+                5,
+                7,
+                7,
+                7
+            ],
+            "0-2_localization-Find the green rubber thing.": [
+                4,
+                4,
+                5,
+                6,
+                7
+            ],
+            "1-2_localization-Find the small rubber cube.": [
+                5,
+                5,
+                6,
+                6,
+                7
+            ],
+            "2-2_localization-Find the red metal thing.": [
+                3,
+                4,
+                6,
+                6,
+                7
+            ],
+            "3-2_localization-Find the small gray thing.": [
+                4,
+                5,
+                5,
+                6,
+                8
+            ],
+            "4-2_localization-Find the small rubber sphere.": [
+                5,
+                5,
+                6,
+                6,
+                6
+            ],
+            "5-2_localization-Find the brown thing.": [
+                3,
+                4,
+                5,
+                6,
+                6
+            ],
+            "6-2_localization-Find the cyan cube.": [
+                5,
+                5,
+                6,
+                8,
+                8
+            ],
+            "7-2_localization-Find the large cube.": [
+                5,
+                5,
+                7,
+                9,
+                9
+            ],
+            "8-2_localization-Find the metal cube.": [
+                4,
+                6,
+                6,
+                5,
+                7
+            ],
+            "9-2_localization-Find the yellow cylinder.": [
+                5,
+                6,
+                8,
+                8,
+                9
+            ],
+            "10-2_localization-Find the large rubber thing.": [
+                4,
+                4,
+                6,
+                6,
+                6
+            ],
+            "11-2_localization-Find the purple cylinder.": [
+                5,
+                5,
+                6,
+                6,
+                6
+            ],
+            "12-2_localization-Find the large cyan thing.": [
+                5,
+                5,
+                7,
+                9,
+                8
+            ],
+            "13-2_localization-Find the large red thing.": [
+                5,
+                5,
+                6,
+                7,
+                7
+            ],
+            "14-2_localization-Find the large cylinder.": [
+                5,
+                5,
+                6,
+                6,
+                11
+            ],
+            "15-2_localization-Find the large rubber cube.": [
+                6,
+                6,
+                6,
+                6,
+                8
+            ],
+            "16-2_localization-Find the brown thing.": [
+                3,
+                4,
+                5,
+                6,
+                6
+            ],
+            "17-2_localization-Find the small yellow thing.": [
+                5,
+                5,
+                6,
+                7,
+                7
+            ],
+            "18-2_localization-Find the small green thing.": [
+                4,
+                5,
+                5,
+                7,
+                9
+            ],
+            "19-2_localization-Find the yellow thing.": [
+                3,
+                5,
+                7,
+                6,
+                6
+            ],
+            "20-2_localization-Find the large red thing.": [
+                5,
+                5,
+                6,
+                7,
+                7
+            ],
+            "21-2_localization-Find the large metal cylinder.": [
+                6,
+                6,
+                8,
+                8,
+                9
+            ],
+            "22-2_localization-Find the green rubber thing.": [
+                4,
+                4,
+                7,
+                7,
+                7
+            ],
+            "23-2_localization-Find the large rubber thing.": [
+                4,
+                4,
+                6,
+                6,
+                10
+            ],
+            "24-2_localization-Find the cyan cube.": [
+                5,
+                5,
+                6,
+                8,
+                8
+            ],
+            "25-2_localization-Find the cyan rubber thing.": [
+                4,
+                4,
+                7,
+                7,
+                7
+            ],
+            "26-2_localization-Find the yellow thing.": [
+                3,
+                4,
+                5,
+                6,
+                6
+            ],
+            "27-2_localization-Find the small metal cube.": [
+                5,
+                6,
+                7,
+                8,
+                10
+            ],
+            "28-2_localization-Find the small blue thing.": [
+                5,
+                5,
+                7,
+                7,
+                7
+            ],
+            "29-2_localization-Find the rubber cylinder.": [
+                4,
+                4,
+                5,
+                6,
+                8
+            ],
+            "0-2_remove-What if you removed all of the small gray things?": [
+                6,
+                6,
+                7,
+                7,
+                9
+            ],
+            "1-2_remove-What if you removed all of the small rubber things?": [
+                5,
+                5,
+                6,
+                6,
+                7
+            ],
+            "2-2_remove-If you removed the red metal things, how many things would be left?": [
+                7,
+                9,
+                11,
+                9,
+                12
+            ],
+            "3-2_remove-If you removed the small brown things, how many things would be left?": [
+                7,
+                7,
+                8,
+                9,
+                10
+            ],
+            "4-2_remove-If you removed the gray things, how many cylinders would be left?": [
+                8,
+                10,
+                10,
+                12,
+                12
+            ],
+            "5-2_remove-If you removed the yellow things, how many spheres would be left?": [
+                8,
+                10,
+                10,
+                10,
+                16
+            ],
+            "6-2_remove-If you removed the spheres, how many large things would be left?": [
+                8,
+                12,
+                12,
+                16,
+                16
+            ],
+            "7-2_remove-If you removed the green spheres, how many spheres would be left?": [
+                8,
+                8,
+                11,
+                11,
+                12
+            ],
+            "8-2_remove-If you removed the cyan cubes, how many cubes would be left?": [
+                8,
+                10,
+                10,
+                10,
+                12
+            ],
+            "0-2_transform-What if the small sphere became a small metal thing?": [],
+            "1-2_transform-What if the brown thing became a small gray rubber cube?": [],
+            "2-2_transform-What if all the small yellow rubber things became purple cubes?": [],
+            "3-2_transform-What if all the green things became small things?": [
+                11,
+                11,
+                13,
+                13,
+                13
+            ],
+            "4-2_transform-If all of the large green metal things became purple, how many purple things would there be?": [],
+            "5-2_transform-If all of the cyan cylinders became brown, how many brown things would there be?": [],
+            "6-2_transform-If all of the gray cubes became purple spheres, how many purple spheres would there be?": [],
+            "7-2_transform-If all of the large purple things became red cubes, how many red cubes would there be?": [],
+            "8-2_transform-If all of the small rubber spheres became large, how many small things would there be?": [
+                9,
+                11,
+                13,
+                12,
+                14
+            ],
+            "9-2_transform-If all of the large yellow cubes became small, how many large things would there be?": [
+                10,
+                10,
+                10,
+                10,
+                10
+            ]
+        }
+    }
+}
