@@ -1,0 +1,157 @@
+{
+    "logVariable": -0.8179438760619231,
+    "productions": [
+        {
+            "expression": "logo_UA",
+            "logProbability": -0.8717006381008154
+        },
+        {
+            "expression": "logo_UL",
+            "logProbability": -0.4263966631445122
+        },
+        {
+            "expression": "logo_ZA",
+            "logProbability": -1.0077171616648624
+        },
+        {
+            "expression": "logo_ZL",
+            "logProbability": -2.6854489343350467
+        },
+        {
+            "expression": "logo_DIVA",
+            "logProbability": -1.8981381177756322
+        },
+        {
+            "expression": "logo_MULA",
+            "logProbability": -3.9859358527261453
+        },
+        {
+            "expression": "logo_DIVL",
+            "logProbability": -7.16845148634893
+        },
+        {
+            "expression": "logo_MULL",
+            "logProbability": -1.2723971240456073
+        },
+        {
+            "expression": "logo_ADDA",
+            "logProbability": -6.6531640593081
+        },
+        {
+            "expression": "logo_SUBA",
+            "logProbability": -6.6531640593081
+        },
+        {
+            "expression": "logo_PT",
+            "logProbability": -3.4591344023828636
+        },
+        {
+            "expression": "logo_FWRT",
+            "logProbability": -2.7325295556320732
+        },
+        {
+            "expression": "logo_GETSET",
+            "logProbability": -8.771354674099893
+        },
+        {
+            "expression": "logo_IFTY",
+            "logProbability": -4.883470148471576
+        },
+        {
+            "expression": "logo_epsA",
+            "logProbability": -2.9290783494595445
+        },
+        {
+            "expression": "logo_epsL",
+            "logProbability": -6.808448752317524
+        },
+        {
+            "expression": "logo_forLoop",
+            "logProbability": -3.6481350192564914
+        },
+        {
+            "expression": "0",
+            "logProbability": -7.953072270592022
+        },
+        {
+            "expression": "1",
+            "logProbability": -7.953072270592022
+        },
+        {
+            "expression": "2",
+            "logProbability": -2.331223178698508
+        },
+        {
+            "expression": "3",
+            "logProbability": -7.422444019529852
+        },
+        {
+            "expression": "4",
+            "logProbability": -1.2272786131882931
+        },
+        {
+            "expression": "5",
+            "logProbability": -2.4527668948025685
+        },
+        {
+            "expression": "6",
+            "logProbability": -2.2615873237462285
+        },
+        {
+            "expression": "7",
+            "logProbability": -2.355267786142443
+        },
+        {
+            "expression": "8",
+            "logProbability": -1.6419426051792083
+        },
+        {
+            "expression": "9",
+            "logProbability": -3.3199627159146896
+        },
+        {
+            "expression": "#(lambda (lambda (logo_forLoop $0 (lambda (lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 5) $0))) (logo_FWRT logo_UL logo_ZA $0)))) $1)))",
+            "logProbability": -6.509251180847008
+        },
+        {
+            "expression": "#(lambda (lambda (logo_FWRT $0 (logo_DIVA logo_UA 4) $1)))",
+            "logProbability": -2.9253849160369736
+        },
+        {
+            "expression": "#(lambda (lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT $2 (logo_DIVA logo_UA 8) $0))) $1)))",
+            "logProbability": -3.092489282643742
+        },
+        {
+            "expression": "#(lambda (lambda (#(lambda (lambda (logo_FWRT $0 (logo_DIVA logo_UA 4) $1))) $0 (logo_MULL logo_UL $1))))",
+            "logProbability": -2.5081788255797637
+        },
+        {
+            "expression": "#(lambda (#(lambda (lambda (logo_FWRT $0 (logo_DIVA logo_UA 4) $1))) $0 logo_UL))",
+            "logProbability": -2.4946090187040877
+        },
+        {
+            "expression": "#(lambda (lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT $2 logo_epsA $0))) $1)))",
+            "logProbability": -7.600027076506129
+        },
+        {
+            "expression": "#(lambda (lambda (logo_forLoop 4 $0 $1)))",
+            "logProbability": -2.504744308349588
+        },
+        {
+            "expression": "#(lambda (#(lambda (lambda (logo_forLoop $0 (lambda (lambda (logo_forLoop logo_IFTY (lambda (lambda (logo_FWRT logo_UL (logo_DIVA logo_UA 5) $0))) (logo_FWRT logo_UL logo_ZA $0)))) $1))) $0 6))",
+            "logProbability": -3.304593604981087
+        },
+        {
+            "expression": "#(lambda (lambda (logo_forLoop 6 $0 $1)))",
+            "logProbability": -2.6162302141427904
+        },
+        {
+            "expression": "#(lambda (#(lambda (lambda (logo_FWRT $0 (logo_DIVA logo_UA 4) $1))) $0 logo_ZL))",
+            "logProbability": -2.8477714897656794
+        }
+    ],
+    "continuationType": {
+        "constructor": "turtle",
+        "arguments": []
+    }
+}
