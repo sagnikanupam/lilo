@@ -33,3 +33,11 @@ class MathLoader(TaskDataLoader):
         return {TRAIN: train_tasks, TEST: test_tasks}
     
 
+@TaskLanguageLoaderRegistry.register
+class MathLanguageLoader(TaskDataLoader):
+    name = "math"
+
+    def load_task_language(self):
+        return ({},{}) # No language for math tasks
+    
+
