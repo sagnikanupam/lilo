@@ -146,6 +146,15 @@ def get_domain_metadata(domain: str) -> dict:
             "n_tasks_train": 191,
             "n_tasks_test": 103,
         },
+        "math": {
+            "tasks_loader": "math",
+            "task_language_loader": "math",
+            "ocaml_special_handler": "math",
+            "dsl_description_prefix": "This is a domain-specific language for mathematical equations domain.",
+            "global_batch_sizes": [5, 10, 15, 25, 50, 100, 198],
+            "n_tasks_train": 198,
+            "n_tasks_test": 86,
+        },
         "re2": {
             "tasks_loader": "re2",
             "task_language_loader": "re2_synthetic",
@@ -230,7 +239,7 @@ def build_config(
     """
     Returns a config dictionary for configuring an experiment.
     
-    Arguments:
+    Args:
         experiment_name: 
             str containing experiment name (this is used in naming folders in which logs and experiment results are saved in output folder)
         experiment_type: 

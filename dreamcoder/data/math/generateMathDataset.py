@@ -37,6 +37,8 @@ if __name__ =="__main__":
     allEqDf = pd.concat([data for data in allEqDatasets], ignore_index=True)
     numEqs = allEqDf.shape[0]
     numTrainSamples = int(numEqs*TRAIN_SPLIT)
+    print("Number of training samples: ", numTrainSamples)
+    print("Number of testing samples: ", numEqs - numTrainSamples)
     trainDf = allEqDf.sample(n=numTrainSamples, random_state=RANDOM_SEED)
     testDf = allEqDf.drop(trainDf.index).sample(frac=1, random_state=RANDOM_SEED)
     trainTasks = [makeTask(i, trainDf) for i in range(numTrainSamples)]
