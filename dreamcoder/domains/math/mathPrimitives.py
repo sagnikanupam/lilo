@@ -1,5 +1,3 @@
-import binutil  # required to import from dreamcoder modules
-
 from dreamcoder.program import Primitive
 from dreamcoder.type import arrow, tint, tstr
 import math
