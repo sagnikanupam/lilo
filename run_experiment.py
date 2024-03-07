@@ -27,6 +27,9 @@ from data.compositional_graphics.encoder import *
 from data.re2.make_tasks import *
 from data.re2.grammar import *
 from data.re2.encoder import *
+from data.math.make_tasks import *
+from data.math.grammar import *
+from data.math.encoder import *
 from data.clevr.make_tasks import *
 from data.clevr.grammar import *
 from data.clevr.encoder import *
