@@ -5,7 +5,7 @@ Utility functions for loading Python DSLs for the math domain. This grammar was 
 """
 from collections import OrderedDict
 
-from src.models.model_loaders import ModelLoaderRegistries, GRAMMAR, GrammarLoader
+from src.models.model_loaders import ModelLoaderRegistries, GRAMMAR, ModelLoader
 from src.models.laps_grammar import LAPSGrammar
 
 import dreamcoder.domains.math.mathPrimitives as mathPrimitives
@@ -14,7 +14,7 @@ GrammarRegistry = ModelLoaderRegistries[GRAMMAR]
 LARGEST_CONSTANT = 10 #Largest constant encoded in the math domain, must be between 0 and 25
 
 @GrammarRegistry.register
-class MathGrammarLoader(GrammarLoader):
+class MathGrammarLoader(ModelLoader):
     """Loads the math grammar.
     Original source: dreamcoder/domains/math/mathPrimitives.
     """
