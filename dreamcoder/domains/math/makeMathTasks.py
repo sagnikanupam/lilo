@@ -5,12 +5,18 @@ from dreamcoder.task import Task
 
 def loadMathDataset(task_dataset, task_dataset_dir, type_request: str ="tstr"):
     '''
+    Loads tasks from the math domain.
     
-    @param task_dataset_dir is a os.path to the directory with task datasets
-    @param task_dataset is the name of a directory in task_dataset_dir with a 
-        test and train subdirectory with each containing a tasks.json
-    @param type_request defines the type of the returned task. Currently math   
-        domain only handles tstr -> tstr (for tasks to convert equation in prefix notation and string type to a solution state in prefix notation and string type) and tint -> tint (for tasks to generate larger numbers to be used for indices by adding/multiplying integers)
+    Args:
+        task_dataset_dir (str): os.path to the directory with task datasets
+        task_dataset (str): name of a directory in task_dataset_dir with a 
+            test and train subdirectory with each containing a tasks.json
+        type_request (str): defines the type of the returned task. Currently    
+            math domain only handles tstr -> tstr (for tasks to convert equation in prefix notation and string type to a solution state in prefix notation and string type) and tint -> tint (for tasks to generate larger numbers to be used for indices by adding/multiplying integers)
+
+    Returns:
+        tuple: a tuple with the following format:
+            (<list of Task objects that are training tasks>, <list of Task objects that are testing tasks>)
     '''
 
     dataset_path = os.path.join(task_dataset_dir, task_dataset)
@@ -37,6 +43,4 @@ def loadMathDataset(task_dataset, task_dataset_dir, type_request: str ="tstr"):
                 )
                 for task in task_data
             ]
-            for t in tasks[split]:
-                t.stringConstants = []
     return tasks["train"], tasks["test"]

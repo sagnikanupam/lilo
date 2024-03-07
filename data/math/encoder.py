@@ -1,7 +1,7 @@
 """
-clevr: encoder.py | Author : Sam Acquaviva.
+math: encoder.py | Author : Sagnik Anupam
 
-Same format as encoder.py in compositional_graphics, but for the Re2 domain.
+Same format as encoder.py in compositional_graphics/Re2, but for the math domain.
 """
 
 from src.experiment_iterator import *
