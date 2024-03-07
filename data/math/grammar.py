@@ -21,7 +21,7 @@ class MathGrammarLoader(ModelLoader):
 
     name = "math"  # Special handler for OCaml enumeration.
 
-    def load_model(self):
+    def load_model(self, experiment_state):
         math_primitives = list(
             OrderedDict((x, True) for x in mathPrimitives.mathPrimitives(LARGEST_CONSTANT)).keys()
         )
