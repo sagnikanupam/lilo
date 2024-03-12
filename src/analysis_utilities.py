@@ -50,6 +50,7 @@ class IterativeExperimentAnalyzer:
         "re2": "REGEX",
         "clevr": "CLEVR",
         "logo": "LOGO",
+        'math': 'math',
     }
     EXPERIMENT_TYPES_CAMERA = {
         ExperimentType.ORACLE: "oracle (test)",
@@ -92,13 +93,13 @@ class IterativeExperimentAnalyzer:
             os.path.split(path)[-1]
             for path in glob.glob(os.path.join(self.dir_domains, "*"))
         ]
-
         # Optionally restrict set of domains for analysis
         if domains is not None:
             self.domains = [d for d in self.domains if d in domains]
 
         # Reorder the domains by DOMAIN_NAMES_CAMERA
         self.domains = [d for d in self.DOMAIN_NAMES_CAMERA.keys() if d in self.domains]
+        print(f"self.DOMAIN_NAMES_CAMERA.keys()={self.DOMAIN_NAMES_CAMERA.keys()}")
         print(f"Available domains: {self.domains}")
 
         self.experiment_types = experiment_types
@@ -668,6 +669,7 @@ class SynthesisExperimentAnalyzer(IterativeExperimentAnalyzer):
         "re2": "REGEX",
         "clevr": "CLEVR",
         "logo": "LOGO",
+        "math": "math",
         "re2_human": "REGEX (human)",
         "clevr_human": "CLEVR (human)",
         "logo_human": "LOGO (human)",
