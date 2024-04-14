@@ -1,3 +1,42 @@
+(** This module defines types and operations related to the Tower game.
+
+  The Tower game involves manipulating blocks in a grid to create towers.
+  The module provides definitions for the types `Type.t`, `Op.t`, `Value.t`,
+  as well as functions for evaluating operations and calculating distances
+  between game states.
+
+  The Tower game is represented as a grid of blocks, where each block has
+  coordinates (x, y) and a kind (horizontal or vertical). The game state
+  includes the current hand position, the heights of the towers, and the
+  set of blocks on the grid.
+
+  The `Type` module defines the types of values that can be used in the game,
+  including `Int` and `Tower`.
+
+  The `Op` module defines the operations that can be performed in the game,
+  such as moving blocks, dropping blocks, and embedding blocks.
+
+  The `Value` module defines the values that can be used in the game, including
+  integers and transitions. It also provides functions for evaluating operations
+  and calculating distances between game states.
+
+  The `Block` module defines the type and operations for blocks in the game.
+
+  The `Block_set` module defines the type and operations for sets of blocks in
+  the game.
+
+  The `State` module defines the type and operations for game states.
+
+  The `Ctx` module defines the type and operations for game contexts, which
+  store summary states and slices of blocks.
+
+  The module also includes utility functions for printing game states and
+  calculating distances between blocks.
+
+  Note: This documentation is a high-level overview of the Tower game module.
+  For more detailed information, please refer to the code comments and
+  function definitions.
+*)
 open Std
 module P = Program
 
@@ -376,3 +415,4 @@ let operators =
   @ (Iter.append (Iter.int_range ~start:(-8) ~stop:(-1)) (Iter.int_range ~start:1 ~stop:8)
     |> Iter.map (fun i -> Iter.of_list [ Op.Move_p i; Op.Move_s i ])
     |> Iter.concat |> Iter.to_list)
+

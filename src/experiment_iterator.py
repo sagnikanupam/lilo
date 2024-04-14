@@ -48,6 +48,8 @@ OCAML_SPECIAL_HANDLER = "ocaml_special_handler"
 RANDOM_SEED = "random_seed"
 RANDOM_SEED_WILDCARD = "{RANDOM_SEED}"
 RANDOM_GENERATOR = "random_generator"
+WEIGHT_UPDATE = "weight_update"
+SYMETRIC_METHOD = "symetric_method"
 
 
 LOG_DEBUG, LOG_WARNING, LOG_INFO = 3, 2, 1
@@ -66,11 +68,13 @@ class ExperimentState:
         self.curr_iteration = self.init_curr_iteration()
         
         self.tasks, self.task_frontiers = self.init_tasks_from_config(config)
-        self.weights = {}
+        self.weights = {} #SAGNIK
         for task_type in self.tasks.keys():
             for task in self.tasks[task_type]:
                 self.weights[str(task.name)] = 1.0
-        
+        self.weightUpdate = self.metadata[WEIGHT_UPDATE] #can be "None" or "PercentProgramsUpdated"
+        self.syMetricMethod = self.metadata[SYMETRIC_METHOD] #can be "None" or "Rewrite"
+
         self.task_language, self.task_vocab = self.init_task_language_from_config(
             config
         )

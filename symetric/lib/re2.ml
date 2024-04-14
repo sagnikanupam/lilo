@@ -2,9 +2,23 @@
 open Core
 open Re2
 open Str
+open Std
+module P = Program
 
+(*
 (* Custom .ml files needed *)
-open Type
+type tp =
+  | TID of int
+  | TCon of string * tp list * bool
+
+let make_ground g = TCon(g,[],false);;
+
+type program =
+  | Index of int
+  | Abstraction of program
+  | Apply of program*program
+  | Primitive of tp * string * (unit ref)
+  | Invented of tp * program
 
 type program =
   | Index of int
@@ -14,16 +28,19 @@ type program =
   | Invented of tp * program
 
 let tfullstr = make_ground "tfullstr";;
-let tsubstr = make_ground "tsubstr";;
+let tsubstr = make_ground "tsubstr";; *)
 
-let primitive_rdot = primitive "_rdot" tsubstr ".";;
-let primitive_emptystr = primitive "_rempty" tsubstr "";;
-let primitive_rnot = primitive "_rnot" (tsubstr @> tsubstr) (fun s -> "[^" ^ s ^ "]");;
+let primitive_rdot = ".";;
+let primitive_emptystr = "";;
+let primitive_rnot = (fun s -> "[^" ^ s ^ "]");;
 
-let primitive_ror = primitive "_ror" (tsubstr @> tsubstr @> tsubstr) (fun s1 s2 -> "(("^ s1 ^ ")|("^ s2 ^"))");;
+let primitive_rvowel = "(a|e|i|o|u)" ;;
+let primitive_rconsonant = "[^aeiou]" ;;
 
-let primitive_rconcat = primitive "_rconcat" (tsubstr @> tsubstr @> tsubstr) (fun s1 s2 -> s1 ^ s2);;
-et primitive_rmatch = primitive "_rmatch" (tsubstr @> tsubstr @> tboolean) (fun s1 s2 ->
+let primitive_ror = (fun s1 s2 -> "(("^ s1 ^ ")|("^ s2 ^"))");;
+
+let primitive_rconcat = (fun s1 s2 -> s1 ^ s2);;
+let primitive_rmatch = (fun s1 s2 ->
   try
     let regex = Re2.create_exn ("^" ^ s1 ^ "$") in
     Re2.matches regex s2
@@ -31,14 +48,14 @@ et primitive_rmatch = primitive "_rmatch" (tsubstr @> tsubstr @> tboolean) (fun 
   );;
 
 (** Flattens list of substrings back into a string *)
-let primitive_rflatten = primitive "_rflatten" ((tlist tsubstr) @> tfullstr) (fun l -> String.concat ~sep:"" l);;
-let primitive_rtail = primitive "_rtail" ((tlist tsubstr) @> tsubstr) (fun l ->
+let primitive_rflatten = (fun l -> String.concat ~sep:"" l);;
+let primitive_rtail = (fun l ->
   let arr = Array.of_list l in arr.(Array.length arr - 1)
   );;
 
 (** Splits s2 on regex s1 as delimiter, including the matches *)
 let not_empty str = (String.length str) > 0;;
-let primitive_rsplit = primitive "_rsplit" (tsubstr @> tfullstr @> (tlist tsubstr)) (fun s1 s2 ->
+let primitive_rsplit = (fun s1 s2 ->
   try
     let regex = Re2.create_exn s1 in
     let init_split = Re2.split ~include_matches:true regex s2 in
@@ -46,47 +63,103 @@ let primitive_rsplit = primitive "_rsplit" (tsubstr @> tfullstr @> (tlist tsubst
   with _ -> [s2]
   );;
 
-let primitive_rappend = primitive "_rappend" (tsubstr @> (tlist tsubstr) @> (tlist tsubstr)) (fun x l -> l @ [x]);;
-let primitive_rrevcdr = primitive "_rrevcdr" ((tlist tsubstr) @> (tlist tsubstr)) (fun l ->
+let primitive_rappend = (fun x l -> l @ [x]);;
+let primitive_rrevcdr = (fun l ->
   let arr = Array.of_list l in
   let slice = Array.sub arr 0 (Array.length arr - 1) in
   Array.to_list slice
   );;
 
-let primitive_if = primitive "if" (tboolean @> t0 @> t0 @> t0)
-  ~manualLaziness:true
-  (fun p x y -> if Lazy.force p then Lazy.force x else Lazy.force y);;
+let primitive_if = (fun p x y -> if Lazy.force p then Lazy.force x else Lazy.force y);;
 
-let primitive_cons = primitive "cons" (t0 @> tlist t0 @> tlist t0) (fun x xs -> x :: xs);;
-let primitive_car = primitive "car" (tlist t0 @> t0) (fun xs -> List.hd_exn xs);;
-let primitive_cdr = primitive "cdr" (tlist t0 @> tlist t0) (fun xs -> List.tl_exn xs);;
+let primitive_cons = (fun x xs -> x :: xs);;
+let primitive_car = (fun xs -> List.hd_exn xs);;
+let primitive_cdr = (fun xs -> List.tl_exn xs);;
 
-let primitive_map = primitive "map" ((t0 @> t1) @> (tlist t0) @> (tlist t1)) (fun f l -> List.map ~f:f l);;
+let primitive_map = (fun f l -> List.map ~f:f l);;
 (* Constants *)
-let primitive_ra = primitive "_a" tsubstr "a";;
-let primitive_rb = primitive "_b" tsubstr "b";;
-let primitive_rc = primitive "_c" tsubstr "c";;
-let primitive_rd = primitive "_d" tsubstr "d";;
-let primitive_re = primitive "_e" tsubstr "e";;
-let primitive_rf = primitive "_f" tsubstr "f";;
-let primitive_rg = primitive "_g" tsubstr "g";;
-let primitive_rh = primitive "_h" tsubstr "h";;
-let primitive_ri = primitive "_i" tsubstr "i";;
-let primitive_rj = primitive "_j" tsubstr "j";;
-let primitive_rk = primitive "_k" tsubstr "k";;
-let primitive_rl = primitive "_l" tsubstr "l";;
-let primitive_rm = primitive "_m" tsubstr "m";;
-let primitive_rn = primitive "_n" tsubstr "n";;
-let primitive_ro = primitive "_o" tsubstr "o";;
-let primitive_rp = primitive "_p" tsubstr "p";;
-let primitive_rq = primitive "_q" tsubstr "q";;
-let primitive_rr = primitive "_r" tsubstr "r";;
-let primitive_rs = primitive "_s" tsubstr "s";;
-let primitive_rt = primitive "_t" tsubstr "t";;
-let primitive_ru = primitive "_u" tsubstr "u";;
-let primitive_rv = primitive "_v" tsubstr "v";;
-let primitive_rw = primitive "_w" tsubstr "w";;
-let primitive_rx = primitive "_x" tsubstr "x";;
-let primitive_ry = primitive "_y" tsubstr "y";;
-let primitive_rz = primitive "_z" tsubstr "z";;
+let primitive_ra = "a";;
+let primitive_rb = "b";;
+let primitive_rc = "c";;
+let primitive_rd = "d";;
+let primitive_re = "e";;
+let primitive_rf = "f";;
+let primitive_rg = "g";;
+let primitive_rh = "h";;
+let primitive_ri = "i";;
+let primitive_rj = "j";;
+let primitive_rk = "k";;
+let primitive_rl = "l";;
+let primitive_rm = "m";;
+let primitive_rn = "n";;
+let primitive_ro = "o";;
+let primitive_rp = "p";;
+let primitive_rq = "q";;
+let primitive_rr = "r";;
+let primitive_rs = "s";;
+let primitive_rt = "t";;
+let primitive_ru = "u";;
+let primitive_rv = "v";;
+let primitive_rw = "w";;
+let primitive_rx = "x";;
+let primitive_ry = "y";;
+let primitive_rz = "z";;
+
+module Type = struct
+  type t = String | StringList | Boolean [@@deriving compare, equal, hash, sexp, yojson]
+  let default = String
+  let output = Boolean
+  let pp fmt x = Sexp.pp fmt @@ [%sexp_of: t] x  
+end
+
+module Op = struct
+  (* Types of Operations *)
+  type t =
+  | Rdot
+  | Emptystr
+  | Rvowel
+  | Rconsonant 
+  | Rnot 
+  | Ror
+  | Rconcat
+  | Rmatch
+  | Rflatten
+  | Rtail
+  | Rsplit
+  | Rappend
+  | Rrevcdr
+  | If
+  | Cons
+  | Car
+  | Cdr
+  | Map
+  | Ch of char
+[@@deriving compare, equal, hash, sexp, yojson]
+
+let default = Ch ('a')
+let cost _ = 1
+
+let ret_type : _ -> Type.t = function
+  | Rmatch -> Boolean
+  | Rappend | Rrevcdr | Rsplit | Cons | Cdr -> StringList
+  | _ -> String
+
+  (* Everything below this is copied from Tower *)
+let args_type : _ -> Type.t list = function
+  | Embed -> [ Tower ]
+  | Seq -> [ Tower; Tower ]
+  | Move_s _ -> [ Tower ]
+  | Move_p _ -> [ Tower ]
+  | Loop -> [ Int; Tower ]
+  | Drop_v | Drop_h | Int _ -> []
+  | _ -> assert false
+
+let arity op = List.length @@ args_type op
+let is_commutative _ = false
+let pp fmt x = Sexp.pp_hum fmt @@ [%sexp_of: t] x
+end
+
+module Value = struct
+  
+end
 

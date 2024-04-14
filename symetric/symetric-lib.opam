@@ -16,6 +16,11 @@ depends: [
   "bheap"
   "iter"
   "logs"
+  "yojson"
+  "re2"
+  "ocaml-protoc"
+  "zmg"
+  "str"
   "odoc" {with-doc}
 ]
 build: [

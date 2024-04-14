@@ -234,6 +234,8 @@ def build_config(
     init_grammar_from_checkpoint: bool = False,
     resume_checkpoint_directory: bool = False,
     s3_sync: bool = True,
+    weightUpdate: str = "None",
+    syMetricMethod: str = "None",
 ) -> dict:
     
     """
@@ -305,6 +307,11 @@ def build_config(
 
         s3_sync:
 
+        weightUpdate:
+            str containing the weight update method to be used by Stitch in experiment. Default is "None".
+
+        syMetricMethod:
+            str containing the method by which SyMetric is used by DreamCoder in the experiment. Default is "None".
 
     Returns:
         dict: updated config body and config metadata
@@ -346,6 +353,8 @@ def build_config(
             init_grammar_from_checkpoint=init_grammar_from_checkpoint,
             resume_checkpoint_directory=resume_checkpoint_directory,
             random_seed=random_seed,
+            weightUpdate=weightUpdate,
+            syMetricMethod=syMetricMethod,
         )
     )
     return config
@@ -367,6 +376,8 @@ def build_config_metadata(
     init_grammar_from_checkpoint: bool = False,
     resume_checkpoint_directory: bool = False,
     random_seed: int = 0,
+    weightUpdate: str = "None",
+    syMetricMethod: str = "None",
 ):
     domain_meta = get_domain_metadata(domain)
 
@@ -411,6 +422,8 @@ def build_config_metadata(
             "encoder": encoder,
             "random_seed": random_seed,
             "curr_iteration": init_iteration,
+            "weight_update": weightUpdate,
+            "syMetricMethod": syMetricMethod
         }
     }
 
