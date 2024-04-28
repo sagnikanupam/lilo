@@ -74,7 +74,10 @@ class ExperimentState:
                 self.weights[str(task.name)] = 1.0
         self.weightUpdate = self.metadata[WEIGHT_UPDATE] #can be "None" or "PercentProgramsUpdated"
         self.syMetricMethod = self.metadata[SYMETRIC_METHOD] #can be "None" or "Rewrite"
-
+        if self.metadata[TASKS_LOADER]=="re2":
+            self.syMetricReplaceableTokens = ["_" + ch for ch in "abcdefghijklmnopqrstuvwxyz"]
+        else:
+            self.syMetricReplaceableTokens = []
         self.task_language, self.task_vocab = self.init_task_language_from_config(
             config
         )

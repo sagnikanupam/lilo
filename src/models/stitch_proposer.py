@@ -114,6 +114,26 @@ class StitchProposerLibraryLearner(StitchBase, model_loaders.ModelLoader):
                 include_samples=False,
                 include_ground_truth_tasks=True,
             )
+            program_list = [program]
+            symetric_rewrite_program_counter = 0
+            ### SAGNIK REWRITE RULES APPLICATION FOR SYMETRIC
+            """
+            Add programs that are 1 primitive away from the original program as per rewrite rules defined in experiment_state.syMetricReplaceableTokens.
+            """
+            if experiment_state.syMetricMethod == "Rewrite":
+                program_tokens = str(program).split()
+                replaceable_indices = []
+                for i, token in enumerate(program_tokens):
+                    if token in experiment_state.syMetricReplaceableTokens:
+                        replaceable_indices.append(i)
+                for i in replaceable_indices:
+                    neighborhood_program = [token for token in program_tokens]
+                    for token in experiment_state.syMetricReplaceableTokens:
+                        neighborhood_program[i] = token
+                        neighborhood_program_str = " ".join(neighborhood_program)
+                        program_list.append(neighborhood_program_str)
+                        symetric_rewrite_program_counter += 1
+                print(f"Number of symetric Rewrite Programs added for task_id {str(task_id)} are {str(symetric_rewrite_program_counter)}")
             if matching_tasks:
                 if len(matching_tasks) > 1:
                     logging.warning(
@@ -123,18 +143,18 @@ class StitchProposerLibraryLearner(StitchBase, model_loaders.ModelLoader):
                     task = rng.choice(matching_tasks)
                 else:
                     task = matching_tasks[0]
-
-                frontier = Frontier(
-                    frontier=[
-                        FrontierEntry(
-                            program=Program.parse(program),
-                            logPrior=0.0,
-                            logLikelihood=0.0,
-                        )
-                    ],
-                    task=task,
-                )
-                frontiers_rewritten.append(frontier)
+                for program in program_list:
+                    frontier = Frontier(
+                        frontier=[
+                            FrontierEntry(
+                                program=Program.parse(program),
+                                logPrior=0.0,
+                                logLikelihood=0.0,
+                            )
+                        ],
+                        task=task,
+                    )
+                    frontiers_rewritten.append(frontier)
             else:
                 matching_sample_tasks = experiment_state.get_tasks_for_ids(
                     task_splits[0],
@@ -148,17 +168,18 @@ class StitchProposerLibraryLearner(StitchBase, model_loaders.ModelLoader):
                     )
 
                 task = matching_sample_tasks[0]
-                frontier = Frontier(
-                    frontier=[
-                        FrontierEntry(
-                            program=Program.parse(program),
-                            logPrior=0.0,
-                            logLikelihood=0.0,
-                        )
-                    ],
-                    task=task,
-                )
-                sample_frontiers_rewritten.append(frontier)
+                for program in program_list:
+                    frontier = Frontier(
+                        frontier=[
+                            FrontierEntry(
+                                program=Program.parse(program),
+                                logPrior=0.0,
+                                logLikelihood=0.0,
+                            )
+                        ],
+                        task=task,
+                    )
+                    sample_frontiers_rewritten.append(frontier)
 
         # Update the grammar with the new inventions.
         if update_grammar:

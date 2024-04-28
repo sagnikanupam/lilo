@@ -423,7 +423,7 @@ def build_config_metadata(
             "random_seed": random_seed,
             "curr_iteration": init_iteration,
             "weight_update": weightUpdate,
-            "syMetricMethod": syMetricMethod
+            "symetric_method": syMetricMethod
         }
     }
 
