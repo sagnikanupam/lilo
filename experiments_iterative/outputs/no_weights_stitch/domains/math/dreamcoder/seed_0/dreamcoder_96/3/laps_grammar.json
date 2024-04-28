@@ -1,0 +1,149 @@
+{
+    "logVariable": -1.283688126172354,
+    "productions": [
+        {
+            "expression": "mathDomain_add",
+            "logProbability": -3.5415630065186714
+        },
+        {
+            "expression": "mathDomain_sub",
+            "logProbability": -3.2383767475309257
+        },
+        {
+            "expression": "mathDomain_mult",
+            "logProbability": -3.0952759038902524
+        },
+        {
+            "expression": "mathDomain_div",
+            "logProbability": -3.651563901733
+        },
+        {
+            "expression": "mathDomain_rrotate",
+            "logProbability": -2.858887125826022
+        },
+        {
+            "expression": "mathDomain_lrotate",
+            "logProbability": -3.8292450789704526
+        },
+        {
+            "expression": "mathDomain_simplify",
+            "logProbability": -2.294770205009807
+        },
+        {
+            "expression": "mathDomain_dist",
+            "logProbability": -3.775177857700177
+        },
+        {
+            "expression": "mathDomain_revdist",
+            "logProbability": -3.3697127495920123
+        },
+        {
+            "expression": "mathDomain_swap",
+            "logProbability": -2.6005796620541455
+        },
+        {
+            "expression": "mathDomain_addzero",
+            "logProbability": -3.387412326691413
+        },
+        {
+            "expression": "mathDomain_subzero",
+            "logProbability": -3.801846104782338
+        },
+        {
+            "expression": "mathDomain_multone",
+            "logProbability": -3.801846104782338
+        },
+        {
+            "expression": "mathDomain_divone",
+            "logProbability": -3.857415955937149
+        },
+        {
+            "expression": "mathDomain_newConstGen",
+            "logProbability": -2.8564702062204836
+        },
+        {
+            "expression": "mathDomain_0",
+            "logProbability": -1.3450127021465867
+        },
+        {
+            "expression": "mathDomain_1",
+            "logProbability": -1.4618770422858978
+        },
+        {
+            "expression": "mathDomain_2",
+            "logProbability": -1.8150163313923224
+        },
+        {
+            "expression": "mathDomain_3",
+            "logProbability": -1.5571872220902225
+        },
+        {
+            "expression": "mathDomain_4",
+            "logProbability": -1.6132766887412666
+        },
+        {
+            "expression": "mathDomain_5",
+            "logProbability": -2.19722457733622
+        },
+        {
+            "expression": "mathDomain_6",
+            "logProbability": -2.4964674721890767
+        },
+        {
+            "expression": "mathDomain_7",
+            "logProbability": -2.345644582454493
+        },
+        {
+            "expression": "mathDomain_8",
+            "logProbability": -2.7023195263932256
+        },
+        {
+            "expression": "mathDomain_9",
+            "logProbability": -2.345644582454493
+        },
+        {
+            "expression": "mathDomain_10",
+            "logProbability": -2.8564702062204836
+        },
+        {
+            "expression": "#(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_swap (mathDomain_div (mathDomain_simplify (mathDomain_rrotate $0 mathDomain_1) mathDomain_0) mathDomain_2) mathDomain_2) mathDomain_1) mathDomain_0))",
+            "logProbability": -3.4598592943107414
+        },
+        {
+            "expression": "#(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_swap (mathDomain_div $0 mathDomain_2) mathDomain_2) mathDomain_1) mathDomain_0))",
+            "logProbability": -2.6489290780944126
+        },
+        {
+            "expression": "#(lambda (mathDomain_simplify (mathDomain_rrotate $0 mathDomain_1) mathDomain_0))",
+            "logProbability": -2.1816554005719757
+        },
+        {
+            "expression": "#(lambda (#(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_swap (mathDomain_div (mathDomain_simplify (mathDomain_rrotate $0 mathDomain_1) mathDomain_0) mathDomain_2) mathDomain_2) mathDomain_1) mathDomain_0)) (mathDomain_swap (mathDomain_sub $0 mathDomain_2) mathDomain_2)))",
+            "logProbability": -2.7359404550840427
+        },
+        {
+            "expression": "#(lambda (mathDomain_simplify (mathDomain_dist $0 mathDomain_1) mathDomain_0))",
+            "logProbability": -2.3490083921532117
+        },
+        {
+            "expression": "#(lambda (mathDomain_swap (#(lambda (mathDomain_simplify (mathDomain_rrotate $0 mathDomain_1) mathDomain_0)) (mathDomain_mult (#(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_swap (mathDomain_div (mathDomain_simplify (mathDomain_rrotate $0 mathDomain_1) mathDomain_0) mathDomain_2) mathDomain_2) mathDomain_1) mathDomain_0)) (mathDomain_sub $0 mathDomain_5)) mathDomain_3)) mathDomain_0))",
+            "logProbability": -3.2367157429965316
+        },
+        {
+            "expression": "#(lambda (#(lambda (mathDomain_simplify (mathDomain_rrotate $0 mathDomain_1) mathDomain_0)) (mathDomain_mult (mathDomain_swap (mathDomain_simplify (mathDomain_rrotate $0 mathDomain_4) mathDomain_0) mathDomain_1) mathDomain_3)))",
+            "logProbability": -3.1879255788270995
+        },
+        {
+            "expression": "#(lambda (mathDomain_swap $0 mathDomain_0))",
+            "logProbability": -2.3005560087672654
+        },
+        {
+            "expression": "#(lambda (#(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_swap (mathDomain_div (mathDomain_simplify (mathDomain_rrotate $0 mathDomain_1) mathDomain_0) mathDomain_2) mathDomain_2) mathDomain_1) mathDomain_0)) (mathDomain_sub $0 mathDomain_5)))",
+            "logProbability": -2.459687078455884
+        },
+        {
+            "expression": "#(lambda (#(lambda (mathDomain_simplify (mathDomain_rrotate $0 mathDomain_1) mathDomain_0)) (mathDomain_add (mathDomain_revdist (mathDomain_addzero $0 mathDomain_9) mathDomain_7) mathDomain_5)))",
+            "logProbability": -3.1879255788270995
+        }
+    ]
+}

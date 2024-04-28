@@ -1,0 +1,340 @@
+{
+    "cmd": "python run_iterative_experiment.py --experiment_name test_runs_32 --experiment_type dreamcoder --domain re2 --encoder re2 --iterations 5 --global_batch_sizes 32 --enumeration_timeout 300 --recognition_train_steps 100 --random_seeds 111 222 333 --verbose --syMetricMethod Rewrite",
+    "args": {
+        "iterations": 10,
+        "abstraction_prefix": "fn_",
+        "previous_abstractions": 0,
+        "shuffle": false,
+        "truncate": null,
+        "no_opt": false,
+        "silent": true,
+        "verbose_rewrite": false,
+        "step": {
+            "max_arity": 3,
+            "threads": 1,
+            "no_stats": false,
+            "batch": 1,
+            "dynamic_batch": false,
+            "eta_long": true,
+            "no_curried_metavars": false,
+            "no_curried_bodies": false,
+            "inv_candidates": 1,
+            "hole_choice": "DepthFirst",
+            "cost": {
+                "cost_lam": 1,
+                "cost_app": 1,
+                "cost_var": 100,
+                "cost_ivar": 100,
+                "cost_prim_default": 100
+            },
+            "no_mismatch_check": false,
+            "follow": null,
+            "follow_prune": false,
+            "verbose_worklist": false,
+            "verbose_best": false,
+            "print_stats": 0,
+            "show_rewritten": false,
+            "rewritten_dreamcoder": true,
+            "rewritten_intermediates": false,
+            "inv_arg_cap": false,
+            "allow_single_task": false,
+            "no_opt_single_use": false,
+            "no_opt_upper_bound": false,
+            "no_opt_force_multiuse": false,
+            "no_opt_useless_abstract": false,
+            "no_opt_arity_zero": false,
+            "no_other_util": true,
+            "structure_penalty": 1.0,
+            "rewrite_check": false,
+            "utility_by_rewrite": true,
+            "dreamcoder_comparison": false,
+            "quiet": true,
+            "fused_lambda_tags": {
+                "tags": null
+            }
+        }
+    },
+    "original_cost": 5961,
+    "final_cost": 3435,
+    "compression_ratio": 1.7353711790393014,
+    "num_abstractions": 7,
+    "original": [
+        "(lam (_rflatten (_rappend _d (_rsplit _a $0))))",
+        "(lam (_rflatten (_rappend _d (_rsplit _b $0))))",
+        "(lam (_rflatten (_rappend _d (_rsplit _c $0))))",
+        "(lam (_rflatten (_rappend _d (_rsplit _d $0))))",
+        "(lam (_rflatten (_rappend _d (_rsplit _p $0))))",
+        "(lam (_rflatten (map (lam (_rconcat $0 _v)) (_rsplit _rdot $0))))",
+        "(lam (_rflatten (map (lam (_rconcat $0 _v)) (_rsplit _rempty $0))))",
+        "(lam (_rflatten (_rappend _rempty (map (lam (_rconcat $0 _v)) (_rsplit _rempty $0)))))",
+        "(lam (_rflatten (map (lam (_rconcat $0 _v)) (car (map (lam (_rsplit _rempty $1)) (_rsplit _rempty $0))))))",
+        "(lam (_rflatten (map (lam (car (map (lam (_rconcat $1 _v)) (_rsplit _rempty $1)))) (_rsplit _rempty $0))))",
+        "(lam (_rflatten (cons _w (cons _i (cdr (_rsplit _rdot $0))))))",
+        "(lam (_rflatten (cons _w (cons _i (cdr (_rsplit _rempty $0))))))",
+        "(lam (_rflatten (cons (_rconcat _w _i) (cdr (_rsplit _rdot $0)))))",
+        "(lam (_rflatten (cons (_rconcat _w _i) (cdr (_rsplit _rempty $0)))))",
+        "(lam (_rflatten (cons _rempty (cons _w (cons _i (cdr (_rsplit _rempty $0)))))))",
+        "(lam (_rflatten (cons _b (cdr (_rsplit _rdot $0)))))",
+        "(lam (_rflatten (cons _b (cdr (_rsplit _rempty $0)))))",
+        "(lam (_rflatten (cons _b (cdr (_rsplit (_rnot _a) $0)))))",
+        "(lam (_rflatten (cons _b (cdr (_rsplit (_rnot _b) $0)))))",
+        "(lam (_rflatten (cons _b (cdr (_rsplit (_rnot _rdot) $0)))))",
+        "(lam (_rflatten (map (lam (_rconcat _w _t)) (_rsplit _rdot $0))))",
+        "(lam (_rflatten (map (lam (_rconcat _w _t)) (_rsplit _rempty $0))))",
+        "(lam (_rflatten (map (lam (_rconcat _w _t)) (_rappend _d (_rrevcdr (_rsplit _rempty $0))))))",
+        "(lam (_rflatten (map (lam (_rconcat _w _t)) (_rappend _i (_rrevcdr (_rsplit _rempty $0))))))",
+        "(lam (_rflatten (map (lam (_rconcat _w _t)) (cons _i (cdr (_rsplit _rempty $0))))))",
+        "(lam (_rflatten (_rappend _i (_rrevcdr (_rsplit _rdot $0)))))",
+        "(lam (_rflatten (_rappend _i (_rrevcdr (_rsplit _rempty $0)))))",
+        "(lam (_rflatten (_rappend _i (_rrevcdr (_rsplit (_rnot _a) $0)))))",
+        "(lam (_rflatten (_rappend _i (_rrevcdr (_rsplit (_rnot _b) $0)))))",
+        "(lam (_rflatten (_rappend _i (_rrevcdr (_rsplit (_rnot _rdot) $0)))))",
+        "(lam (if (_rmatch _i (car (cdr (_rsplit _rempty $0)))) (_rflatten (cdr (_rsplit _rempty $0))) $0))"
+    ],
+    "rewritten": [
+        "(lam (fn_5 (_rsplit _a $0) _d))",
+        "(lam (fn_5 (_rsplit _b $0) _d))",
+        "(lam (fn_5 (_rsplit _c $0) _d))",
+        "(lam (fn_5 (_rsplit _d $0) _d))",
+        "(lam (fn_5 (_rsplit _p $0) _d))",
+        "(lam (_rflatten (map (lam (_rconcat $0 _v)) (_rsplit _rdot $0))))",
+        "(lam (fn_1 $0 (lam (_rconcat $0 _v))))",
+        "(lam (fn_5 (map (lam (_rconcat $0 _v)) (_rsplit _rempty $0)) _rempty))",
+        "(lam (_rflatten (map (lam (_rconcat $0 _v)) (car (map (lam (_rsplit _rempty $1)) (_rsplit _rempty $0))))))",
+        "(lam (fn_1 $0 (lam (car (map (lam (_rconcat $1 _v)) (_rsplit _rempty $1))))))",
+        "(lam (_rflatten (cons _w (cons _i (cdr (_rsplit _rdot $0))))))",
+        "(lam (_rflatten (cons _w (cons _i (fn_0 $0)))))",
+        "(lam (_rflatten (cons (fn_4 _i) (cdr (_rsplit _rdot $0)))))",
+        "(lam (fn_2 $0 (fn_4 _i)))",
+        "(lam (_rflatten (cons _rempty (cons _w (cons _i (fn_0 $0))))))",
+        "(lam (_rflatten (cons _b (cdr (_rsplit _rdot $0)))))",
+        "(lam (fn_2 $0 _b))",
+        "(lam (_rflatten (cons _b (cdr (_rsplit (_rnot _a) $0)))))",
+        "(lam (_rflatten (cons _b (cdr (_rsplit (_rnot _b) $0)))))",
+        "(lam (_rflatten (cons _b (cdr (_rsplit (_rnot _rdot) $0)))))",
+        "(lam (_rflatten (map (lam (fn_4 _t)) (_rsplit _rdot $0))))",
+        "(lam (fn_6 (fn_4 _t) $0))",
+        "(lam (_rflatten (map (lam (fn_4 _t)) (_rappend _d (_rrevcdr (_rsplit _rempty $0))))))",
+        "(lam (_rflatten (map (lam (fn_4 _t)) (fn_3 $0))))",
+        "(lam (_rflatten (map (lam (fn_4 _t)) (cons _i (fn_0 $0)))))",
+        "(lam (fn_5 (_rrevcdr (_rsplit _rdot $0)) _i))",
+        "(lam (_rflatten (fn_3 $0)))",
+        "(lam (fn_5 (_rrevcdr (_rsplit (_rnot _a) $0)) _i))",
+        "(lam (fn_5 (_rrevcdr (_rsplit (_rnot _b) $0)) _i))",
+        "(lam (fn_5 (_rrevcdr (_rsplit (_rnot _rdot) $0)) _i))",
+        "(lam (if (_rmatch _i (car (fn_0 $0))) (_rflatten (fn_0 $0)) $0))"
+    ],
+    "rewritten_dreamcoder": [
+        "(lambda (#(lambda (lambda (_rflatten (_rappend $0 $1)))) (_rsplit _a $0) _d))",
+        "(lambda (#(lambda (lambda (_rflatten (_rappend $0 $1)))) (_rsplit _b $0) _d))",
+        "(lambda (#(lambda (lambda (_rflatten (_rappend $0 $1)))) (_rsplit _c $0) _d))",
+        "(lambda (#(lambda (lambda (_rflatten (_rappend $0 $1)))) (_rsplit _d $0) _d))",
+        "(lambda (#(lambda (lambda (_rflatten (_rappend $0 $1)))) (_rsplit _p $0) _d))",
+        "(lambda (_rflatten (map (lambda (_rconcat $0 _v)) (_rsplit _rdot $0))))",
+        "(lambda (#(lambda (lambda (_rflatten (map $0 (_rsplit _rempty $1))))) $0 (lambda (_rconcat $0 _v))))",
+        "(lambda (#(lambda (lambda (_rflatten (_rappend $0 $1)))) (map (lambda (_rconcat $0 _v)) (_rsplit _rempty $0)) _rempty))",
+        "(lambda (_rflatten (map (lambda (_rconcat $0 _v)) (car (map (lambda (_rsplit _rempty $1)) (_rsplit _rempty $0))))))",
+        "(lambda (#(lambda (lambda (_rflatten (map $0 (_rsplit _rempty $1))))) $0 (lambda (car (map (lambda (_rconcat $1 _v)) (_rsplit _rempty $1))))))",
+        "(lambda (_rflatten (cons _w (cons _i (cdr (_rsplit _rdot $0))))))",
+        "(lambda (_rflatten (cons _w (cons _i (#(lambda (cdr (_rsplit _rempty $0))) $0)))))",
+        "(lambda (_rflatten (cons (#(lambda (_rconcat _w $0)) _i) (cdr (_rsplit _rdot $0)))))",
+        "(lambda (#(lambda (lambda (_rflatten (cons $0 (#(lambda (cdr (_rsplit _rempty $0))) $1))))) $0 (#(lambda (_rconcat _w $0)) _i)))",
+        "(lambda (_rflatten (cons _rempty (cons _w (cons _i (#(lambda (cdr (_rsplit _rempty $0))) $0))))))",
+        "(lambda (_rflatten (cons _b (cdr (_rsplit _rdot $0)))))",
+        "(lambda (#(lambda (lambda (_rflatten (cons $0 (#(lambda (cdr (_rsplit _rempty $0))) $1))))) $0 _b))",
+        "(lambda (_rflatten (cons _b (cdr (_rsplit (_rnot _a) $0)))))",
+        "(lambda (_rflatten (cons _b (cdr (_rsplit (_rnot _b) $0)))))",
+        "(lambda (_rflatten (cons _b (cdr (_rsplit (_rnot _rdot) $0)))))",
+        "(lambda (_rflatten (map (lambda (#(lambda (_rconcat _w $0)) _t)) (_rsplit _rdot $0))))",
+        "(lambda (#(lambda (lambda (#(lambda (lambda (_rflatten (map $0 (_rsplit _rempty $1))))) $0 (lambda $2)))) (#(lambda (_rconcat _w $0)) _t) $0))",
+        "(lambda (_rflatten (map (lambda (#(lambda (_rconcat _w $0)) _t)) (_rappend _d (_rrevcdr (_rsplit _rempty $0))))))",
+        "(lambda (_rflatten (map (lambda (#(lambda (_rconcat _w $0)) _t)) (#(lambda (_rappend _i (_rrevcdr (_rsplit _rempty $0)))) $0))))",
+        "(lambda (_rflatten (map (lambda (#(lambda (_rconcat _w $0)) _t)) (cons _i (#(lambda (cdr (_rsplit _rempty $0))) $0)))))",
+        "(lambda (#(lambda (lambda (_rflatten (_rappend $0 $1)))) (_rrevcdr (_rsplit _rdot $0)) _i))",
+        "(lambda (_rflatten (#(lambda (_rappend _i (_rrevcdr (_rsplit _rempty $0)))) $0)))",
+        "(lambda (#(lambda (lambda (_rflatten (_rappend $0 $1)))) (_rrevcdr (_rsplit (_rnot _a) $0)) _i))",
+        "(lambda (#(lambda (lambda (_rflatten (_rappend $0 $1)))) (_rrevcdr (_rsplit (_rnot _b) $0)) _i))",
+        "(lambda (#(lambda (lambda (_rflatten (_rappend $0 $1)))) (_rrevcdr (_rsplit (_rnot _rdot) $0)) _i))",
+        "(lambda (if (_rmatch _i (car (#(lambda (cdr (_rsplit _rempty $0))) $0))) (_rflatten (#(lambda (cdr (_rsplit _rempty $0))) $0)) $0))"
+    ],
+    "abstractions": [
+        {
+            "body": "(cdr (_rsplit _rempty #0))",
+            "dreamcoder": "#(lambda (cdr (_rsplit _rempty $0)))",
+            "arity": 1,
+            "name": "fn_0",
+            "utility": 808,
+            "final_cost": 5153,
+            "compression_ratio": 1.1568018629924315,
+            "cumulative_compression_ratio": 1.1568018629924315,
+            "num_uses": 7,
+            "rewritten": null,
+            "rewritten_dreamcoder": null,
+            "uses": [
+                {
+                    "fn_0 $0": "(cdr (_rsplit _rempty $0))"
+                }
+            ],
+            "dc_comparison_millis": null
+        },
+        {
+            "body": "(_rflatten (map #1 (_rsplit _rempty #0)))",
+            "dreamcoder": "#(lambda (lambda (_rflatten (map $0 (_rsplit _rempty $1)))))",
+            "arity": 2,
+            "name": "fn_1",
+            "utility": 606,
+            "final_cost": 4547,
+            "compression_ratio": 1.1332746866065537,
+            "cumulative_compression_ratio": 1.3109742687486254,
+            "num_uses": 3,
+            "rewritten": null,
+            "rewritten_dreamcoder": null,
+            "uses": [
+                {
+                    "fn_1 $0 (lam (_rconcat $0 _v))": "(_rflatten (map (lam (_rconcat $0 _v)) (_rsplit _rempty $0)))"
+                },
+                {
+                    "fn_1 $0 (lam (_rconcat _w _t))": "(_rflatten (map (lam (_rconcat _w _t)) (_rsplit _rempty $0)))"
+                },
+                {
+                    "fn_1 $0 (lam (car (map (lam (_rconcat $1 _v)) (_rsplit _rempty $1))))": "(_rflatten (map (lam (car (map (lam (_rconcat $1 _v)) (_rsplit _rempty $1)))) (_rsplit _rempty $0)))"
+                }
+            ],
+            "dc_comparison_millis": null
+        },
+        {
+            "body": "(_rflatten (cons #1 (fn_0 #0)))",
+            "dreamcoder": "#(lambda (lambda (_rflatten (cons $0 (#(lambda (cdr (_rsplit _rempty $0))) $1)))))",
+            "arity": 2,
+            "name": "fn_2",
+            "utility": 404,
+            "final_cost": 4143,
+            "compression_ratio": 1.0975138788317644,
+            "cumulative_compression_ratio": 1.43881245474294,
+            "num_uses": 2,
+            "rewritten": null,
+            "rewritten_dreamcoder": null,
+            "uses": [
+                {
+                    "fn_2 $0 (_rconcat _w _i)": "(_rflatten (cons (_rconcat _w _i) (fn_0 $0)))"
+                },
+                {
+                    "fn_2 $0 _b": "(_rflatten (cons _b (fn_0 $0)))"
+                }
+            ],
+            "dc_comparison_millis": null
+        },
+        {
+            "body": "(_rappend _i (_rrevcdr (_rsplit _rempty #0)))",
+            "dreamcoder": "#(lambda (_rappend _i (_rrevcdr (_rsplit _rempty $0))))",
+            "arity": 1,
+            "name": "fn_3",
+            "utility": 404,
+            "final_cost": 3739,
+            "compression_ratio": 1.1080502808237496,
+            "cumulative_compression_ratio": 1.594276544530623,
+            "num_uses": 2,
+            "rewritten": null,
+            "rewritten_dreamcoder": null,
+            "uses": [
+                {
+                    "fn_3 $0": "(_rappend _i (_rrevcdr (_rsplit _rempty $0)))"
+                }
+            ],
+            "dc_comparison_millis": null
+        },
+        {
+            "body": "(_rconcat _w #0)",
+            "dreamcoder": "#(lambda (_rconcat _w $0))",
+            "arity": 1,
+            "name": "fn_4",
+            "utility": 202,
+            "final_cost": 3537,
+            "compression_ratio": 1.057110545660164,
+            "cumulative_compression_ratio": 1.6853265479219677,
+            "num_uses": 7,
+            "rewritten": null,
+            "rewritten_dreamcoder": null,
+            "uses": [
+                {
+                    "fn_4 _i": "(_rconcat _w _i)"
+                },
+                {
+                    "fn_4 _t": "(_rconcat _w _t)"
+                }
+            ],
+            "dc_comparison_millis": null
+        },
+        {
+            "body": "(_rflatten (_rappend #1 #0))",
+            "dreamcoder": "#(lambda (lambda (_rflatten (_rappend $0 $1))))",
+            "arity": 2,
+            "name": "fn_5",
+            "utility": 101,
+            "final_cost": 3436,
+            "compression_ratio": 1.029394644935972,
+            "cumulative_compression_ratio": 1.7348661233993015,
+            "num_uses": 10,
+            "rewritten": null,
+            "rewritten_dreamcoder": null,
+            "uses": [
+                {
+                    "fn_5 (_rsplit _a $0) _d": "(_rflatten (_rappend _d (_rsplit _a $0)))"
+                },
+                {
+                    "fn_5 (_rsplit _b $0) _d": "(_rflatten (_rappend _d (_rsplit _b $0)))"
+                },
+                {
+                    "fn_5 (_rsplit _c $0) _d": "(_rflatten (_rappend _d (_rsplit _c $0)))"
+                },
+                {
+                    "fn_5 (_rsplit _d $0) _d": "(_rflatten (_rappend _d (_rsplit _d $0)))"
+                },
+                {
+                    "fn_5 (_rsplit _p $0) _d": "(_rflatten (_rappend _d (_rsplit _p $0)))"
+                },
+                {
+                    "fn_5 (_rrevcdr (_rsplit (_rnot _a) $0)) _i": "(_rflatten (_rappend _i (_rrevcdr (_rsplit (_rnot _a) $0))))"
+                },
+                {
+                    "fn_5 (_rrevcdr (_rsplit (_rnot _b) $0)) _i": "(_rflatten (_rappend _i (_rrevcdr (_rsplit (_rnot _b) $0))))"
+                },
+                {
+                    "fn_5 (_rrevcdr (_rsplit (_rnot _rdot) $0)) _i": "(_rflatten (_rappend _i (_rrevcdr (_rsplit (_rnot _rdot) $0))))"
+                },
+                {
+                    "fn_5 (_rrevcdr (_rsplit _rdot $0)) _i": "(_rflatten (_rappend _i (_rrevcdr (_rsplit _rdot $0))))"
+                },
+                {
+                    "fn_5 (map (lam (_rconcat $0 _v)) (_rsplit _rempty $0)) _rempty": "(_rflatten (_rappend _rempty (map (lam (_rconcat $0 _v)) (_rsplit _rempty $0))))"
+                }
+            ],
+            "dc_comparison_millis": null
+        },
+        {
+            "body": "(fn_1 #1 (lam #0))",
+            "dreamcoder": "#(lambda (lambda (#(lambda (lambda (_rflatten (map $0 (_rsplit _rempty $1))))) $0 (lambda $2))))",
+            "arity": 2,
+            "name": "fn_6",
+            "utility": 1,
+            "final_cost": 3435,
+            "compression_ratio": 1.0002911208151384,
+            "cumulative_compression_ratio": 1.7353711790393014,
+            "num_uses": 3,
+            "rewritten": null,
+            "rewritten_dreamcoder": null,
+            "uses": [
+                {
+                    "fn_6 (_rconcat #0 _v) $0": "(fn_1 $0 (lam (_rconcat $0 _v)))"
+                },
+                {
+                    "fn_6 (car (map (lam (_rconcat #0 _v)) (_rsplit _rempty $0))) $0": "(fn_1 $0 (lam (car (map (lam (_rconcat $1 _v)) (_rsplit _rempty $1)))))"
+                },
+                {
+                    "fn_6 (fn_4 _t) $0": "(fn_1 $0 (lam (fn_4 _t)))"
+                }
+            ],
+            "dc_comparison_millis": null
+        }
+    ]
+}
