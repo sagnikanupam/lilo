@@ -260,11 +260,11 @@ class StitchProposerLibraryLearner(StitchBase, model_loaders.ModelLoader):
             weights=weights_list,
             )
         
+        #####UPDATE WEIGHTS - SAGNIK#####
         rewritten_progs = stitch.rewrite(abstractions=compression_result.abstractions, **stitch_kwargs)
         name_mapping = stitch.name_mapping_dreamcoder(frontiers_dict) + stitch.name_mapping_stitch(compression_result.json)
         rewritten_dc = stitch.stitch_to_dreamcoder(rewritten_progs.rewritten, name_mapping)
         originals_dc = stitch.stitch_to_dreamcoder(stitch_kwargs['programs'], name_mapping)
-        
         #####UPDATE WEIGHTS - SAGNIK#####
         if experiment_state.weightUpdate=="PercentProgramsUpdated":
             if len(rewritten_dc) == len(originals_dc):
@@ -279,7 +279,7 @@ class StitchProposerLibraryLearner(StitchBase, model_loaders.ModelLoader):
                 for task in total_programs_for_tasks.keys():
                     experiment_state.weights[task] -= (modified_programs_for_tasks[task]/total_programs_for_tasks[task])/experiment_state.config["experiment_iterator"]["max_iterations"]
             print(f"\n This is what updated weights look like: {experiment_state.weights}")
-        ##########
+        ######
 
         abstractions = [
             Invented.parse(abs["dreamcoder"])
