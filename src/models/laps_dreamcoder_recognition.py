@@ -165,6 +165,7 @@ class LAPSDreamCoderRecognition:
             nearest_encoder=None,
             nearest_tasks=[],
             id=0,
+            replaceableTokens=experiment_state.syMetricReplaceableTokens, #SAGNIK FOR SYMETRIC-BASED REWRITES
         )
 
         # Train the model.
