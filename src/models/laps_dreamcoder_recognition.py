@@ -117,12 +117,14 @@ class LAPSDreamCoderRecognition:
         for i, token in enumerate(program_tokens):
             if token in replaceableTokens:
                 replaceable_indices.append(i)
-        index = replaceable_indices[random.randint(0, len(replaceable_indices)-1)]
-        neighborhood_program = [token for token in program_tokens]
-        token = replaceableTokens[random.randint(0, len(replaceableTokens)-1)]
-        neighborhood_program[index] = token
-        neighborhood_program_str = " ".join(neighborhood_program)
-        return neighborhood_program_str
+        if (len(replaceable_indices) > 0):
+            index = replaceable_indices[random.randint(0, len(replaceable_indices)-1)]
+            neighborhood_program = [token for token in program_tokens]
+            token = replaceableTokens[random.randint(0, len(replaceableTokens)-1)]
+            neighborhood_program[index] = token
+            neighborhood_program_str = " ".join(neighborhood_program)
+            return neighborhood_program_str
+        return program
 
     def optimize_model_for_frontiers(
         self,
@@ -208,15 +210,16 @@ class LAPSDreamCoderRecognition:
                 for entry in frontier_json["programs"]:
                     program_to_be_rewritten = entry["program"]
                     rewritten_program = self.rewriteProgram(program_to_be_rewritten, experiment_state.syMetricReplaceableTokens) #rewriteProgram returns string representation of program
-                    new_frontier_json = {
-                            "request": train_frontier.task.request.json(),
-                            "task": str(train_frontier.task),
-                            "programs": [
-                                {"program": rewritten_program, "logLikelihood": entry["logLikelihood"], "origin": entry.get("origin")}
-                            ],
-                    }
-                    new_frontier = Frontier.from_json(train_frontier.task, experiment_state.models[model_loaders.GRAMMAR],new_frontier_json)
-                    new_train_frontiers.append(new_frontier)
+                    if rewritten_program != program_to_be_rewritten:
+                        new_frontier_json = {
+                                "request": train_frontier.task.request.json(),
+                                "task": str(train_frontier.task),
+                                "programs": [
+                                    {"program": rewritten_program, "logLikelihood": entry["logLikelihood"], "origin": entry.get("origin")}
+                                ],
+                        }
+                        new_frontier = Frontier.from_json(train_frontier.task, experiment_state.models[model_loaders.GRAMMAR],new_frontier_json)
+                        new_train_frontiers.append(new_frontier)
             all_train_frontiers+=new_train_frontiers
 
         # Returns any existing samples in the experiment state
