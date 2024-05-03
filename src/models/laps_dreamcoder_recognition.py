@@ -5,6 +5,7 @@ Utility wrapper function around the DreamCoder recognition model. Elevates commo
 """
 import src.models.model_loaders as model_loaders
 from dreamcoder.recognition import RecognitionModel
+from dreamcoder.frontier import Frontier
 from src.experiment_iterator import INIT_FRONTIERS_FROM_CHECKPOINT, SKIPPED_MODEL_FN
 from src.task_loaders import *
 
@@ -99,6 +100,30 @@ class LAPSDreamCoderRecognition:
 
         experiment_state.best_search_times[task_split].update(best_search_time_per_task)
 
+    @staticmethod
+    def rewriteProgram(program:str, replaceableTokens: list):
+        """
+        Randomly choses a replaceable index in the original program, and returns a string representation of a program that substitutes a randomly chosen replaceable token in place of the original token.
+
+        Args:
+            program (str): a string representing a program that can be parsed by Program.parse()
+            replaceableTokens (list): a list of strings which represent a "replaceable" token i.e. each token in the list can be substituted by another in the list without a syntax error on executing the program. 
+
+        Returns:
+            str: A string representing the rewritten program
+        """
+        program_tokens = program.split()
+        replaceable_indices = []
+        for i, token in enumerate(program_tokens):
+            if token in replaceableTokens:
+                replaceable_indices.append(i)
+        index = replaceable_indices[random.randint(0, len(replaceable_indices))]
+        neighborhood_program = [token for token in program_tokens]
+        token = replaceableTokens[random.randint(0, len(replaceableTokens))]
+        neighborhood_program[index] = token
+        neighborhood_program_str = " ".join(neighborhood_program)
+        return neighborhood_program_str
+
     def optimize_model_for_frontiers(
         self,
         experiment_state,
@@ -165,13 +190,34 @@ class LAPSDreamCoderRecognition:
             nearest_encoder=None,
             nearest_tasks=[],
             id=0,
-            replaceableTokens=experiment_state.syMetricReplaceableTokens, #SAGNIK FOR SYMETRIC-BASED REWRITES
         )
 
         # Train the model.
         all_train_frontiers = experiment_state.get_frontiers_for_ids(
             task_split=task_split, task_ids=task_batch_ids
         )
+
+        ##SAGNIK REWRITE CODE
+        """
+        Rewrites programs with one-edit distance, then creates and returns new frontiers.
+        """
+        if (experiment_state.syMetricMethod == "Rewrite" and len(experiment_state.syMetricReplaceableTokens)>0):
+            new_train_frontiers = []
+            for train_frontier in all_train_frontiers:
+                frontier_json = train_frontier.json()
+                for entry in frontier_json["programs"]:
+                    program_to_be_rewritten = entry["program"]
+                    rewritten_program = self.rewriteProgram(program_to_be_rewritten, experiment_state.syMetricReplaceableTokens) #rewriteProgram returns string representation of program
+                    new_frontier_json = {
+                            "request": train_frontier.task.request.json(),
+                            "task": str(train_frontier.task),
+                            "programs": [
+                                {"program": rewritten_program, "logLikelihood": entry["logLikelihood"], "origin": entry.get("origin")}
+                            ],
+                    }
+                    new_frontier = Frontier.from_json(train_frontier.task, experiment_state.models[model_loaders.GRAMMAR],new_frontier_json)
+                    new_train_frontiers.append(new_frontier)
+            all_train_frontiers+=new_train_frontiers
 
         # Returns any existing samples in the experiment state
         def get_sample_frontiers():

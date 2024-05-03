@@ -804,9 +804,7 @@ class RecognitionModel(nn.Module):
         nearest_tasks=None,
         helmholtz_nearest_language=0,
         helmholtz_translations=False,
-        id=0,
-        replaceableTokens=[], #SAGNIK FOR SYMETRIC-BASED REWRITES
-    ):
+        id=0):
         super(RecognitionModel, self).__init__()
         self.id = id
         self.trained = False
@@ -1314,9 +1312,6 @@ class RecognitionModel(nn.Module):
                 self.request = frontier.task.request
                 self.task = None
                 self.programs = [e.program for e in frontier]
-                print(self.programs)
-                if(len(self.programs)>0):
-                    print(type(self.programs[0]))
                 self.program_tokens = [e.tokens for e in frontier]
                 self.frontier = Thunk(
                     lambda: owner.replaceProgramsWithLikelihoodSummaries(frontier)
