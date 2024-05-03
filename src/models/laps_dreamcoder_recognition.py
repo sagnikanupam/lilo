@@ -117,9 +117,9 @@ class LAPSDreamCoderRecognition:
         for i, token in enumerate(program_tokens):
             if token in replaceableTokens:
                 replaceable_indices.append(i)
-        index = replaceable_indices[random.randint(0, len(replaceable_indices))]
+        index = replaceable_indices[random.randint(0, len(replaceable_indices)-1)]
         neighborhood_program = [token for token in program_tokens]
-        token = replaceableTokens[random.randint(0, len(replaceableTokens))]
+        token = replaceableTokens[random.randint(0, len(replaceableTokens)-1)]
         neighborhood_program[index] = token
         neighborhood_program_str = " ".join(neighborhood_program)
         return neighborhood_program_str
