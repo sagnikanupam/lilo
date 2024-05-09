@@ -5,9 +5,27 @@
             "model_type": "grammar",
             "model_fn": "infer_programs_for_tasks",
             "task_split": "train",
-            "time_start": 1714706018.5087056,
-            "time_end": 1714707018.5700686,
-            "time_elapsed": 1000.0613629817963
+            "time_start": 1714707926.3594623,
+            "time_end": 1714708927.5984511,
+            "time_elapsed": 1001.2389888763428
+        },
+        {
+            "curr_iteration": 0,
+            "model_type": "amortized_synthesis",
+            "model_fn": "optimize_model_for_frontiers",
+            "task_split": "train",
+            "time_start": 1714708927.600633,
+            "time_end": 1714709290.9732435,
+            "time_elapsed": 363.37261056900024
+        },
+        {
+            "curr_iteration": 0,
+            "model_type": "amortized_synthesis",
+            "model_fn": "infer_programs_for_tasks",
+            "task_split": "train",
+            "time_start": 1714709290.9747343,
+            "time_end": 1714710295.2496824,
+            "time_elapsed": 1004.2749481201172
         }
     ]
 }
