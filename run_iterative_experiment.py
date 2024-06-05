@@ -220,7 +220,7 @@ parser.add_argument(
 parser.add_argument(
     "--syMetricMethod",
     default="None",
-    choices=["None", "Rewrite"],
+    choices=["None", "Rewrite", "RewriteEnumeration"],
     help= "Type of technique for integrating syMetric into DreamCoder enumeration. `None`: No integration. `Rewrite`: Integrate syMetric's Rewrite rules into DreamCoder enumeration."
 )
 

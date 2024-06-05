@@ -375,8 +375,8 @@ class Grammar(object):
                 eprint("request is", request)
                 eprint("xs", xs)
                 eprint("environment", environment)
-                assert False
-            return context, None
+                # assert False
+            return context, LikelihoodSummary()
 
         thisSummary = LikelihoodSummary()
         thisSummary.record(
@@ -566,7 +566,7 @@ class Grammar(object):
                     )
                     for e in f
                     for summary in [
-                        self.closedLikelihoodSummary(f.task.request, e.program)
+                        self.closedLikelihoodSummary(f.task.request, e.program, True)
                     ]
                 ],
                 task=f.task,

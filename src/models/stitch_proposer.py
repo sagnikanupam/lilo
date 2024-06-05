@@ -119,8 +119,8 @@ class StitchProposerLibraryLearner(StitchBase, model_loaders.ModelLoader):
             ### SAGNIK REWRITE RULES APPLICATION FOR SYMETRIC
             """
             Add programs that are 1 primitive away from the original program as per rewrite rules defined in experiment_state.syMetricReplaceableTokens.
-            
-            if experiment_state.syMetricMethod == "Rewrite":
+"""            
+            if experiment_state.syMetricMethod == "RewriteEnumeration":
                 program_tokens = str(program).split()
                 replaceable_indices = []
                 for i, token in enumerate(program_tokens):
@@ -134,7 +134,6 @@ class StitchProposerLibraryLearner(StitchBase, model_loaders.ModelLoader):
                         program_list.append(neighborhood_program_str)
                         symetric_rewrite_program_counter += 1
                 print(f"Number of symetric Rewrite Programs added for task_id {str(task_id)} are {str(symetric_rewrite_program_counter)}")
-            """
             if matching_tasks:
                 if len(matching_tasks) > 1:
                     logging.warning(
