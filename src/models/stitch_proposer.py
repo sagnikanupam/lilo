@@ -131,8 +131,11 @@ class StitchProposerLibraryLearner(StitchBase, model_loaders.ModelLoader):
                     for token in experiment_state.syMetricReplaceableTokens:
                         neighborhood_program[i] = token
                         neighborhood_program_str = " ".join(neighborhood_program)
-                        program_list.append(neighborhood_program_str)
-                        symetric_rewrite_program_counter += 1
+                        # SAGNIK - Add only useful programs
+                        for task in matching_tasks:
+                            if task.check(Program.parse(neighborhood_program_str), timeout=1000):
+                                program_list.append(neighborhood_program_str)
+                                symetric_rewrite_program_counter += 1
                 print(f"Number of symetric Rewrite Programs added for task_id {str(task_id)} are {str(symetric_rewrite_program_counter)}")
             if matching_tasks:
                 if len(matching_tasks) > 1:
