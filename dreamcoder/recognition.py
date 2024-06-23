@@ -19,21 +19,7 @@ import numpy as np
 import json
 
 
-def variable(x : list | np.ndarray | torch.Tensor, volatile=False, cuda=False):
-    """
-    Converts x into a PyTorch Variable. If x is a list, converts it into a numpy array first.
-
-    Note: Variables are being deprecated in newer PyTorch versions.
-
-    Args:
-        x (array-like): An array-like object for conversion into a Variable.
-        volatile (bool, optional): Set to true if inference-only and no backpropagation. Defaults to False.
-        cuda (bool, optional): Converts x into a cuda tensor if x is a tensor. Defaults to False.
-
-    Returns:
-        Variable: A PyTorch Variable
-    """
-
+def variable(x, volatile=False, cuda=False):
     if isinstance(x, list):
         x = np.array(x)
     if isinstance(x, (np.ndarray, np.generic)):
@@ -43,48 +29,23 @@ def variable(x : list | np.ndarray | torch.Tensor, volatile=False, cuda=False):
     return Variable(x, volatile=volatile)
 
 
-def maybe_cuda(x: torch.Tensor, use_cuda: bool):
-    """
-    Uses cuda version of x if use_cuda is True, otherwise uses the cpu version.
-
-    Args:
-        x (torch.Tensor): A tensor to be converted to cuda.
-        use_cuda (bool): A boolean flag to determine whether to use cuda or not.
-
-    Returns:
-        torch.Tensor: A tensor that is either on the cpu or cuda.
-    """
+def maybe_cuda(x, use_cuda):
     if use_cuda:
         return x.cuda()
     else:
         return x
 
 
-def is_torch_not_a_number(v: torch.Tensor):
-    """
-    Checks whether a tortured variable is nan.
-    
-    Args:
-        v (torch.Tensor): A tensor to be checked for nan.
-    Returns:
-        bool: A boolean flag indicating whether the tensor is nan.
-    """
+def is_torch_not_a_number(v):
+    """checks whether a tortured variable is nan"""
     v = v.data
     if not ((v == v).item()):
         return True
     return False
 
 
-def is_torch_invalid(v : torch.Tensor):
-    """
-    Checks whether a torch variable is nan or inf
-
-    Args:
-        v (torch.Tensor): A tensor to be checked for nan or inf.
-    Returns:
-        bool: A boolean flag indicating whether the tensor is nan or inf.
-
-    """
+def is_torch_invalid(v):
+    """checks whether a torch variable is nan or inf"""
     if is_torch_not_a_number(v):
         return True
     a = v - v
@@ -93,36 +54,15 @@ def is_torch_invalid(v : torch.Tensor):
     return False
 
 
-def _relu(x : torch.Tensor):
-    """
-    Applies the rectified linear unit function to x.
-
-    Args:
-        x (torch.Tensor): A tensor to which the rectified linear unit function is applied.
-
-    Returns:
-        torch.Tensor: A tensor with the rectified linear unit function applied.
-    """
+def _relu(x):
     return x.clamp(min=0)
 
 
 class Entropy(nn.Module):
     def __init__(self):
-        """
-        Initializes the Entropy class.
-        """
         super(Entropy, self).__init__()
 
-    def forward(self, x: torch.Tensor):
-        """
-        Calculates the entropy of x.
-
-        Args:
-            x (torch.Tensor): A tensor for which the entropy is calculated.
-
-        Returns:
-            torch.Tensor: A tensor containing the entropy of x.
-        """
+    def forward(self, x):
         b = F.softmax(x, dim=0) * F.log_softmax(x, dim=0)
         b = -1.0 * b.sum()
         return b
@@ -131,29 +71,14 @@ class Entropy(nn.Module):
 class GrammarNetwork(nn.Module):
     """Neural network that outputs a grammar"""
 
-    def __init__(self, inputDimensionality: int, grammar: Grammar):
-        """
-        Initializes the GrammarNetwork class.
-
-        Args:
-            inputDimensionality (int): The dimensionality of the input for the logProductions neural network.
-            grammar (Grammar): The grammar on which the neural network is trained.
-        """
+    def __init__(self, inputDimensionality, grammar):
         super(GrammarNetwork, self).__init__()
         self.logProductions = nn.Linear(inputDimensionality, len(grammar) + 1)
         self.grammar = grammar
 
     def forward(self, x):
-        """
-        Takes as input an inputDimensionality-dimensional vector and returns Grammar Tensor-valued probabilities
-        
-        Args:
-            x (torch.Tensor): A inputDimensionality-dimensional tensor input for the neural network.
-
-        Returns:
-            Grammar: A Grammar object containing the probabilities of the productions.            
-
-        """
+        """Takes as input inputDimensionality-dimensional vector and returns Grammar
+        Tensor-valued probabilities"""
         logProductions = self.logProductions(x)
         return Grammar(
             logProductions[-1].view(1),  # logVariable
@@ -164,18 +89,9 @@ class GrammarNetwork(nn.Module):
             continuationType=self.grammar.continuationType,
         )
 
-    def batchedLogLikelihoods(self, xs: torch.Tensor, summaries: list):
-        """
-        Takes as input BxinputDimensionality vector & B likelihood summaries;
-        returns B-dimensional vector containing log likelihood of each summary
-        
-        Args:
-            xs: a B x inputDimensionality vector
-            summaries: a list of B likelihood summaries
-        Returns:
-            torch.Tensor: A B-dimensional tensor containing the log likelihood of each summary.
-
-        """
+    def batchedLogLikelihoods(self, xs, summaries):
+        """Takes as input BxinputDimensionality vector & B likelihood summaries;
+        returns B-dimensional vector containing log likelihood of each summary"""
         use_cuda = xs.device.type == "cuda"
 
         B = xs.size(0)
@@ -230,17 +146,9 @@ class GrammarNetwork(nn.Module):
 
 
 class ContextualGrammarNetwork_LowRank(nn.Module):
-    def __init__(self, inputDimensionality: int, grammar: Grammar, R: int = 16):
-        """
-        
-        Low-rank approximation to bigram model. Parameters is linear in number of primitives.
-        
-        Args:
-            inputDimensionality: dimensionality of input for logProductions neural network.
-            grammar: grammar on which neural network is trained.
-            R: maximum rank (embedding size)
-        
-        """
+    def __init__(self, inputDimensionality, grammar, R=16):
+        """Low-rank approximation to bigram model. Parameters is linear in number of primitives.
+        R: maximum rank"""
 
         super(ContextualGrammarNetwork_LowRank, self).__init__()
 
@@ -264,17 +172,7 @@ class ContextualGrammarNetwork_LowRank(nn.Module):
             inputDimensionality, self.n_grammars, len(grammar) + 1, R
         )
 
-    def grammarFromVector(self, logProductions: torch.Tensor):
-
-        """
-        Produces a Grammar object from a vector of log probabilities of productions.
-
-        Args:
-            logProductions(torch.Tensor): A len(grammar)+1 tensor of log probabilities of productions.
-        Returns:
-            Grammar: A Grammar object containing the log probabilities of the productions.
-        """
-
+    def grammarFromVector(self, logProductions):
         return Grammar(
             logProductions[-1].view(1),
             [
@@ -284,17 +182,7 @@ class ContextualGrammarNetwork_LowRank(nn.Module):
             continuationType=self.grammar.continuationType,
         )
 
-    def forward(self, x: torch.Tensor):
-
-        """
-        A forward pass of the bigram model neural network.
-
-        Args:
-            x: A inputDimensionality-dimensional tensor input for the neural network.
-        Returns:
-            ContextualGrammar: A ContextualGrammar object containing the probabilities of each primitive in the library.
-        """
-
+    def forward(self, x):
         assert (
             len(x.size()) == 1
         ), "contextual grammar doesn't currently support batching"
@@ -310,17 +198,7 @@ class ContextualGrammarNetwork_LowRank(nn.Module):
             },
         )
 
-    def vectorizedLogLikelihoods(self, x: torch.Tensor, summaries: list):
-        """
-
-        Calculates the log likelihood of a batch of summaries given a batch of input tensors.
-
-        Args:
-            x (torch.Tensor): An inputDimensionality tensor input for the neural network.
-            summaries (list): A list of B likelihood summaries.
-
-        Note: This asserts False so it may not be used by DreamCoder's current codebase.
-        """
+    def vectorizedLogLikelihoods(self, x, summaries):
         B = len(summaries)
         G = len(self.grammar) + 1
 
@@ -414,18 +292,9 @@ class ContextualGrammarNetwork_LowRank(nn.Module):
 
         assert False, "This function is still in progress."
 
-    def batchedLogLikelihoods(self, xs: torch.Tensor, summaries: list):
-        """
-        Takes as input B x inputDimensionality vector & B likelihood summaries;
-        returns B-dimensional vector containing log likelihood of each summary
-        
-        Args:
-            xs (torch.Tensor): a B x inputDimensionality vector
-            summaries (list): a list of B likelihood summaries
-
-        Returns:
-            torch.Tensor: A B-dimensional tensor containing the log likelihood of each summary.
-        """
+    def batchedLogLikelihoods(self, xs, summaries):
+        """Takes as input BxinputDimensionality vector & B likelihood summaries;
+        returns B-dimensional vector containing log likelihood of each summary"""
         use_cuda = xs.device.type == "cuda"
 
         B = xs.shape[0]
@@ -549,15 +418,9 @@ class ContextualGrammarNetwork_LowRank(nn.Module):
 
 
 class ContextualGrammarNetwork_Mask(nn.Module):
-    def __init__(self, inputDimensionality: int, grammar: Grammar):
-        """
-        Bigram model, but where the bigram transitions are unconditional.
+    def __init__(self, inputDimensionality, grammar):
+        """Bigram model, but where the bigram transitions are unconditional.
         Individual primitive probabilities are still conditional (predicted by neural network)
-
-        Args:
-            inputDimensionality (int): dimensionality of input for logProductions neural network.
-            grammar (Grammar): grammar on which neural network is trained.
-
         """
 
         super(ContextualGrammarNetwork_Mask, self).__init__()
@@ -581,16 +444,7 @@ class ContextualGrammarNetwork_Mask(nn.Module):
         )
         self._logProductions = nn.Linear(inputDimensionality, len(grammar) + 1)
 
-    def transitionMatrix(self, x: torch.Tensor):
-        """
-        Calculates the transition matrix for the neural network.
-
-        Args:
-            x (torch.Tensor): A inputDimensionality-dimensional tensor input for the neural network.
-
-        Returns:
-            torch.Tensor: A tensor containing the transition matrix.
-        """
+    def transitionMatrix(self, x):
         if len(x.shape) == 1:  # not batched
             return self._logProductions(x) + self._transitionMatrix  # will broadcast
         elif len(x.shape) == 2:  # batched
@@ -600,15 +454,7 @@ class ContextualGrammarNetwork_Mask(nn.Module):
         else:
             assert False, "unknown shape for transition matrix input"
 
-    def grammarFromVector(self, logProductions: torch.Tensor):
-        """
-         Produces a Grammar object from a vector of log probabilities of productions.
-
-        Args:
-            logProductions(torch.Tensor): A len(grammar)+1 tensor of log probabilities of productions.
-        Returns:
-            Grammar: A Grammar object containing the log probabilities of the productions.
-        """
+    def grammarFromVector(self, logProductions):
         return Grammar(
             logProductions[-1].view(1),
             [
@@ -618,16 +464,7 @@ class ContextualGrammarNetwork_Mask(nn.Module):
             continuationType=self.grammar.continuationType,
         )
 
-    def forward(self, x: torch.Tensor):
-        """
-        Forward pass through the bigram (with unconditional probabilities) neural network.
-
-        Args:
-            x (torch.Tensor): A inputDimensionality-dimensional tensor input for the neural network.
-
-        Returns:
-            ContextualGrammar: A ContextualGrammar object containing the probabilities of each primitive in the library.
-        """
+    def forward(self, x):
         assert (
             len(x.size()) == 1
         ), "contextual grammar doesn't currently support batching"
@@ -643,17 +480,9 @@ class ContextualGrammarNetwork_Mask(nn.Module):
             },
         )
 
-    def batchedLogLikelihoods(self, xs: torch.Tensor, summaries: list):
-        """
-        Takes as input BxinputDimensionality vector & B likelihood summaries;
-        returns B-dimensional vector containing log likelihood of each summary
-        
-        Args:
-            xs (torch.Tensor): a B x inputDimensionality vector
-            summaries (list): a list of B likelihood summaries
-        Returns:
-            torch.Tensor: A B-dimensional tensor containing the log likelihood of each summary.
-        """
+    def batchedLogLikelihoods(self, xs, summaries):
+        """Takes as input BxinputDimensionality vector & B likelihood summaries;
+        returns B-dimensional vector containing log likelihood of each summary"""
         use_cuda = xs.device.type == "cuda"
 
         B = xs.shape[0]
@@ -779,15 +608,7 @@ class ContextualGrammarNetwork_Mask(nn.Module):
 class ContextualGrammarNetwork(nn.Module):
     """Like GrammarNetwork but ~contextual~"""
 
-    def __init__(self, inputDimensionality: int, grammar: Grammar):
-        """
-        Create a Contextual Grammar Network.
-
-        Args:
-            inputDimensionality (int): dimensionality of input for logProductions neural network.
-            grammar (Grammar): grammar on which neural network is trained.
-
-        """
+    def __init__(self, inputDimensionality, grammar):
         super(ContextualGrammarNetwork, self).__init__()
 
         # library now just contains a list of indicies which go with each primitive
@@ -806,16 +627,7 @@ class ContextualGrammarNetwork(nn.Module):
             inputDimensionality, (self.n_grammars) * (len(grammar) + 1)
         )
 
-    def grammarFromVector(self, logProductions: torch.Tensor):
-        """
-        Produces a Grammar object from a vector of log probabilities of productions.
-
-        Args:
-            logProductions (torch.Tensor): A len(grammar)+1 tensor of log probabilities of productions.
-
-        Returns:
-            Grammar: A Grammar object containing the log probabilities of the productions.
-        """
+    def grammarFromVector(self, logProductions):
         return Grammar(
             logProductions[-1].view(1),
             [
@@ -825,16 +637,7 @@ class ContextualGrammarNetwork(nn.Module):
             continuationType=self.grammar.continuationType,
         )
 
-    def forward(self, x: torch.Tensor):
-        """
-        Forward pass through the contextual grammar neural network.        
-
-        Args:
-            x (torch.Tensor): A inputDimensionality-dimensional tensor input for the neural network.
-
-        Returns:
-            ContextualGrammar: A ContextualGrammar object containing the probabilities of each primitive in the library.
-        """
+    def forward(self, x):
         assert (
             len(x.size()) == 1
         ), "contextual grammar doesn't currently support batching"
@@ -849,20 +652,10 @@ class ContextualGrammarNetwork(nn.Module):
             },
         )
 
-    def batchedLogLikelihoods(self, xs: torch.Tensor, summaries:list):
-        """
-        Takes as input B x inputDimensionality vector & B likelihood summaries;
-        returns B-dimensional vector containing log likelihood of each summary
-        
-        Args:
-            xs: a B x inputDimensionality vector
-            summaries: a list of B likelihood summaries
-        Returns:
-            torch.Tensor: A B-dimensional tensor containing the log likelihood of each summary.
-        """
-
+    def batchedLogLikelihoods(self, xs, summaries):
         use_cuda = xs.device.type == "cuda"
-        
+        """Takes as input BxinputDimensionality vector & B likelihood summaries;
+        returns B-dimensional vector containing log likelihood of each summary"""
 
         B = xs.shape[0]
         G = len(self.grammar) + 1
@@ -997,59 +790,21 @@ class RecognitionModel(nn.Module):
 
     def __init__(
         self,
-        example_encoder : ModelLoader | None = None,
-        language_encoder:  nn.Module | None = None,
-        grammar: Grammar | None = None,
-        hidden: list =[64],
-        activation: str = "tanh",
-        rank: int|None = None,
-        contextual: bool =False,
-        mask: bool = False,
-        cuda: bool = False,
-        pretrained_model: RecognitionModel|None = None,
-        nearest_encoder: RecognitionModel|None = None,
-        nearest_tasks: list|None =None,
-        helmholtz_nearest_language: int = 0,
-        helmholtz_translations: bool = False,
+        example_encoder=None,
+        language_encoder=None,
+        grammar=None,
+        hidden=[64],
+        activation="tanh",
+        rank=None,
+        contextual=False,
+        mask=False,
+        cuda=False,
+        pretrained_model=None,
+        nearest_encoder=None,
+        nearest_tasks=None,
+        helmholtz_nearest_language=0,
+        helmholtz_translations=False,
         id=0):
-        """
-        _summary_
-
-        Args:
-            example_encoder (ModelLoader, optional): Feature Extractor for extracting features from tasks, usually defined in domain files (such as Re2FeatureExamplesEncoder). Defaults to None.
-
-            language_encoder (nn.Module, optional): Language feature extractor (NgramFeaturizer or TokenRecurrentFeatureExtractor as per dreamcoder.py). Defaults to None.
-            
-            grammar (Grammar, optional): Grammar that the recognition model is trained on. Defaults to None.
-            
-            hidden (list, optional): List of number of neurons of each hidden layer of self._MLP neural recognition model. Defaults to [64].
-            
-            activation (str, optional): Activation function of self._MLP neural 
-            recognition model. Can take values "sigmoid" | "tanh" | "relu", else throws an error. Defaults to "tanh".
-            
-            rank (int, optional): Rank of Low-Rank Contextual Grammar Network. Defaults to None (initialized to 16 in the actual model if rank=None and a Low-Rank Contextual Grammar Network is constructed).
-            
-            contextual (bool, optional): If true, a Contextual Grammar Network is constructed rather than a Grammar Network object. Defaults to False.
-            
-            mask (bool, optional): If true, a Contextual Grammar Network is constructed for a bigram model with the unconditional bigram transitions is constructed. Defaults to False.
-            
-            cuda (bool, optional): If true, cuda tensors are used instead of regular tensors. Defaults to False.
-            
-            pretrained_model (RecognitionModel, optional): Another, previously trained recognition model (may be from a training session that was interrupted previously). Defaults to None.
-            
-            nearest_encoder (RecognitionModel, optional): Experimental unreleased feature as per dreamcoder.py. Defaults to None.
-            
-            nearest_tasks (list, optional): List of tasks. Defaults to None.
-
-            helmholtz_nearest_language (int, optional): Label of nearest Helmholtz language. Defaults to 0.
-            
-            helmholtz_translations (bool, optional): If true, updates the language encoder with language for the Helmholtz entries. Defaults to False.
-            
-            id (int, optional): Id of recognition model if ensemble of recognition models is being trained. Defaults to 0.
-
-        Raises:
-            Exception: If activation function is not "sigmoid" | "tanh" | "relu".
-        """
         super(RecognitionModel, self).__init__()
         self.id = id
         self.trained = False
@@ -1152,23 +907,11 @@ class RecognitionModel(nn.Module):
             self.cuda()
 
     def get_fresh_helmholtz_name(self):
-        """
-        Provides fresh names for each Helmholtz entry.
-
-        Returns:
-            int: Fresh name for Helmholtz entry.
-        """
         self.fresh_helmholtz_name += 1
         return self.fresh_helmholtz_name
 
-    def init_helmholtz_nearest_language(self, nearest_encoder:RecognitionModel, nearest_tasks:list):
-        """
-        Encode training tasks for kNN featurization of Helmholtz.
-        
-        Args:
-            nearest_encoder (RecognitionModel): Recognition model used for nearest neighbor lookup.
-            nearest_tasks (list): List of tasks.
-        """
+    def init_helmholtz_nearest_language(self, nearest_encoder, nearest_tasks):
+        """Encode training tasks for kNN featurization of Helmholtz."""
         if self.helmholtz_nearest_language > 1:
             print("Unimplemented: more than 1 nearest neighbor.")
             assert False
@@ -1183,17 +926,7 @@ class RecognitionModel(nn.Module):
         self.nearest_encoder = nearest_encoder
         self.nearest_encoder.requires_grad = False
 
-    def auxiliaryLoss(self, frontier: Frontier, features: torch.Tensor):
-        """
-        Calculates the auxiliary loss for the recognition model.
-
-        Args:
-            frontier (Frontier): Frontier of programs
-            features (torch.Tensor): A self.feature_dimensions dimensional tensor input for the recognition model neural network.
-
-        Returns:
-            torch.Tensor: auxiliary loss for the recognition model.
-        """
+    def auxiliaryLoss(self, frontier, features):
         # Compute a vector of uses
         ls = frontier.bestPosterior.program
 
@@ -1219,28 +952,11 @@ class RecognitionModel(nn.Module):
         al = self._auxiliaryLoss(self._auxiliaryPrediction(features), u)
         return al
 
-    def taskEmbeddings(self, tasks:list):
-        """
-        Return taks embeddings of tasks
-
-        Args:
-            tasks (list): A list of tasks.
-
-        Returns:
-            dict: A dictionary containing task embeddings of tasks.
-        """
+    def taskEmbeddings(self, tasks):
         return {task: self.encode_features(task).data.cpu().numpy() for task in tasks}
 
-    def encode_features_batch_for_lookup(self, tasks:list):
-        """
-        Encodes sorted batch of tasks, returns n_tasks x n_encoding_dim tensor.
-        
-        Args:
-            tasks (list): A list of tasks.
-
-        Returns:
-            torch.Tensor: A n_tasks x n_encoding_dim tensor.
-        """
+    def encode_features_batch_for_lookup(self, tasks):
+        """Encodes sorted batch of tasks, returns n_tasks x n_encoding_dim tensor."""
         print(f"Encoding batch of n={len(tasks)} tasks for lookup only.")
         start = time.time()
         # Naive implementation: encoding them all one by one.
@@ -1252,15 +968,9 @@ class RecognitionModel(nn.Module):
         )
         return encoded
 
-    def encode_features(self, task:Task):
+    def encode_features(self, task):
         """
         Forwards task through the feature layers and concatenates the outputs.
-
-        Args:
-            task (Task): A task.
-
-        Returns:
-            torch.Tensor: A tensor containing the concatenated outputs of the feature layers.
         """
         features = []
         if self.featureExtractor is not None:
@@ -1276,29 +986,14 @@ class RecognitionModel(nn.Module):
         concatenated = torch.cat(features)
         return concatenated
 
-    def forward(self, features: torch.Tensor):
-        """
-        Returns either a Grammar or a ContextualGrammar.
-
-        Takes as input the concatenation of all of its feature extractor features.
-        
-        Args:
-            features (torch.Tensor): A tensor containing the concatenated feature extractor features.
-        
-        Returns:
-            Grammar | ContextualGrammar: A Grammar or ContextualGrammar object.
-
-        """
+    def forward(self, features):
+        """returns either a Grammar or a ContextualGrammar.
+        Takes as input the concatenation of all of its feature extractor features."""
         features = self._MLP(features)
         return self.grammarBuilder(features)
 
     def auxiliaryPrimitiveEmbeddings(self):
-        """
-        Returns the actual outputDimensionality weight vectors for each of the primitives.
-        
-        Returns:
-            dict: A dictionary containing the actual outputDimensionality weight vectors for each of the primitives.
-        """
+        """Returns the actual outputDimensionality weight vectors for each of the primitives."""
         auxiliaryWeights = self._auxiliaryPrediction.weight.data.cpu().numpy()
         primitivesDict = {
             self.grammar.primitives[i]: auxiliaryWeights[i, :]
@@ -1306,32 +1001,14 @@ class RecognitionModel(nn.Module):
         }
         return primitivesDict
 
-    def grammarOfTask(self, task:Task):
-        """
-        Generate a grammar or contextual grammar object for a given task.
-
-        Args:
-            task (Task): A task to generate features for
-
-        Returns:
-            Grammar | ContextualGrammar: A Grammar or ContextualGrammar object derived by calling forward on the encoded features of the task.
-        """
-
+    def grammarOfTask(self, task):
         features = self.encode_features(task)
         if features is None:
             return None
         return self(features)
 
-    def grammarLogProductionsOfTask(self, task:Task):
-        """
-        Returns the grammar logits from non-contextual models.
-        
-        Args:
-            task (Task): A task.
-
-        Returns:
-            torch.Tensor: A tensor containing the grammar logits from non-contextual models, generating by calling the forward() function on the self.grammarBuilder Grammar Network's logProduction neural network .
-        """
+    def grammarLogProductionsOfTask(self, task):
+        """Returns the grammar logits from non-contextual models."""
         features = self.encode_features(task)
         if features is None:
             return None
@@ -1357,29 +1034,11 @@ class RecognitionModel(nn.Module):
         else:
             return self.grammarBuilder.logProductions(features)
 
-    def grammarFeatureLogProductionsOfTask(self, task:Task):
-        """
-        Extracts the feature vectors from the log productions of a task.
-
-        Args:
-            task (Task): A task.
-
-        Returns:
-            torch.Tensor: A tensor containing the feature vectors from the log productions of a task.
-        """
+    def grammarFeatureLogProductionsOfTask(self, task):
         return torch.tensor(self.grammarOfTask(task).untorch().featureVector())
 
-    def grammarLogProductionDistanceToTask(self, task:Task, tasks:list):
-        """
-        Returns the cosine similarity of all other tasks to a given task.
-        
-        Args:
-            task (Task): A task.
-            tasks (list): A list of tasks.
-        
-        Returns:
-            np.array: A numpy array containing the cosine similarity of all other tasks to a given task.
-        """
+    def grammarLogProductionDistanceToTask(self, task, tasks):
+        """Returns the cosine similarity of all other tasks to a given task."""
         taskLogits = self.grammarLogProductionsOfTask(task).unsqueeze(
             0
         )  # Change to [1, D]
@@ -1396,16 +1055,8 @@ class RecognitionModel(nn.Module):
         cosMatrix = cos(taskLogits, otherLogits)
         return cosMatrix.data.cpu().numpy()
 
-    def grammarEntropyOfTask(self, task:Task):
-        """
-        Returns the entropy of the grammar distribution from non-contextual models for a task.
-        
-        Args:
-            task (Task): A task.
-        
-        Returns:
-            torch.Tensor: A tensor containing the entropy of the grammar distribution from non-contextual models for a task.
-        """
+    def grammarEntropyOfTask(self, task):
+        """Returns the entropy of the grammar distribution from non-contextual models for a task."""
         grammarLogProductionsOfTask = self.grammarLogProductionsOfTask(task)
 
         if grammarLogProductionsOfTask is None:
@@ -1417,16 +1068,7 @@ class RecognitionModel(nn.Module):
             e = Entropy()
             return e(grammarLogProductionsOfTask)
 
-    def taskAuxiliaryLossLayer(self, tasks:list):
-        """
-        Returns the auxiliary prediction for a given task.
-
-        Args:
-            tasks (list): A list of tasks.
-
-        Returns:
-            dict: A dictionary containing the auxiliary loss for each task.
-        """
+    def taskAuxiliaryLossLayer(self, tasks):
         return {
             task: self._auxiliaryPrediction(self.encode_features(task))
             .view(-1)
@@ -1435,93 +1077,37 @@ class RecognitionModel(nn.Module):
             for task in tasks
         }
 
-    def taskGrammarFeatureLogProductions(self, tasks:list):
-        """
-        Returns the feature vectors from the log productions of a task.
-
-        Args:
-            tasks (list): A list of tasks.
-
-        Returns:
-            dict: A dictionary containing the feature vectors from the log productions of a task.
-        """
+    def taskGrammarFeatureLogProductions(self, tasks):
         return {
             task: self.grammarFeatureLogProductionsOfTask(task).data.cpu().numpy()
             for task in tasks
         }
 
-    def taskGrammarLogProductions(self, tasks:list):
-        """
-        Returns the grammar logits from non-contextual models for a task.
-
-        Args:
-            tasks (list): A list of tasks.
-
-        Returns:
-            dict: A dictionary containing the grammar logits from non-contextual models for a task.
-        """
+    def taskGrammarLogProductions(self, tasks):
         return {
             task: self.grammarLogProductionsOfTask(task).data.cpu().numpy()
             for task in tasks
         }
 
-    def taskGrammarStartProductions(self, tasks:list):
-        """
-        Returns the start productions of a task.
-
-        Args:
-            tasks (list): A list of tasks.
-
-        Returns:
-            dict: A dictionary containing the start productions of a task.
-        """
+    def taskGrammarStartProductions(self, tasks):
         return {
             task: np.array([l for l, _1, _2 in g.productions])
             for task in tasks
             for g in [self.grammarOfTask(task).untorch().noParent]
         }
 
-    def taskHiddenStates(self, tasks:list):
-        """
-        Returns the hidden states of the recognition model for a given task.
-
-        Args:
-            tasks (list): A list of tasks.
-
-        Returns:
-            dict: A dictionary containing the hidden states of the recognition model for a given task.
-        """
+    def taskHiddenStates(self, tasks):
         return {
             task: self._MLP(self.encode_features(task)).view(-1).data.cpu().numpy()
             for task in tasks
         }
 
-    def taskGrammarEntropies(self, tasks:list):
-        """
-        Returns the entropy of the grammar distribution from non-contextual models for a task.
-
-        Args:
-            tasks (list): _description_
-
-        Returns:
-            dict: A dictionary containing the entropy of the grammar distribution from non-contextual models for a task.
-        """
+    def taskGrammarEntropies(self, tasks):
         return {
             task: self.grammarEntropyOfTask(task).data.cpu().numpy() for task in tasks
         }
 
-    def frontierKL(self, frontier:Frontier, auxiliary:bool=False, vectorized:bool=True):
-        """
-        Returns the KL divergence of the frontier.
-
-        Args:
-            frontier (Frontier): A frontier of programs
-            auxiliary (bool, optional): If true, uses the original encoded features of the task, else uses a detached tensor as feature when computing auxiliary loss. Defaults to False.
-            vectorized (bool, optional): Vectorizes log likelihoods if true. Defaults to True.
-
-        Returns:
-            torch.Tensor, torch.Tensor: returns log likelihood and auxiliary loss of frontier.
-        """
+    def frontierKL(self, frontier, auxiliary=False, vectorized=True):
         features = self.encode_features(frontier.task)
         if features is None:
             return None, None
@@ -1540,18 +1126,7 @@ class RecognitionModel(nn.Module):
             ).view(-1)
             return -ll, al
 
-    def frontierBiasOptimal(self, frontier:Frontier, auxiliary:bool=False, vectorized:bool=True):
-        """
-        Returns the bias optimal of the frontier.
-
-        Args:
-            frontier (Frontier): _description_
-            auxiliary (bool, optional): _description_. Defaults to False.
-            vectorized (bool, optional): _description_. Defaults to True.
-
-        Returns:
-            _type_: _description_
-        """
+    def frontierBiasOptimal(self, frontier, auxiliary=False, vectorized=True):
         if not vectorized:
             features = self.encode_features(frontier.task)
             if features is None:
@@ -1585,18 +1160,7 @@ class RecognitionModel(nn.Module):
         ml = -lls.max()  # Beware that inputs to max change output type
         return ml, al
 
-    def replaceProgramsWithLikelihoodSummaries(self, frontier: Frontier):
-        """
-        Replaces programs in a frontier with updated programs with accurate likelihood summaries and log priors.
-
-        Args:
-            frontier (Frontier): A frontier of programs
-        
-        Returns:
-            Frontier: A frontier of programs with updated likelihood summaries and logPriors.
-            
-        """
-
+    def replaceProgramsWithLikelihoodSummaries(self, frontier):
         def make_entry(e):
             if e.tokens is None:
                 e.tokens = e.program.left_order_tokens(show_vars=False)
@@ -1622,17 +1186,9 @@ class RecognitionModel(nn.Module):
         else:
             return Frontier(frontier_summaries, task=frontier.task)
 
-    def pairwise_cosine_similarity(self, a: torch.Tensor, b:torch.Tensor, eps: float =1e-8):
+    def pairwise_cosine_similarity(self, a, b, eps=1e-8):
         """
-        Added eps for numerical stability
-
-        Args:
-            a (torch.Tensor): A tensor
-            b (torch.Tensor): A tensor
-            eps (float, optional): A small constant for numerical stability. Defaults to 1e-8.
-
-        Returns:
-            torch.Tensor: A tensor containing the pairwise cosine similarity of a and b.
+        added eps for numerical stability
         """
         a_n, b_n = a.norm(dim=1)[:, None], b.norm(dim=1)[:, None]
         a_norm = a / torch.max(a_n, eps * torch.ones_like(a_n))
@@ -1640,7 +1196,7 @@ class RecognitionModel(nn.Module):
         sim_mt = torch.mm(a_norm, b_norm.transpose(0, 1))
         return sim_mt
 
-    def update_helmholtz_language(self, helmholtz_entries:list):
+    def update_helmholtz_language(self, helmholtz_entries):
         """
         If self.helmholtz_translations:
             Updates the language encoder with language for the Helmholtz entries.
@@ -1683,59 +1239,28 @@ class RecognitionModel(nn.Module):
 
     def train(
         self,
-        frontiers: list,
+        frontiers,
         _=None,
-        steps: int|None = None,
-        lr: float = 0.001,
-        topK: int = 5,
-        CPUs: int = 1,
-        timeout: int|None = None,
-        evaluationTimeout: float =0.001,
-        helmholtzFrontiers: list =[],
-        helmholtzRatio: float = 0.0,
-        helmholtzBatch: int = 500,
-        biasOptimal: int|None = None,
-        defaultRequest: Task.request|None = None,
-        auxLoss: bool = False,
-        vectorized:bool = True,
-        epochs:int|None = None,
-        generateNewHelmholtz: bool =True,
+        steps=None,
+        lr=0.001,
+        topK=5,
+        CPUs=1,
+        timeout=None,
+        evaluationTimeout=0.001,
+        helmholtzFrontiers=[],
+        helmholtzRatio=0.0,
+        helmholtzBatch=500,
+        biasOptimal=None,
+        defaultRequest=None,
+        auxLoss=False,
+        vectorized=True,
+        epochs=None,
+        generateNewHelmholtz=True,
     ):
         """
-        Trains the recognition model.
-
-        Args:
-            frontiers(list): list of frontiers of programs to train on.
-
-            steps (int): Number of gradient steps to take.
-
-            lr (float): Learning rate for the optimizer.
-
-            topK (int): Number of top programs to consider.
-
-            CPUs (int): Number of CPUs to use for parallel processing.
-
-            timeout (int): Timeout for training.
-
-            evaluationTimeout (int): Timeout for evaluation.
-
-            helmholtzFrontiers (list): Frontiers from programs enumerated from generative model (optional). If helmholtzFrontiers is not provided then we will sample programs during training
-
-            helmholtzRatio (float): What fraction of the training data should be forward samples from the generative model?
-
-            helmholtzBatch (int): Number of programs to sample from the generative model.
-
-            biasOptimal (int): If true, uses bias optimal training.
-
-            defaultRequest (Task.request): Default request for the task (i.e. task type) if frontiers are empty.
-
-            auxLoss (bool): If true, uses auxiliary loss.
-
-            vectorized (bool): If true, uses vectorized log likelihoods.
-
-            epochs (int): Number of epochs to train for.
-
-            generateNewHelmholtz (bool): If true, generates new Helmholtz entries during training.
+        helmholtzRatio: What fraction of the training data should be forward samples from the generative model?
+        helmholtzFrontiers: Frontiers from programs enumerated from generative model (optional)
+        If helmholtzFrontiers is not provided then we will sample programs during training
         """
         assert (
             (steps is not None) or (timeout is not None) or (epochs is not None)
@@ -1840,15 +1365,7 @@ class RecognitionModel(nn.Module):
         helmholtzIndex = [0]
 
         def getHelmholtz(max_tries=0):
-            """
-            Helper method to get the Helmholtz frontiers we have generated, or sample new ones if we ran out.
-            
-            Args:
-                max_tries (int, optional): Number of tries to get Helmholtz frontiers. Defaults to 0.
-            
-            Returns:
-                Frontier: A Frontier of Helmholtz tasks.
-            """
+            """Helper method to get the Helmholtz frontiers we have generated, or sample new ones if we ran out."""
             switchToRandom = False
             if max_tries > 100:
                 print("Switching to random...")
@@ -1891,12 +1408,6 @@ class RecognitionModel(nn.Module):
             return f.makeFrontier()
 
         def updateHelmholtzTasks(switchToRandom=False):
-            """
-            Update provided Helmholtz tasks with sampled Helmoltz tasks.
-
-            Args:
-                switchToRandom (bool, optional): If true, switches to randomly sampling Helmholtz tasks. Defaults to False.s
-            """
             updateCPUs = (
                 CPUs
                 if hasattr(self.featureExtractor, "parallelTaskOfProgram")
@@ -2147,18 +1658,7 @@ class RecognitionModel(nn.Module):
         self.trained = True
         return self
 
-    def sampleHelmholtz(self, requests:list, statusUpdate = None, seed:int|None =None):
-        """
-        Samples a program and derives a Helmholtz task from the prior.
-        
-        Args:
-            requests (list): A list of requests.
-            statusUpdate (None, optional): Status update on Helmholtz sampling which triggers a flush. Defaults to None.
-            seed (int, optional): Seed for randomly sampling a program. Defaults to None.
-
-        Returns:
-            Frontier: A frontier containing the randomly sampled program and the corresponding task.
-        """
+    def sampleHelmholtz(self, requests, statusUpdate=None, seed=None):
         if seed is not None:
             random.seed(seed)
         request = random.choice(requests)
@@ -2187,19 +1687,7 @@ class RecognitionModel(nn.Module):
         )
         return frontier
 
-    def sampleManyHelmholtz(self, requests:list, N:int, CPUs:int):
-        """
-        Samples many programs from the prior.
-
-        Args:
-            requests (list): A list of requests.
-            N (int): Number of programs to sample.
-            CPUs (int): Number of CPUs to use for parallel processing.
-
-        Returns:
-            list: A list of frontiers containing the randomly sampled programs and the corresponding tasks.
-        """
-
+    def sampleManyHelmholtz(self, requests, N, CPUs):
         eprint("Sampling %d programs from the prior on %d CPUs..." % (N, CPUs))
         flushEverything()
         frequency = N / 50
@@ -2233,36 +1721,18 @@ class RecognitionModel(nn.Module):
 
     def enumerateFrontiers(
         self,
-        tasks:list,
-        enumerationTimeout:int|None = None,
-        testing:bool = False,
-        solver:str|None = None,
-        CPUs:int = 1,
-        frontierSize:int|None = None,
-        maximumFrontier:float|None = None,
-        evaluationTimeout:int|None = None,
-        max_mem_per_enumeration_thread:int = 1000000,
-        solver_directory:str = ".",  # Default solver directory is top level in original DreamCoder.
-        likelihood_model:str = INDUCTIVE_EXAMPLES_LIKELIHOOD_MODEL,
+        tasks,
+        enumerationTimeout=None,
+        testing=False,
+        solver=None,
+        CPUs=1,
+        frontierSize=None,
+        maximumFrontier=None,
+        evaluationTimeout=None,
+        max_mem_per_enumeration_thread=1000000,
+        solver_directory=".",  # Default solver directory is top level in original DreamCoder.
+        likelihood_model=INDUCTIVE_EXAMPLES_LIKELIHOOD_MODEL,
     ):
-        """
-        Enumerates frontiers for tasks.
-
-        Args:
-            tasks (list): A list of tasks.
-            enumerationTimeout (int | None, optional): Timeour for enumerating programs. Defaults to None.
-            testing (bool, optional): If true, evaluation occurs on held-out testing tasks. Defaults to False.
-            solver (str | None, optional): Can be one of "ocaml", "pypy", or "python". Defaults to None.
-            CPUs (int, optional): Number of CPUs for multicore enumeration. Defaults to 1.
-            frontierSize (int | None, optional): Unused parameter denoting size of frontiers. Defaults to None.
-            maximumFrontier (float | None, optional): Float from which sum of all log-likelihoods > 0.1 is later subtracted during enumeration to compute dictionary of maximum frontiers. Defaults to None.
-            evaluationTimeout (int | None, optional): Timeout for evaluating programs. Defaults to None.
-            max_mem_per_enumeration_thread (int, optional): Maximum memory used in each enumeration thread. Defaults to 1000000.
-            solver_directory (str, optional): Directory containing all solvers. Defaults to ".".
-
-        Returns:
-            list, float: A list of frontiers, and the best search time.
-        """
         with timing("Evaluated recognition model"):
             grammars = {task: self.grammarOfTask(task) for task in tasks}
             # untorch seperately to make sure you filter out None grammars
@@ -2292,34 +1762,21 @@ class RecurrentFeatureExtractor(nn.Module):
     def __init__(
         self,
         _=None,
-        tasks:list =None,
-        cuda:bool =False,
+        tasks=None,
+        cuda=False,
         # what are the symbols that can occur in the inputs and
         # outputs
-        lexicon: list | None = None,
+        lexicon=None,
         # how many hidden units
-        H:int =32,
+        H=32,
         # Should the recurrent units be bidirectional?
-        bidirectional:bool = False,
+        bidirectional=False,
         # What should be the timeout for trying to construct Helmholtz tasks?
-        helmholtzTimeout:float = 0.25,
+        helmholtzTimeout=0.25,
         # What should be the timeout for running a Helmholtz program?
-        helmholtzEvaluationTimeout:float = 0.25,
-        special_encoder:bool = False,
+        helmholtzEvaluationTimeout=0.25,
+        special_encoder=False,
     ):
-        """
-        Recurrent Feature Extractor for language descriptions of tasks.
-
-        Args:
-            tasks (list, optional): A list of tasks. Defaults to None.
-            cuda (bool, optional): If true, cuda tensors are used. Defaults to False.
-            lexicon (list | None, optional): A list of words and symbols present in the language descriptions. Defaults to None.
-            H (int, optional): Number of hiddent units in the self.model network. Defaults to 32.
-            bidirectional (bool, optional): If true, bidirectional recurrent units are used. Defaults to False.
-            helmholtzTimeout (float, optional): Maximum timeout for helmholtz program generation. Defaults to 0.25.
-            helmholtzEvaluationTimeout (float, optional): Maximum timeout for helmholtz program evaluation. Defaults to 0.25.
-            special_encoder (bool, optional): If true, use special encoder on symbols in the lexicon and adjust embedding dimensions accordingly. Defaults to False.
-        """
         super(RecurrentFeatureExtractor, self).__init__()
 
         assert (
@@ -2398,10 +1855,6 @@ class RecurrentFeatureExtractor(nn.Module):
 
     @property
     def outputDimensionality(self):
-        """
-        Returns:
-            int: Number of hidden units in self.model network
-        """
         return self.H
 
     # modify examples before forward (to turn them into iterables of lexicon)
@@ -2419,13 +1872,7 @@ class RecurrentFeatureExtractor(nn.Module):
             if not (s in self.specialSymbols)
         }
 
-    def packExamples(self, examples:list):
-        """
-        Args:
-            examples (list): List of tuples.
-        Returns:
-            tuple: Packed encoded examples and sizes.
-        """
+    def packExamples(self, examples):
         """IMPORTANT! xs must be sorted in decreasing order of size because pytorch is stupid"""
         es = []
         sizes = []
@@ -2460,14 +1907,7 @@ class RecurrentFeatureExtractor(nn.Module):
         x = pack_padded_sequence(x, sizes)
         return x, sizes
 
-    def examplesEncoding(self, examples:list):
-        """
-        Args:
-            examples (list): List of examples.
-
-        Returns:
-            torch.Tensor: Encoded examples.
-        """
+    def examplesEncoding(self, examples):
         examples = sorted(
             examples,
             key=lambda xs_y: sum(len(z) + 1 for z in xs_y[0]) + len(xs_y[1]),
@@ -2481,15 +1921,6 @@ class RecurrentFeatureExtractor(nn.Module):
         return hidden[0, :, :] + hidden[1, :, :]
 
     def forward(self, examples_or_task):
-        """
-        Forward pass through the RecurrentFeatureExtractor network.
-
-        Args:
-            examples_or_task (_type_): _description_
-
-        Returns:
-            torch.Tensor: Averahe activations across all examples.
-        """
         # Takes either the examples themselves, or the task, depending on the tokenization function.
         # If the self.useTask == True, this is a task.
         tokenized = self.tokenize(examples_or_task)
@@ -2510,16 +1941,7 @@ class RecurrentFeatureExtractor(nn.Module):
         e = e.mean(dim=0)
         return e
 
-    def featuresOfTask(self, t:Task):
-        """
-        Compute features of a task.
-
-        Args:
-            t (Task): A task
-
-        Returns:
-            torch.Tensor: Features of the task.
-        """
+    def featuresOfTask(self, t):
         if hasattr(self, "useFeatures"):
             f = self(t.features)
         elif hasattr(self, "useTask"):
@@ -2529,17 +1951,7 @@ class RecurrentFeatureExtractor(nn.Module):
             f = self(t.examples)
         return f
 
-    def taskOfProgram(self, p: Program, tp: tuple):
-        """
-        Generate a task from a program.
-
-        Args:
-            p (Program): A program.
-            tp (tuple): A tuple of and input, output pair.
-
-        Returns:
-            Task: A task.
-        """
+    def taskOfProgram(self, p, tp):
         # TODO -- remove this
         self.helmholtzTimeout, self.helmholtzEvaluationTimeout = 0.25, 0.25
         # half of the time we randomly mix together inputs
@@ -2610,13 +2022,12 @@ class LowRank(nn.Module):
     Module that outputs a rank R matrix of size m by n from input of size i.
     """
 
-    def __init__(self, i:int, m:int, n:int, r:int):
+    def __init__(self, i, m, n, r):
         """
-        Args:
-            i: input dimension
-            m: output rows
-            n: output columns
-            r: maximum rank. if this is None then the output will be full-rank
+        i: input dimension
+        m: output rows
+        n: output columns
+        r: maximum rank. if this is None then the output will be full-rank
         """
         super(LowRank, self).__init__()
 
@@ -2636,16 +2047,7 @@ class LowRank(nn.Module):
             self.factored = False
             self.M = nn.Linear(i, m * n)
 
-    def forward(self, x:torch.Tensor):
-        """
-        Forward pass through the LowRank network.        
-
-        Args:
-            x (torch.Tensor): Input tensor for neural network.
-
-        Returns:
-            torch.Tensor: Output tensor from low-rank neural network.
-        """
+    def forward(self, x):
         sz = x.size()
         if len(sz) == 1:
             B = 1
