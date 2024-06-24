@@ -17,9 +17,9 @@ sudo python run_iterative_experiment.py \
   --experiment_type dreamcoder \
   --domain math \
   --encoder math \
-  --iterations 16 \
+  --iterations 15 \
   --global_batch_sizes 96 \
-  --enumeration_timeout 1000 \
+  --enumeration_timeout 1800 \
   --recognition_train_steps 10000 \
   --random_seeds 111 \
   --verbose
