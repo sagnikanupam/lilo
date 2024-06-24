@@ -9,3 +9,18 @@ The datasets for the experiments run in the Math Domain are defined as follows:
 * goldenDataset.csv contains an example of a "Golden Dataset" built by the authors by examining the ConPoLe dataset closely so that Dreamcoder would develop the abstractions needed to solve the mathematical equations in the dataset. These tasks are stored in json format under goldenDataset/train/tasks.json, whereas goldenDataset/test/tasks.json contains the original 284 Cognitive Tutor Equations used in the ConPoLe paper.
 
 *trainingAugmentedGoldenDataset/train/tasks.json contains the equations in cognitiveTutorDataset/train/tasks.json combined with the equations in goldenDataset/train/tasks.json. trainingAugmentedGoldenDataset/test/tasks.json contains the testing tasks present in cognitiveTutor/test/tasks.json
+
+Run math experiments with
+```
+sudo python run_iterative_experiment.py \
+  --experiment_name math-golden-june2024 \
+  --experiment_type dreamcoder \
+  --domain math \
+  --encoder math \
+  --iterations 16 \
+  --global_batch_sizes 96 \
+  --enumeration_timeout 1000 \
+  --recognition_train_steps 10000 \
+  --random_seeds 111 \
+  --verbose
+```
