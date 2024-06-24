@@ -175,6 +175,22 @@ By default, resuming from checkpoint will only occur at the first iteration. Thi
 
 The `run_iterative_experiment.py` script takes a `--domain` argument that specifies which domain to use. The following domains are supported, with the corresponding commands used to replicate the experiments from the paper:
 
+### MATH
+
+First, modify `data/math/make_tasks.py` to select the appropriate experiment dataset by uncommenting the appropriate choices for TASKS and DEFAULT_TASKS_DIRECTORY. Then, execute:
+
+python run_iterative_experiment.py \
+  --experiment_name test_runs \
+  --experiment_type dreamcoder \
+  --domain math \
+  --encoder math \
+  --iterations 16 \
+  --global_batch_sizes 96 \
+  --enumeration_timeout 1000 \
+  --recognition_train_steps 10000 \
+  --random_seeds 111 222 333 \
+  --verbose \
+
 ### REGEX
 
 ```

@@ -14,9 +14,21 @@ import dreamcoder.domains.math.makeMathTasks as math_legacy
 DOMAIN_NAME = "math"
 ROOT_DIR = os.getcwd()
 DEFAULT_DATA_DIRECTORY = os.path.join(ROOT_DIR, f"dreamcoder/data/{DOMAIN_NAME}")
+
+# Experiment Type 1: Original Cognitive Tutor Problems Only (Referred to as Original Training Dataset and Original Testing Dataset as the two sets randomly split in a 70-30 ratio)
+
+"""
 TASKS = "cognitiveTutor"
 DEFAULT_TASKS_DIRECTORY = os.path.join(DEFAULT_DATA_DIRECTORY, TASKS)
+"""
 
+# Experiment Type 2: Golden Dataset in Training + Cognitive Tutor in Testing
+TASKS = "goldenDataset"
+DEFAULT_TASKS_DIRECTORY = os.path.join(DEFAULT_DATA_DIRECTORY, TASKS)
+
+# Experiment Type 3: Original Training Dataset Augmented by Golden Dataset in Training + Original Testing Dataset in Training
+
+# Experiment Type 4: Original Training Dataset Augmented by Easier Versions of Problem DreamCoder Failed to Solve Initially
 
 @TaskLoaderRegistry.register
 class MathLoader(TaskDataLoader):
