@@ -179,6 +179,7 @@ The `run_iterative_experiment.py` script takes a `--domain` argument that specif
 
 First, modify `data/math/make_tasks.py` to select the appropriate experiment dataset by uncommenting the appropriate choices for TASKS and DEFAULT_TASKS_DIRECTORY. Then, execute:
 
+```
 python run_iterative_experiment.py \
   --experiment_name test_runs \
   --experiment_type dreamcoder \
@@ -190,6 +191,7 @@ python run_iterative_experiment.py \
   --recognition_train_steps 10000 \
   --random_seeds 111 222 333 \
   --verbose \
+```
 
 ### REGEX
 
