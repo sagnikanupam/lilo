@@ -34,7 +34,7 @@ def makeTask(row: int, dataset: pd.DataFrame, prefixInputIndex: int = 2, prefixO
     return {"name": "mathEq"+str(row) + ": " + inputOutput["i"] + "=>" + inputOutput["o"], "examples": [inputOutput for _ in range(5000)]}
 
 if __name__ =="__main__":
-    datasetExpVal = "TRAININGAUGMENTEDGOLDEN" #Can be ORIGINAL, GOLDEN, TRAININGAUGMENTEDGOLDEN, OR AUGMENTED FOR GENERATING DATASETS
+    datasetExpVal = "ORIGINAL" #Can be ORIGINAL, GOLDEN, TRAININGAUGMENTEDGOLDEN, OR AUGMENTED FOR GENERATING DATASETS
 
     #  Experiment Type 1: Original Cognitive Tutor Problems Only
     if datasetExpVal == "ORIGINAL":

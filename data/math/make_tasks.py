@@ -23,10 +23,15 @@ DEFAULT_TASKS_DIRECTORY = os.path.join(DEFAULT_DATA_DIRECTORY, TASKS)
 """
 
 # Experiment Type 2: Golden Dataset in Training + Cognitive Tutor in Testing
+"""
 TASKS = "goldenDataset"
 DEFAULT_TASKS_DIRECTORY = os.path.join(DEFAULT_DATA_DIRECTORY, TASKS)
+"""
 
 # Experiment Type 3: Original Training Dataset Augmented by Golden Dataset in Training + Original Testing Dataset in Training
+
+TASKS = "trainingAugmentedGoldenDataset"
+DEFAULT_TASKS_DIRECTORY = os.path.join(DEFAULT_DATA_DIRECTORY, TASKS)
 
 # Experiment Type 4: Original Training Dataset Augmented by Easier Versions of Problem DreamCoder Failed to Solve Initially
 
