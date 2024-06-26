@@ -1,0 +1,301 @@
+{
+    "DSL": {
+        "logVariable": 0.0,
+        "productions": [
+            {
+                "expression": "mathDomain_add",
+                "logProbability": 0.0
+            },
+            {
+                "expression": "mathDomain_sub",
+                "logProbability": 0.0
+            },
+            {
+                "expression": "mathDomain_mult",
+                "logProbability": 0.0
+            },
+            {
+                "expression": "mathDomain_div",
+                "logProbability": 0.0
+            },
+            {
+                "expression": "mathDomain_rrotate",
+                "logProbability": 0.0
+            },
+            {
+                "expression": "mathDomain_lrotate",
+                "logProbability": 0.0
+            },
+            {
+                "expression": "mathDomain_simplify",
+                "logProbability": 0.0
+            },
+            {
+                "expression": "mathDomain_dist",
+                "logProbability": 0.0
+            },
+            {
+                "expression": "mathDomain_revdist",
+                "logProbability": 0.0
+            },
+            {
+                "expression": "mathDomain_swap",
+                "logProbability": 0.0
+            },
+            {
+                "expression": "mathDomain_addzero",
+                "logProbability": 0.0
+            },
+            {
+                "expression": "mathDomain_subzero",
+                "logProbability": 0.0
+            },
+            {
+                "expression": "mathDomain_multone",
+                "logProbability": 0.0
+            },
+            {
+                "expression": "mathDomain_divone",
+                "logProbability": 0.0
+            },
+            {
+                "expression": "mathDomain_newConstGen",
+                "logProbability": 0.0
+            },
+            {
+                "expression": "mathDomain_0",
+                "logProbability": 0.0
+            },
+            {
+                "expression": "mathDomain_1",
+                "logProbability": 0.0
+            },
+            {
+                "expression": "mathDomain_2",
+                "logProbability": 0.0
+            },
+            {
+                "expression": "mathDomain_3",
+                "logProbability": 0.0
+            },
+            {
+                "expression": "mathDomain_4",
+                "logProbability": 0.0
+            },
+            {
+                "expression": "mathDomain_5",
+                "logProbability": 0.0
+            },
+            {
+                "expression": "mathDomain_6",
+                "logProbability": 0.0
+            },
+            {
+                "expression": "mathDomain_7",
+                "logProbability": 0.0
+            },
+            {
+                "expression": "mathDomain_8",
+                "logProbability": 0.0
+            },
+            {
+                "expression": "mathDomain_9",
+                "logProbability": 0.0
+            },
+            {
+                "expression": "mathDomain_10",
+                "logProbability": 0.0
+            }
+        ]
+    },
+    "frontiers": [
+        {
+            "task": "mathEq0: (= (* (2) (x)) (5))=>(= (x) (/ (5) (2)))",
+            "programs": [
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_div (mathDomain_swap $0 mathDomain_1) mathDomain_3) mathDomain_1) mathDomain_0))"
+                },
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_div (mathDomain_dist (mathDomain_swap $0 mathDomain_1) mathDomain_0) mathDomain_3) mathDomain_1) mathDomain_0))"
+                },
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_div (mathDomain_dist (mathDomain_swap $0 mathDomain_1) mathDomain_2) mathDomain_3) mathDomain_1) mathDomain_0))"
+                },
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_div (mathDomain_subzero (mathDomain_swap $0 mathDomain_1) mathDomain_3) mathDomain_3) mathDomain_1) mathDomain_0))"
+                },
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_div (mathDomain_subzero (mathDomain_swap $0 mathDomain_1) mathDomain_4) mathDomain_3) mathDomain_1) mathDomain_0))"
+                }
+            ]
+        },
+        {
+            "task": "mathEq1: (= (* (x) (2)) (5))=>(= (x) (/ (5) (2)))",
+            "programs": [
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_div $0 mathDomain_3) mathDomain_1) mathDomain_0))"
+                },
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_div $0 mathDomain_3) mathDomain_1) mathDomain_1))"
+                },
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_div (mathDomain_swap $0 mathDomain_2) mathDomain_3) mathDomain_1) mathDomain_0))"
+                },
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_div (mathDomain_rrotate (mathDomain_div $0 mathDomain_3) mathDomain_1) mathDomain_3) mathDomain_1) mathDomain_0))"
+                },
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_simplify (mathDomain_rrotate (mathDomain_div $0 mathDomain_3) mathDomain_1) mathDomain_0) mathDomain_1) mathDomain_0))"
+                }
+            ]
+        },
+        {
+            "task": "mathEq2: (= (+ (x) (5)) (5))=>(= (x) (0))",
+            "programs": [
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_sub $0 mathDomain_3) mathDomain_1) mathDomain_0))"
+                },
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_sub $0 mathDomain_4) mathDomain_1) mathDomain_0))"
+                },
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_rrotate (mathDomain_sub $0 mathDomain_4) mathDomain_1) mathDomain_1) mathDomain_0))"
+                },
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_sub (mathDomain_swap $0 mathDomain_2) mathDomain_4) mathDomain_1) mathDomain_0))"
+                },
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_simplify (mathDomain_rrotate (mathDomain_sub $0 mathDomain_4) mathDomain_1) mathDomain_0) mathDomain_1) mathDomain_0))"
+                }
+            ]
+        },
+        {
+            "task": "mathEq3: (= (+ (5) (x)) (8))=>(= (x) (3))",
+            "programs": [
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_swap (mathDomain_sub $0 mathDomain_2) mathDomain_2) mathDomain_1) mathDomain_0))"
+                },
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_swap (mathDomain_addzero (mathDomain_sub $0 mathDomain_2) mathDomain_5) mathDomain_2) mathDomain_1) mathDomain_0))"
+                },
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_swap (mathDomain_lrotate (mathDomain_sub $0 mathDomain_2) mathDomain_2) mathDomain_2) mathDomain_1) mathDomain_0))"
+                },
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_swap (mathDomain_lrotate (mathDomain_sub $0 mathDomain_2) mathDomain_8) mathDomain_2) mathDomain_1) mathDomain_0))"
+                },
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_swap (mathDomain_revdist (mathDomain_sub $0 mathDomain_2) mathDomain_7) mathDomain_2) mathDomain_1) mathDomain_0))"
+                }
+            ]
+        },
+        {
+            "task": "mathEq12: (= (/ (* (5) (x)) (5)) (3))=>(= (x) (3))",
+            "programs": [
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_swap $0 mathDomain_2) mathDomain_1) mathDomain_0))"
+                },
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_swap $0 mathDomain_2) mathDomain_1) mathDomain_1))"
+                },
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_simplify (mathDomain_rrotate (mathDomain_swap $0 mathDomain_2) mathDomain_1) mathDomain_0) mathDomain_0))"
+                },
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_swap (mathDomain_rrotate (mathDomain_swap $0 mathDomain_2) mathDomain_1) mathDomain_2) mathDomain_1) mathDomain_0))"
+                },
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_swap (mathDomain_simplify (mathDomain_rrotate (mathDomain_swap $0 mathDomain_2) mathDomain_1) mathDomain_0) mathDomain_2) mathDomain_1) mathDomain_0))"
+                }
+            ]
+        },
+        {
+            "task": "mathEq61: (= (5) (* (2) (x)))=>(= (x) (/ (5) (2)))",
+            "programs": [
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_div (mathDomain_swap (mathDomain_swap $0 mathDomain_2) mathDomain_0) mathDomain_3) mathDomain_1) mathDomain_0))"
+                }
+            ]
+        },
+        {
+            "task": "mathEq62: (= (5) (* (x) (2)))=>(= (x) (/ (5) (2)))",
+            "programs": [
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_div (mathDomain_swap $0 mathDomain_0) mathDomain_3) mathDomain_1) mathDomain_0))"
+                },
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_div (mathDomain_dist (mathDomain_swap $0 mathDomain_0) mathDomain_0) mathDomain_3) mathDomain_1) mathDomain_0))"
+                },
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_div (mathDomain_dist (mathDomain_swap $0 mathDomain_0) mathDomain_2) mathDomain_3) mathDomain_1) mathDomain_0))"
+                },
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_div (mathDomain_subzero (mathDomain_swap $0 mathDomain_0) mathDomain_3) mathDomain_3) mathDomain_1) mathDomain_0))"
+                },
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_div (mathDomain_subzero (mathDomain_swap $0 mathDomain_0) mathDomain_4) mathDomain_3) mathDomain_1) mathDomain_0))"
+                }
+            ]
+        },
+        {
+            "task": "mathEq73: (= (3) (/ (* (5) (x)) (5)))=>(= (x) (3))",
+            "programs": [
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_swap (mathDomain_swap $0 mathDomain_0) mathDomain_2) mathDomain_1) mathDomain_0))"
+                },
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_swap (mathDomain_dist (mathDomain_swap $0 mathDomain_0) mathDomain_0) mathDomain_2) mathDomain_1) mathDomain_0))"
+                },
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_swap (mathDomain_dist (mathDomain_swap $0 mathDomain_0) mathDomain_2) mathDomain_2) mathDomain_1) mathDomain_0))"
+                },
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_swap (mathDomain_dist (mathDomain_swap $0 mathDomain_0) mathDomain_5) mathDomain_2) mathDomain_1) mathDomain_0))"
+                },
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_swap (mathDomain_lrotate (mathDomain_swap $0 mathDomain_0) mathDomain_2) mathDomain_2) mathDomain_1) mathDomain_0))"
+                }
+            ]
+        },
+        {
+            "task": "mathEq74: (= (* (4) (x)) (+ (1) (2)))=>(= (x) (/ (3) (4)))",
+            "programs": [
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_div (mathDomain_swap $0 mathDomain_1) mathDomain_3) mathDomain_1) mathDomain_0))"
+                },
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_swap (mathDomain_div $0 mathDomain_2) mathDomain_2) mathDomain_1) mathDomain_0))"
+                },
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_div (mathDomain_rrotate (mathDomain_swap $0 mathDomain_1) mathDomain_1) mathDomain_3) mathDomain_1) mathDomain_0))"
+                },
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_div (mathDomain_subzero (mathDomain_swap $0 mathDomain_1) mathDomain_5) mathDomain_3) mathDomain_1) mathDomain_0))"
+                },
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_div (mathDomain_subzero (mathDomain_swap $0 mathDomain_1) mathDomain_6) mathDomain_3) mathDomain_1) mathDomain_0))"
+                }
+            ]
+        },
+        {
+            "task": "mathEq122: (= (+ (x) (* (3) (x))) (4))=>(= (x) (1))",
+            "programs": [
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_revdist (mathDomain_addzero (mathDomain_sub $0 mathDomain_4) mathDomain_6) mathDomain_4) mathDomain_1) mathDomain_0))"
+                },
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_revdist (mathDomain_subzero (mathDomain_sub $0 mathDomain_4) mathDomain_6) mathDomain_4) mathDomain_1) mathDomain_0))"
+                },
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_revdist (mathDomain_subzero (mathDomain_simplify (mathDomain_rrotate (mathDomain_sub $0 mathDomain_4) mathDomain_1) mathDomain_0) mathDomain_6) mathDomain_4) mathDomain_0))"
+                },
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_revdist (mathDomain_subzero (mathDomain_rrotate (mathDomain_sub $0 mathDomain_4) mathDomain_1) mathDomain_6) mathDomain_4) mathDomain_1) mathDomain_0))"
+                },
+                {
+                    "program": "(lambda (mathDomain_simplify (mathDomain_rrotate (mathDomain_revdist (mathDomain_subzero (mathDomain_simplify (mathDomain_rrotate (mathDomain_sub $0 mathDomain_4) mathDomain_1) mathDomain_0) mathDomain_6) mathDomain_4) mathDomain_1) mathDomain_0))"
+                }
+            ]
+        }
+    ]
+}
