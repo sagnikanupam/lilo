@@ -74,7 +74,7 @@ def checkLemmaConpoleAccuracy(test_problem_df:pd.DataFrame, model_result_df: pd.
     print(f"{model_name} Accuracy: {count / len(test_problem_df)}")
 
 if __name__ =="__main__":
-    datasetExpVal = "ORIGINAL" #Can be ORIGINAL, GOLDEN, TRAININGAUGMENTEDGOLDEN, OR AUGMENTED FOR GENERATING DATASETS
+    datasetExpVal = "INDEX" #Can be ORIGINAL, GOLDEN, TRAININGAUGMENTEDGOLDEN, OR AUGMENTED FOR GENERATING DATASETS
 
     #  Experiment Type 1: Original Cognitive Tutor Problems Only
     if datasetExpVal == "ORIGINAL":
@@ -145,16 +145,16 @@ if __name__ =="__main__":
     if datasetExpVal == "INDEX":
         allEqDatasets = [pd.read_csv(dataset) for dataset in ORIGINAL_DATASET_FILEPATHS]
         allEqDf = pd.concat([data for data in allEqDatasets], ignore_index=True)
-        numEqs = allEqDf.shape[0] + 15
+        numEqs = allEqDf.shape[0]
         numTrainSamples = int(numEqs*ORIGINAL_TRAIN_SPLIT)
-        print("Number of training samples: ", numTrainSamples)
+        print("Number of training samples: ", numTrainSamples+15)
         print("Number of testing samples: ", numEqs - numTrainSamples)
         trainDf = allEqDf.sample(n=numTrainSamples, random_state=RANDOM_SEED)
         testDf = allEqDf.drop(trainDf.index).sample(frac=1, random_state=RANDOM_SEED)
         trainTasks = [makeTask(i, trainDf) for i in range(numTrainSamples)] + [makeIndexTask(index) for index in range(11, 25)]
         testTasks = [makeTask(i, testDf) for i in range(numEqs - numTrainSamples)]
         # save train and test datasets json
-        with open('cognitiveTutor/train/tasks.json', 'w') as f:
+        with open('trainingWithIndex/train/tasks.json', 'w') as f:
             json.dump(trainTasks, f)
-        with open('cognitiveTutor/test/tasks.json', 'w') as f:
+        with open('trainingWithIndex/test/tasks.json', 'w') as f:
             json.dump(testTasks, f)
