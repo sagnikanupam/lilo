@@ -1,0 +1,31 @@
+{
+    "loop_block_runtimes": [
+        {
+            "curr_iteration": 3,
+            "model_type": "amortized_synthesis",
+            "model_fn": "optimize_model_for_frontiers",
+            "task_split": "train",
+            "time_start": 1719429035.1315942,
+            "time_end": 1719437738.1891317,
+            "time_elapsed": 8703.057537555695
+        },
+        {
+            "curr_iteration": 3,
+            "model_type": "amortized_synthesis",
+            "model_fn": "infer_programs_for_tasks",
+            "task_split": "train",
+            "time_start": 1719437738.1911123,
+            "time_end": 1719439559.3760178,
+            "time_elapsed": 1821.1849055290222
+        },
+        {
+            "curr_iteration": 3,
+            "model_type": "amortized_synthesis",
+            "model_fn": "infer_programs_for_tasks",
+            "task_split": "test",
+            "time_start": 1719439559.3797092,
+            "time_end": 1719441378.7646058,
+            "time_elapsed": 1819.3848965168
+        }
+    ]
+}

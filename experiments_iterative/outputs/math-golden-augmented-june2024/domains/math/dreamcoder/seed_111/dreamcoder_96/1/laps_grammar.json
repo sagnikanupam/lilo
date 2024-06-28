@@ -1,0 +1,129 @@
+{
+    "logVariable": -0.7884573603642702,
+    "productions": [
+        {
+            "expression": "mathDomain_add",
+            "logProbability": -1.635755220751474
+        },
+        {
+            "expression": "mathDomain_sub",
+            "logProbability": -1.510592077797468
+        },
+        {
+            "expression": "mathDomain_mult",
+            "logProbability": -1.6029653979284832
+        },
+        {
+            "expression": "mathDomain_div",
+            "logProbability": -1.6029653979284832
+        },
+        {
+            "expression": "mathDomain_rrotate",
+            "logProbability": -1.4534336639575196
+        },
+        {
+            "expression": "mathDomain_lrotate",
+            "logProbability": -1.635755220751474
+        },
+        {
+            "expression": "mathDomain_simplify",
+            "logProbability": -1.0296194171811583
+        },
+        {
+            "expression": "mathDomain_dist",
+            "logProbability": -1.3480731482996933
+        },
+        {
+            "expression": "mathDomain_revdist",
+            "logProbability": -1.6029653979284832
+        },
+        {
+            "expression": "mathDomain_swap",
+            "logProbability": -1.635755220751474
+        },
+        {
+            "expression": "mathDomain_addzero",
+            "logProbability": -1.635755220751474
+        },
+        {
+            "expression": "mathDomain_subzero",
+            "logProbability": -1.635755220751474
+        },
+        {
+            "expression": "mathDomain_multone",
+            "logProbability": -1.635755220751474
+        },
+        {
+            "expression": "mathDomain_divone",
+            "logProbability": -1.635755220751474
+        },
+        {
+            "expression": "mathDomain_newConstGen",
+            "logProbability": -0.9555114450274362
+        },
+        {
+            "expression": "mathDomain_0",
+            "logProbability": -0.5065612249795333
+        },
+        {
+            "expression": "mathDomain_1",
+            "logProbability": -0.5955087109960293
+        },
+        {
+            "expression": "mathDomain_2",
+            "logProbability": -0.719122666963206
+        },
+        {
+            "expression": "mathDomain_3",
+            "logProbability": -0.9227216222044454
+        },
+        {
+            "expression": "mathDomain_4",
+            "logProbability": -0.7457909140453673
+        },
+        {
+            "expression": "mathDomain_5",
+            "logProbability": -0.9555114450274362
+        },
+        {
+            "expression": "mathDomain_6",
+            "logProbability": -0.9555114450274362
+        },
+        {
+            "expression": "mathDomain_7",
+            "logProbability": -0.9555114450274362
+        },
+        {
+            "expression": "mathDomain_8",
+            "logProbability": -0.8909729238898652
+        },
+        {
+            "expression": "mathDomain_9",
+            "logProbability": -0.9555114450274362
+        },
+        {
+            "expression": "mathDomain_10",
+            "logProbability": -0.9555114450274362
+        },
+        {
+            "expression": "#(lambda (mathDomain_simplify (mathDomain_dist $0 mathDomain_1) mathDomain_0))",
+            "logProbability": -1.299282984130261
+        },
+        {
+            "expression": "#(lambda (#(lambda (mathDomain_simplify (mathDomain_dist $0 mathDomain_1) mathDomain_0)) (mathDomain_swap $0 mathDomain_0)))",
+            "logProbability": -1.510592077797468
+        },
+        {
+            "expression": "#(lambda (#(lambda (mathDomain_simplify (mathDomain_dist $0 mathDomain_1) mathDomain_0)) (mathDomain_sub $0 mathDomain_4)))",
+            "logProbability": -1.4534336639575196
+        },
+        {
+            "expression": "#(lambda (mathDomain_swap $0 mathDomain_0))",
+            "logProbability": -1.3233805357093216
+        },
+        {
+            "expression": "#(lambda (mathDomain_rrotate $0 mathDomain_2))",
+            "logProbability": -1.5404450409471493
+        }
+    ]
+}

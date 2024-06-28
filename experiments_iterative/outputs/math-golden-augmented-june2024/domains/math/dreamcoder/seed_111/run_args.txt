@@ -1,0 +1,34 @@
+{
+  "experiment_name": "math-golden-augmented-june2024",
+  "experiment_type": "dreamcoder",
+  "domain": "math",
+  "task_batcher": "random_shuffle_ordered_task_batcher",
+  "iterations": 15,
+  "enumeration_timeout": 1800,
+  "recognition_train_steps": 10000,
+  "encoder": "math",
+  "stitch_params": "{}",
+  "gpt_params": "{}",
+  "no_likelihoods": false,
+  "global_batch_sizes": [
+    96
+  ],
+  "global_batch_size_all": false,
+  "random_seeds": [
+    111
+  ],
+  "init_iteration": 0,
+  "init_frontiers_from_checkpoint": false,
+  "init_frontiers_every_iteration": false,
+  "init_grammar_from_checkpoint": false,
+  "resume_checkpoint_directory": null,
+  "use_cached": false,
+  "resume_strategy": null,
+  "debug": false,
+  "verbose": true,
+  "overwrite_dir": false,
+  "no_s3_sync": false,
+  "body_task_selection": "random",
+  "weightUpdate": "None",
+  "syMetricMethod": "None"
+}

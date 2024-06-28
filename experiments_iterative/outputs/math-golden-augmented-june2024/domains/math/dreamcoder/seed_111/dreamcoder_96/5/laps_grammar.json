@@ -1,0 +1,149 @@
+{
+    "logVariable": -1.4203241097062023,
+    "productions": [
+        {
+            "expression": "mathDomain_add",
+            "logProbability": -4.502074676961117
+        },
+        {
+            "expression": "mathDomain_sub",
+            "logProbability": -3.6317210402739875
+        },
+        {
+            "expression": "mathDomain_mult",
+            "logProbability": -4.05008955321806
+        },
+        {
+            "expression": "mathDomain_div",
+            "logProbability": -4.7303333289420975
+        },
+        {
+            "expression": "mathDomain_rrotate",
+            "logProbability": -2.4830983310312167
+        },
+        {
+            "expression": "mathDomain_lrotate",
+            "logProbability": -4.131215098030428
+        },
+        {
+            "expression": "mathDomain_simplify",
+            "logProbability": -3.3700144542254673
+        },
+        {
+            "expression": "mathDomain_dist",
+            "logProbability": -3.269930995668485
+        },
+        {
+            "expression": "mathDomain_revdist",
+            "logProbability": -4.481871969643597
+        },
+        {
+            "expression": "mathDomain_swap",
+            "logProbability": -2.37773781537339
+        },
+        {
+            "expression": "mathDomain_addzero",
+            "logProbability": -4.810376036615634
+        },
+        {
+            "expression": "mathDomain_subzero",
+            "logProbability": -3.9750543672751455
+        },
+        {
+            "expression": "mathDomain_multone",
+            "logProbability": -4.705015520957808
+        },
+        {
+            "expression": "mathDomain_divone",
+            "logProbability": -4.7303333289420975
+        },
+        {
+            "expression": "mathDomain_newConstGen",
+            "logProbability": -3.781914320081125
+        },
+        {
+            "expression": "mathDomain_0",
+            "logProbability": -1.7150515606081491
+        },
+        {
+            "expression": "mathDomain_1",
+            "logProbability": -1.4893795629405808
+        },
+        {
+            "expression": "mathDomain_2",
+            "logProbability": -1.5271198909234283
+        },
+        {
+            "expression": "mathDomain_3",
+            "logProbability": -2.4646128304481865
+        },
+        {
+            "expression": "mathDomain_4",
+            "logProbability": -1.336672926685556
+        },
+        {
+            "expression": "mathDomain_5",
+            "logProbability": -3.5195500556136343
+        },
+        {
+            "expression": "mathDomain_6",
+            "logProbability": -2.1658318649283563
+        },
+        {
+            "expression": "mathDomain_7",
+            "logProbability": -3.5721937890990563
+        },
+        {
+            "expression": "mathDomain_8",
+            "logProbability": -3.3119106908353895
+        },
+        {
+            "expression": "mathDomain_9",
+            "logProbability": -3.781914320081125
+        },
+        {
+            "expression": "mathDomain_10",
+            "logProbability": -3.656751177127119
+        },
+        {
+            "expression": "#(lambda (mathDomain_simplify (mathDomain_dist (mathDomain_rrotate (mathDomain_swap (mathDomain_div $0 mathDomain_2) mathDomain_2) mathDomain_1) mathDomain_1) mathDomain_0))",
+            "logProbability": -2.191346529552029
+        },
+        {
+            "expression": "#(lambda (#(lambda (mathDomain_simplify (mathDomain_dist (mathDomain_rrotate (mathDomain_swap (mathDomain_div $0 mathDomain_2) mathDomain_2) mathDomain_1) mathDomain_1) mathDomain_0)) (mathDomain_simplify (mathDomain_dist (mathDomain_rrotate (mathDomain_swap (mathDomain_sub (mathDomain_simplify (mathDomain_dist $0 mathDomain_1) mathDomain_0) mathDomain_2) mathDomain_2) mathDomain_1) mathDomain_1) mathDomain_0)))",
+            "logProbability": -2.7113082910217683
+        },
+        {
+            "expression": "#(lambda (mathDomain_simplify (mathDomain_dist $0 mathDomain_1) mathDomain_0))",
+            "logProbability": -2.0377873143758523
+        },
+        {
+            "expression": "#(lambda (#(lambda (mathDomain_simplify (mathDomain_dist (mathDomain_rrotate (mathDomain_swap (mathDomain_div $0 mathDomain_2) mathDomain_2) mathDomain_1) mathDomain_1) mathDomain_0)) (mathDomain_lrotate (mathDomain_revdist (#(lambda (mathDomain_simplify (mathDomain_dist (mathDomain_rrotate (mathDomain_swap (mathDomain_div $0 mathDomain_2) mathDomain_2) mathDomain_1) mathDomain_1) mathDomain_0)) (mathDomain_swap $0 mathDomain_0)) mathDomain_4) mathDomain_1)))",
+            "logProbability": -3.0107138271696083
+        },
+        {
+            "expression": "#(lambda (#(lambda (mathDomain_simplify (mathDomain_dist (mathDomain_rrotate (mathDomain_swap (mathDomain_div $0 mathDomain_2) mathDomain_2) mathDomain_1) mathDomain_1) mathDomain_0)) (mathDomain_swap (#(lambda (mathDomain_simplify (mathDomain_dist $0 mathDomain_1) mathDomain_0)) (mathDomain_rrotate $0 mathDomain_4)) mathDomain_0)))",
+            "logProbability": -3.782332623171049
+        },
+        {
+            "expression": "#(lambda (#(lambda (mathDomain_simplify (mathDomain_dist $0 mathDomain_1) mathDomain_0)) (mathDomain_swap $0 mathDomain_0)))",
+            "logProbability": -2.8546326313016186
+        },
+        {
+            "expression": "#(lambda (#(lambda (#(lambda (mathDomain_simplify (mathDomain_dist $0 mathDomain_1) mathDomain_0)) (mathDomain_swap $0 mathDomain_0))) (mathDomain_rrotate (#(lambda (mathDomain_simplify (mathDomain_dist $0 mathDomain_1) mathDomain_0)) (mathDomain_sub $0 mathDomain_4)) mathDomain_2)))",
+            "logProbability": -3.4400464166844156
+        },
+        {
+            "expression": "#(lambda (#(lambda (mathDomain_simplify (mathDomain_dist $0 mathDomain_1) mathDomain_0)) (mathDomain_rrotate (mathDomain_swap $0 mathDomain_2) mathDomain_1)))",
+            "logProbability": -3.206384336974171
+        },
+        {
+            "expression": "#(lambda (#(lambda (#(lambda (mathDomain_simplify (mathDomain_dist (mathDomain_rrotate (mathDomain_swap (mathDomain_div $0 mathDomain_2) mathDomain_2) mathDomain_1) mathDomain_1) mathDomain_0)) (mathDomain_swap (#(lambda (mathDomain_simplify (mathDomain_dist $0 mathDomain_1) mathDomain_0)) (mathDomain_rrotate $0 mathDomain_4)) mathDomain_0))) (mathDomain_sub $0 mathDomain_6)))",
+            "logProbability": -3.3174440945920836
+        },
+        {
+            "expression": "#(lambda (mathDomain_revdist (mathDomain_addzero $0 mathDomain_6) mathDomain_4))",
+            "logProbability": -3.7229092027002477
+        }
+    ]
+}
