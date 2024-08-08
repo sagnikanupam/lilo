@@ -111,8 +111,12 @@ def treefy(eq):
     sndArgMatch = matchBracket(newEq, sndArgInd)
   if (fstArgInd != -1 and sndArgInd != -1):
     if (fstArgInd != sndArgMatch):
-      args.append(newEq[fstArgInd:fstArgMatch + 1])
-      args.append(newEq[sndArgMatch:sndArgInd + 1])
+      try:
+        args.append(newEq[fstArgInd:fstArgMatch + 1])
+        args.append(newEq[sndArgMatch:sndArgInd + 1])
+      except Exception as e:
+        print(e)
+        print(f"treefy failed on {newEq}")
     else:
       args.append(newEq[fstArgInd:fstArgMatch + 1])
   if (intConvertable(args[0])):
@@ -187,7 +191,7 @@ def _lrotateHelper(s):
         leftSub = Tree(originalRoot, upperLeft, bottomLeft)
         newTree = Tree(upperRight, leftSub, bottomRight)
         return detreefy(newTree)
-    return s
+  return s
 
 
 def _genSub(s):

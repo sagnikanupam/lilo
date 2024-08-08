@@ -54,27 +54,8 @@ def makeIndexTask(index:int):
     inputOutput = {"i":0, "o": index}
     return {"name": "index_"+str(index) + ": " + str(inputOutput["i"]) + "=>" + str(inputOutput["o"]), "examples": [inputOutput for _ in range(5000)]}
 
-def checkLemmaConpoleAccuracy(test_problem_df:pd.DataFrame, model_result_df: pd.DataFrame, model_name: str):
-    """
-    Check accuracy of ConPoLe/Lemma model results
-
-    Args:
-        test_df (pd.DataFrame): Dataframe containing test problems
-        model_result_df (pd.DataFrame): Dataframe containing results of Conpole or Lemma
-        model_name (str): model name to be printed
-    
-    """
-    count = 0
-    test_problem_df["tmp"] = test_problem_df.index
-    model_result_equation_nums = model_result_df["Equation Number"].to_list()
-    for index in range(len(test_problem_df)):
-        if test_problem_df["tmp"].iloc[index] in model_result_equation_nums:
-            count+=1
-    print(f"{model_name} Num Problems Solved: {count} / {len(test_problem_df)}")
-    print(f"{model_name} Accuracy: {count / len(test_problem_df)}")
-
 if __name__ =="__main__":
-    datasetExpVal = "INDEX" #Can be ORIGINAL, GOLDEN, TRAININGAUGMENTEDGOLDEN, OR AUGMENTED FOR GENERATING DATASETS
+    datasetExpVal = "CHECK_ACCURACY" #Can be ORIGINAL, GOLDEN, TRAININGAUGMENTEDGOLDEN, OR AUGMENTED FOR GENERATING DATASETS
 
     #  Experiment Type 1: Original Cognitive Tutor Problems Only
     if datasetExpVal == "ORIGINAL":
@@ -88,8 +69,6 @@ if __name__ =="__main__":
         print("Number of testing samples: ", numEqs - numTrainSamples)
         trainDf = allEqDf.sample(n=numTrainSamples, random_state=RANDOM_SEED)
         testDf = allEqDf.drop(trainDf.index).sample(frac=1, random_state=RANDOM_SEED)
-        checkLemmaConpoleAccuracy(testDf, conpoleDf, "ConPoLe")
-        checkLemmaConpoleAccuracy(testDf, lemmaDf, "Lemma")
         trainTasks = [makeTask(i, trainDf) for i in range(numTrainSamples)]
         testTasks = [makeTask(i, testDf) for i in range(numEqs - numTrainSamples)]
         # save train and test datasets json
